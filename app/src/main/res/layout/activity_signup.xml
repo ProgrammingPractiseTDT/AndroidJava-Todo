@@ -27,8 +27,8 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="268dp"
-        android:layout_height="80dp"
+        android:layout_width="272dp"
+        android:layout_height="81dp"
         android:layout_marginTop="60dp"
         android:fontFamily="@font/aguafina_script"
         android:gravity="center"
