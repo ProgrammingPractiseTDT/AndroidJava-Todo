@@ -5,9 +5,8 @@ public class User {
     private String password;
     private String email;
 
-    public User(String fullName, String password, String email) {
+    public User(String fullName, String email) {
         this.fullName = fullName;
-        this.password = password;
         this.email = email;
     }
 
@@ -20,14 +19,6 @@ public class User {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
