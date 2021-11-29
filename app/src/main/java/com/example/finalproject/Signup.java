@@ -125,7 +125,6 @@ public class Signup extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Log.e("user", email + password);
                             prgProgress.setVisibility(View.GONE);
                             User user = new User(fullName, email);
                             prgProgress.setVisibility(View.GONE);
@@ -136,7 +135,7 @@ public class Signup extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         Toast.makeText(Signup.this, "User has been sign up successfully", Toast.LENGTH_LONG).show();
-                                        startActivity(new Intent(Signup.this,Login.class));
+                                        getBacktoSignIn();
                                     }else{
                                         Log.e("signup", "createUserWithEmail:failure", task.getException());
                                         Toast.makeText(Signup.this, "Failed to sign up, please try again later!!!", Toast.LENGTH_LONG).show();
@@ -152,7 +151,6 @@ public class Signup extends AppCompatActivity {
                 Log.e("Signup","login fail");
             }
         });;
-//        prgProgress.setVisibility(View.GONE);
     }
 
 }

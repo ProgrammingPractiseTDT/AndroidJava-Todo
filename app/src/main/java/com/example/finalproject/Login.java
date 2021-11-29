@@ -83,11 +83,11 @@ public class Login extends AppCompatActivity {
     public void updateUI(FirebaseUser account){
 
         if(account != null){
-            Toast.makeText(this,"You Signed In successfully",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Successfully!",Toast.LENGTH_LONG).show();
             startActivity(new Intent(this,MainActivity.class));
 
         }else {
-            Toast.makeText(this,"You Didnt signed in",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Invalid email or password.",Toast.LENGTH_LONG).show();
         }
 
     }
