@@ -66,6 +66,6 @@ public class AddProjectDialog extends Dialog implements
             uid = user.getUid();
         }
         DatabaseReference ref = rootRef.child("User").child(uid).child("projects");
-        ref.setValue(project);
+        ref.push().setValue(project);
     }
 }
