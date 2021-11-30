@@ -8,7 +8,9 @@ public class User {
         this.fullName = fullName;
         this.email = email;
     }
+    private User(){
 
+    }
 
     public String getFullName() {
         return fullName;

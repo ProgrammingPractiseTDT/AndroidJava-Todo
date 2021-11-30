@@ -15,6 +15,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
@@ -81,14 +86,14 @@ public class Login extends AppCompatActivity {
                 });
     }
     public void updateUI(FirebaseUser account){
-
+        Intent intent = new Intent(this, MainActivity.class);
         if(account != null){
             Toast.makeText(this,"Successfully!",Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this,MainActivity.class));
-
+            startActivity(intent);
         }else {
             Toast.makeText(this,"Invalid email or password.",Toast.LENGTH_LONG).show();
         }
 
     }
+
 }

@@ -25,13 +25,12 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/txt_helloUser"
+            android:id="@+id/txt_userGreeting"
             android:layout_width="100sp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="cursive"
             android:gravity="center"
-            android:text="Hello, \nJessica"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
@@ -59,7 +58,7 @@
             android:layout_marginEnd="16dp"
             android:paddingTop="8sp"
             android:paddingBottom="8sp"
-            android:dividerHeight="10sp"
+            android:footerDividersEnabled="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
