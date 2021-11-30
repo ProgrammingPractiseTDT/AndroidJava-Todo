@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -35,5 +36,10 @@ public class MainActivity extends AppCompatActivity {
         menu.add("All tasks");
 
         return menu;
+    }
+
+    public void showAddProjectDialog(View view) {
+        AddProjectDialog cdd=new AddProjectDialog(MainActivity.this);
+        cdd.show();
     }
 }
