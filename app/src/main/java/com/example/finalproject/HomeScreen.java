@@ -27,7 +27,7 @@ import java.util.List;
 
 
 //test
-public class MainActivity extends AppCompatActivity {
+public class HomeScreen extends AppCompatActivity {
     private ListView lv;
     private List<String> menu;
     private TextView userGreeting;
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         rv = findViewById(R.id.project_recycler_view);
-        projectAdapter = new ProjectAdapter(MainActivity.this, ProjectNames);
+        projectAdapter = new ProjectAdapter(HomeScreen.this, ProjectNames);
         rv.setAdapter(projectAdapter);
     }
 
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showAddProjectDialog(View view) {
-        AddProjectDialog cdd=new AddProjectDialog(MainActivity.this);
+        AddProjectDialog cdd=new AddProjectDialog(HomeScreen.this);
         cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {

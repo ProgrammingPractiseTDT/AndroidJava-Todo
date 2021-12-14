@@ -93,9 +93,8 @@ public class Login extends AppCompatActivity {
     public void updateUI(FirebaseUser account){
         ProjectNames= new ArrayList<String>();
         ProjectNames.add("Order");
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("projects",ProjectNames);
         Intent intent = new Intent(this, HomeScreen.class);
+        intent.putExtra("projects",ProjectNames);
         if(account != null){
             Toast.makeText(this,ProjectNames.get(0),Toast.LENGTH_LONG).show();
             startActivity(intent);
