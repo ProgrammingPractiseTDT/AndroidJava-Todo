@@ -3,6 +3,7 @@ package com.example.finalproject;
 import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -76,12 +77,16 @@ public class AddProjectDialog extends Dialog implements
             case R.id.add_dialog_btn:
                 EditText title_field = findViewById(R.id.project_title_input);
                 String title = title_field.getText().toString();
+                ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);
+                ColorDrawable viewColor = (ColorDrawable) lay.getBackground();
+                int colorId = viewColor.getColor();
                 if (title.isEmpty()){
                     title_field.setError("Please enter project title");
                     title_field.requestFocus();
                 }
                 else{
-                    addProject(title);
+
+                    addProject(title, colorId);
                     dismiss();
                 }
                 break;
@@ -93,10 +98,10 @@ public class AddProjectDialog extends Dialog implements
         }
     }
 
-    private void addProject(String title) {
+    private void addProject(String title, int color) {
 
 
-        Project project = new Project(title);
+        Project project = new Project(title, color);
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         String uid = "";
         FirebaseAuth auth = FirebaseAuth.getInstance();
