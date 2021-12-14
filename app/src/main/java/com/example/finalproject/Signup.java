@@ -1,7 +1,5 @@
 package com.example.finalproject;
 
-import static android.service.controls.ControlsProviderService.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +8,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 import android.content.Intent;
@@ -42,7 +39,7 @@ public class Signup extends AppCompatActivity {
         txtPassword = (EditText) findViewById(R.id.txt_password);
         txtCFPassword = (EditText) findViewById(R.id.txt_cfPassword);
 
-        btnSignUp = (Button) findViewById(R.id.btn_signUp);
+        btnSignUp = (Button) findViewById(R.id.btn_signIn);
         btnGetBack = (Button) findViewById(R.id.btn_backSignIn);
 
         prgProgress = (ProgressBar) findViewById(R.id.prg_progress);
@@ -117,40 +114,41 @@ public class Signup extends AppCompatActivity {
             txtCFPassword.requestFocus();
             return;
         }
-
-
-        prgProgress.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(Signup.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
-                            prgProgress.setVisibility(View.GONE);
-                            User user = new User(fullName, email);
-                            prgProgress.setVisibility(View.GONE);
-                            FirebaseDatabase.getInstance().getReference("User")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(Signup.this, "User has been sign up successfully", Toast.LENGTH_LONG).show();
-                                        getBacktoSignIn();
-                                    }else{
-                                        Log.e("signup", "createUserWithEmail:failure", task.getException());
-                                        Toast.makeText(Signup.this, "Failed to sign up, please try again later!!!", Toast.LENGTH_LONG).show();
+        else{
+            prgProgress.setVisibility(View.VISIBLE);
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(Signup.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()){
+                                prgProgress.setVisibility(View.GONE);
+                                User user = new User(fullName, email);
+                                prgProgress.setVisibility(View.GONE);
+                                FirebaseDatabase.getInstance().getReference("User")
+                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                        .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            Toast.makeText(Signup.this, "User has been sign up successfully", Toast.LENGTH_LONG).show();
+                                            getBacktoSignIn();
+                                        }else{
+                                            Log.e("signup", "createUserWithEmail:failure", task.getException());
+                                            Toast.makeText(Signup.this, "Failed to sign up, please try again later!!!", Toast.LENGTH_LONG).show();
+                                        }
+                                        prgProgress.setVisibility(View.GONE);
                                     }
-                                    prgProgress.setVisibility(View.GONE);
-                                }
-                            });
+                                });
+                            }
                         }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.e("Signup","login fail");
-            }
-        });;
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e("Signup","login fail");
+                }
+            });;
+        }
+
     }
 
 }

@@ -25,7 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class Login extends AppCompatActivity {
-
+    private EditText emailTextField;
+    private EditText passwordTextField;
     private TextView txt_signUp;
     private FirebaseAuth mAuth;
     private CheckBox cb_rememberMe;
@@ -36,7 +37,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
         txt_signUp = (TextView) findViewById(R.id.txt_signUp);
-
+        emailTextField = findViewById(R.id.login_email);
+        passwordTextField = findViewById(R.id.login_password);
         txt_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,30 +67,40 @@ public class Login extends AppCompatActivity {
     }
 
     public void signIn(View view) {
-        EditText emailTextField = findViewById(R.id.login_email);
-        EditText passwordTextField = findViewById(R.id.login_password);
+        emailTextField = findViewById(R.id.login_email);
+        passwordTextField = findViewById(R.id.login_password);
 
         String email = emailTextField.getText().toString().trim();
         String password = passwordTextField.getText().toString().trim();
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+        if (email.isEmpty()){
+            emailTextField.setError("Email is required");
+            emailTextField.requestFocus();
+        }
+        else if (password.isEmpty()){
+            passwordTextField.setError("Password is require");
+            passwordTextField.requestFocus();
+        }
+        else {
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
 
-                    @Override
-                    public void onComplete(@NonNull com.google.android.gms.tasks.Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("signin", "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("error", "signInWithEmail:failure");
-                            Toast.makeText(Login.this, "Authentication failed.\n" + email + "\n"+ password + task.getException().getMessage(),
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
+                        @Override
+                        public void onComplete(@NonNull com.google.android.gms.tasks.Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d("signin", "signInWithEmail:success");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w("error", "signInWithEmail:failure");
+                                Toast.makeText(Login.this, "Authentication failed.\n" + email + "\n" + password + task.getException().getMessage(),
+                                        Toast.LENGTH_SHORT).show();
+                                updateUI(null);
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
     public void updateUI(FirebaseUser account){
         ProjectNames= new ArrayList<String>();
