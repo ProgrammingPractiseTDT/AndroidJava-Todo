@@ -35,6 +35,7 @@ public class HomeScreen extends AppCompatActivity {
     private RecyclerView rv;
     ProjectAdapter projectAdapter;
     ArrayList<String> ProjectNames;
+    AddProjectDialog cdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,16 @@ public class HomeScreen extends AppCompatActivity {
         rv = findViewById(R.id.project_recycler_view);
         projectAdapter = new ProjectAdapter(HomeScreen.this, ProjectNames);
         rv.setAdapter(projectAdapter);
+
+        //add project dialog
+        cdd=new AddProjectDialog(HomeScreen.this);
+        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                getProjectFromUser();
+                projectAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private List<String> getMenuItem(){
@@ -87,14 +98,6 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     public void showAddProjectDialog(View view) {
-        AddProjectDialog cdd=new AddProjectDialog(HomeScreen.this);
-        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                getProjectFromUser();
-                projectAdapter.notifyDataSetChanged();
-            }
-        });
         cdd.show();
     }
 

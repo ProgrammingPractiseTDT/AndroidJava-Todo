@@ -37,6 +37,8 @@
         <entry key="app/src/main/res/drawable/rectangle_2.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/drawable/rectangle_dialog.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.26200873362445415" />
+        <entry key="app/src/main/res/layout/activity_project_layout.xml" value="0.1078125" />
+        <entry key="app/src/main/res/layout/activity_project_view.xml" value="0.20199275362318841" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/add_project_dialog.xml" value="0.1" />
         <entry key="app/src/main/res/layout/add_task_dialog.xml" value="0.13145896656534956" />
