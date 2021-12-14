@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,22 +16,21 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import io.paperdb.Paper;
 
 public class Login extends AppCompatActivity {
 
     private TextView txt_signUp;
     private FirebaseAuth mAuth;
+    private CheckBox cb_rememberMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
         txt_signUp = (TextView) findViewById(R.id.txt_signUp);
+        cb_rememberMe = (CheckBox) findViewById(R.id.cb_rememberMe);
 
         txt_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +65,12 @@ public class Login extends AppCompatActivity {
 
         String email = emailTextField.getText().toString().trim();
         String password = passwordTextField.getText().toString().trim();
+
+        if(cb_rememberMe.isChecked()){
+            Paper.book().write(SyncingUser.userEmail, email);
+            Paper.book().write(SyncingUser.userPassword, password);
+        }
+
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
 
@@ -86,7 +92,7 @@ public class Login extends AppCompatActivity {
                 });
     }
     public void updateUI(FirebaseUser account){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, HomeScreen.class);
         if(account != null){
             Toast.makeText(this,"Successfully!",Toast.LENGTH_LONG).show();
             startActivity(intent);
