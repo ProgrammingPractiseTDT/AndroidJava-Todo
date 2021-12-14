@@ -1,6 +1,7 @@
 package com.example.finalproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,14 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
             // Define click listener for the ViewHolder's View
 
             textView = (TextView) view.findViewById(R.id.txt_projectName);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                     Intent intent = new Intent(view.getContext()  , ProjectView.class);
+                     intent.putExtra("Project Title",textView.getText().toString());
+                     view.getContext().startActivity(intent);
+                }
+            });
         }
 
         public TextView getTextView() {
@@ -56,6 +65,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getTextView().setText(localDataSet.get(position));
+//        viewHolder.
     }
 
 

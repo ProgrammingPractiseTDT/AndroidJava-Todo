@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/img">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/logo_todo"
         android:layout_width="271dp"
         android:layout_height="311dp"

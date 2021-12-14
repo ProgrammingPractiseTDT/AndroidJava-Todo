@@ -3,20 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/font/aguafina_script.xml" value="0.2328125" />
+        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/layout/activity_project_view.xml" value="0.20260416666666667" />
+        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/layout/login_layout.xml" value="0.20260416666666667" />
+        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/layout/project_item_layout.xml" value="0.20260416666666667" />
+        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/layout/starting_screen.xml" value="0.20260416666666667" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/add_btn.xml" value="0.3828125" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/custom_border.xml" value="0.3828125" />
-        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/input_field_rectangle.xml" value="0.3310810810810811" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/item_border_radius.xml" value="0.3828125" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/main.xml" value="0.3828125" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/project_item_shape.xml" value="0.3828125" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_1.xml" value="0.3828125" />
-        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_2.xml" value="0.3310810810810811" />
-        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_3.xml" value="0.3310810810810811" />
-        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_4.xml" value="0.3310810810810811" />
-        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_dialog.xml" value="0.3310810810810811" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/search_btn.xml" value="0.3828125" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml" value="0.25" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml" value="0.33" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/layout_popup_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml" value="0.33" />

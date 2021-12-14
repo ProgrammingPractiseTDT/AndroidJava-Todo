@@ -33,7 +33,7 @@ import io.paperdb.Paper;
 
 
 //test
-public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class HomeScreen extends AppCompatActivity {
     private ListView lv;
     private List<String> menu;
     private TextView userGreeting;
@@ -42,6 +42,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
     private ImageView appMenu;
     ProjectAdapter projectAdapter;
     ArrayList<String> ProjectNames;
+    AddProjectDialog cdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,15 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         projectAdapter = new ProjectAdapter(HomeScreen.this, ProjectNames);
         rv.setAdapter(projectAdapter);
 
+        //add project dialog
+        cdd=new AddProjectDialog(HomeScreen.this);
+        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                getProjectFromUser();
+                projectAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private List<String> getMenuItem(){
