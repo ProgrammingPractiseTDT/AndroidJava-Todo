@@ -33,7 +33,7 @@ import io.paperdb.Paper;
 
 
 //test
-public class HomeScreen extends AppCompatActivity {
+public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private ListView lv;
     private List<String> menu;
     private TextView userGreeting;
