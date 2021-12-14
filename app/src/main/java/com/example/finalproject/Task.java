@@ -8,6 +8,14 @@ public class Task {
     private String folder;
     private int priority;
 
+    public Task(String title){
+        this.title = title;
+        this.description = null;
+        this.startTime = null;
+        this.endTime = null;
+        this.folder = null;
+        this.priority = 4;
+    }
     public Task(String title, String description, String startTime, String endTime, String folder, int priority) {
         this.title = title;
         this.description = description;

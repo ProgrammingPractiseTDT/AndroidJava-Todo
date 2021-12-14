@@ -3,22 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/drawable/button_selector.xml" value="0.21875" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/drawable/circle_color_choice.xml" value="0.21875" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/drawable/circle_color_choice2.xml" value="0.21875" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/drawable/circle_color_choice3.xml" value="0.21875" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/drawable/circle_color_choice4.xml" value="0.21875" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/drawable/rectangle_1.xml" value="0.21875" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/drawable/rectangle_2.xml" value="0.21875" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/drawable/rectangle_3.xml" value="0.21875" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/drawable/rectangle_4.xml" value="0.21875" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/drawable/rectangle_dialog.xml" value="0.21875" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/drawable/search_btn.xml" value="0.21875" />
         <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/font/aguafina_script.xml" value="0.2328125" />
         <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/layout/activity_project_view.xml" value="0.20260416666666667" />
         <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/layout/activity_signup.xml" value="0.20260416666666667" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/layout/add_project_dialog.xml" value="0.25" />
-        <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/layout/add_task_dialog.xml" value="0.25" />
         <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/layout/login_layout.xml" value="0.33" />
         <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/layout/project_item_layout.xml" value="0.20260416666666667" />
         <entry key="..\:/AndroidProject/Final-Todo/app/src/main/res/layout/starting_screen.xml" value="0.20260416666666667" />
@@ -32,10 +19,15 @@
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml" value="0.25" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml" value="0.33" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/layout_popup_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml" value="0.33" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_menu_item_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/project_item_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/signup_layout.xml" value="0.20520833333333333" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml" value="0.27943840579710144" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/menu/popup_menu.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/drawable/add.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable/add_task_dialog.xml" value="0.21666666666666667" />
