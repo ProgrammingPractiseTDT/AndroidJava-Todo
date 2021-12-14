@@ -31,9 +31,7 @@ public class ProjectView extends AppCompatActivity {
         taskList.add(new Task("Study"));
         taskAdapter = new TaskAdapter(this,taskList);
         rv.setAdapter(taskAdapter);
-
         atd = new AddTaskDialog(ProjectView.this);
-
     }
 
     public void addTask(View view) {
