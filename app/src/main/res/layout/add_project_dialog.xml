@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_dialog"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
@@ -18,7 +19,7 @@
             android:layout_width="250dp"
             android:layout_height="57dp"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="44dp"
             android:layout_marginEnd="35dp"
             android:background="@drawable/input_field_rectangle"
             android:ems="10"
@@ -28,39 +29,149 @@
             android:textColor="@color/black"
             android:textColorHint="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.46"
+            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/cancel_dialog_btn"
-            android:layout_width="70dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginBottom="56dp"
-            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/white"
+            android:elevation="100dp"
             android:text="@android:string/cancel"
             android:textColor="@android:color/holo_red_light"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/project_title_input"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+            app:layout_constraintVertical_bias="0.393" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/add_dialog_btn"
-            android:layout_width="70dp"
-            android:layout_height="29dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="56dp"
-            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:backgroundTint="@color/white"
+            android:elevation="25dp"
             android:text="Add"
             android:textColor="@color/design_default_color_primary"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.901"
+            app:layout_constraintEnd_toEndOf="@+id/horizontalScrollView"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/cancel_dialog_btn"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+            app:layout_constraintVertical_bias="0.393" />
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/purple_200"
+            android:foregroundGravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/project_title_input"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.215">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple_200"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_redButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:backgroundTint="@color/light_red" />
+
+                <Button
+                    android:id="@+id/btn_orangeButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:backgroundTint="@color/light_orange" />
+
+                <Button
+                    android:id="@+id/btn_yellowButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:backgroundTint="@color/light_yellow" />
+
+                <Button
+                    android:id="@+id/btn_greenButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:backgroundTint="@color/light_green" />
+
+                <!--                <androidx.appcompat.widget.AppCompatButton-->
+                <!--                    android:id="@+id/btn_choice_red"-->
+                <!--                    android:layout_width="50dp"-->
+                <!--                    android:layout_height="50dp"-->
+                <!--                    android:layout_marginLeft="5dp"-->
+                <!--                    android:layout_marginTop="10dp"-->
+                <!--                    android:layout_marginRight="5dp"-->
+                <!--                    android:layout_marginBottom="10dp"-->
+                <!--                    android:background="@drawable/circle_color_choice" />-->
+
+                <!--                <androidx.appcompat.widget.AppCompatButton-->
+                <!--                    android:id="@+id/btn_choice_yellow"-->
+                <!--                    android:layout_width="50dp"-->
+                <!--                    android:layout_height="50dp"-->
+                <!--                    android:layout_marginLeft="5dp"-->
+                <!--                    android:layout_marginTop="10dp"-->
+                <!--                    android:layout_marginRight="5dp"-->
+                <!--                    android:layout_marginBottom="10dp"-->
+                <!--                    android:background="@drawable/circle_color_choice2" />-->
+
+                <!--                <androidx.appcompat.widget.AppCompatButton-->
+                <!--                    android:id="@+id/btn_choice_green"-->
+                <!--                    android:layout_width="50dp"-->
+                <!--                    android:layout_height="50dp"-->
+                <!--                    android:layout_marginLeft="5dp"-->
+                <!--                    android:layout_marginTop="10dp"-->
+                <!--                    android:layout_marginRight="5dp"-->
+                <!--                    android:layout_marginBottom="10dp"-->
+                <!--                    android:background="@drawable/circle_color_choice3" />-->
+
+                <!--                <androidx.appcompat.widget.AppCompatButton-->
+                <!--                    android:id="@+id/btn_choice_orange"-->
+                <!--                    android:layout_width="50dp"-->
+                <!--                    android:layout_height="50dp"-->
+                <!--                    android:layout_marginLeft="5dp"-->
+                <!--                    android:layout_marginTop="10dp"-->
+                <!--                    android:layout_marginRight="5dp"-->
+                <!--                    android:layout_marginBottom="10dp"-->
+                <!--                    android:background="@drawable/circle_color_choice4" />-->
+                <!--                <RadioButton-->
+                <!--                    android:layout_width="50dp"-->
+                <!--                    android:layout_height="50dp"-->
+                <!--                    android:scaleX="1"-->
+                <!--                    android:scaleY="1"-->
+                <!--                    android:buttonTint="@color/purple_200"-->
+                <!--                    android:layout_marginTop="10dp"-->
+                <!--                    android:layout_marginBottom="10dp"-->
+                <!--                    android:layout_marginRight="10dp"-->
+                <!--                    android:layout_marginLeft="10dp"/>-->
+
+            </LinearLayout>
+        </HorizontalScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
