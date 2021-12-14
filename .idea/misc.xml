@@ -18,7 +18,6 @@
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/search_btn.xml" value="0.3828125" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
-        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml" value="0.25" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml" value="0.33" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/layout_popup_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml" value="0.33" />
@@ -30,22 +29,33 @@
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/menu/popup_menu.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/drawable/add.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable/add_btn.xml" value="0.2045045045045045" />
+        <entry key="app/src/main/res/drawable/add_task_btn_background.xml" value="0.10720720720720721" />
         <entry key="app/src/main/res/drawable/add_task_dialog.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable/background.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/drawable/cancel.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable/ellipse.xml" value="0.10720720720720721" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/drawable/input_field_rectangle.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable/item_border_radius.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/drawable/project_item_shape.xml" value="0.12395833333333334" />
         <entry key="app/src/main/res/drawable/rectangle_1.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/drawable/rectangle_2.xml" value="0.23148148148148148" />
+        <entry key="app/src/main/res/drawable/rectangle_3.xml" value="0.2045045045045045" />
+        <entry key="app/src/main/res/drawable/rectangle_4.xml" value="0.2045045045045045" />
         <entry key="app/src/main/res/drawable/rectangle_dialog.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/drawable/search_btn.xml" value="0.2045045045045045" />
+        <entry key="app/src/main/res/drawable/white_rectangle.xml" value="0.2045045045045045" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17708333333333334" />
+        <entry key="app/src/main/res/layout/activity_project_layout.xml" value="0.1078125" />
+        <entry key="app/src/main/res/layout/activity_project_view.xml" value="0.13357186712849312" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/add_project_dialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/add_task_dialog.xml" value="0.13145896656534956" />
         <entry key="app/src/main/res/layout/login_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/main_menu_item_layout.xml" value="0.13145896656534956" />
         <entry key="app/src/main/res/layout/project_item_layout.xml" value="0.24003623188405798" />
+        <entry key="app/src/main/res/layout/task_item_layout.xml" value="0.19054054054054054" />
       </map>
     </option>
   </component>
