@@ -1,0 +1,74 @@
+Index: app/src/main/res/layout/home_screen_layout.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"@drawable/mainscreen\"\r\n    android:orientation=\"vertical\"\r\n    tools:context=\".HomeScreen\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"75dp\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <TextView\r\n            android:id=\"@+id/logo_todo\"\r\n            android:layout_width=\"36sp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:fontFamily=\"@font/aguafina_script\"\r\n            android:gravity=\"center\"\r\n            android:text=\"ToDo\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"24sp\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/txt_userGreeting\"\r\n            android:layout_width=\"100sp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:fontFamily=\"cursive\"\r\n            android:gravity=\"center\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"24sp\" />\r\n\r\n        <ImageView\r\n            android:id=\"@+id/img_searchBtn\"\r\n            android:layout_width=\"30sp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:paddingLeft=\"16sp\"\r\n            android:paddingTop=\"16sp\"\r\n            android:paddingRight=\"16sp\"\r\n            android:paddingBottom=\"16sp\"\r\n            app:srcCompat=\"@drawable/search_btn\" />\r\n    </LinearLayout>\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\">\r\n\r\n        <ListView\r\n            android:id=\"@+id/listview_mainMenu\"\r\n            android:layout_width=\"350sp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"16dp\"\r\n            android:layout_marginEnd=\"16dp\"\r\n            android:paddingTop=\"8sp\"\r\n            android:paddingBottom=\"8sp\"\r\n            android:footerDividersEnabled=\"true\"\r\n            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\" />\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\">\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"32dp\"\r\n            android:layout_marginTop=\"8dp\"\r\n            android:fontFamily=\"cursive\"\r\n            android:text=\"Project\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"24sp\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n        <androidx.recyclerview.widget.RecyclerView\r\n            android:layout_width=\"0dp\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"1dp\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:layout_marginEnd=\"1dp\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintHorizontal_bias=\"0.75\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/textView\" />\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageView\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"8dp\"\r\n            android:layout_marginEnd=\"32dp\"\r\n            android:onClick=\"showAddProjectDialog\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            app:srcCompat=\"@drawable/add_btn\" />\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/home_screen_layout.xml b/app/src/main/res/layout/home_screen_layout.xml
+--- a/app/src/main/res/layout/home_screen_layout.xml	(revision 649979654562ef085533766da2ce07a31e64a6a7)
++++ b/app/src/main/res/layout/home_screen_layout.xml	(date 1639489974046)
+@@ -4,7 +4,7 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    android:background="@drawable/mainscreen"
++    android:background="#290E5A"
+     android:orientation="vertical"
+     tools:context=".HomeScreen">
+ 
+@@ -13,16 +13,16 @@
+         android:layout_height="75dp"
+         android:orientation="horizontal">
+ 
+-        <TextView
+-            android:id="@+id/logo_todo"
+-            android:layout_width="36sp"
++        <ImageView
++            android:id="@+id/img_menu"
++            android:layout_width="30sp"
+             android:layout_height="match_parent"
++            android:paddingLeft="16sp"
++            android:paddingTop="16sp"
++            android:paddingRight="16sp"
++            android:paddingBottom="16sp"
+             android:layout_weight="1"
+-            android:fontFamily="@font/aguafina_script"
+-            android:gravity="center"
+-            android:text="ToDo"
+-            android:textColor="@color/white"
+-            android:textSize="24sp" />
++            app:srcCompat="@drawable/menu_icon" />
+ 
+         <TextView
+             android:id="@+id/txt_userGreeting"
+@@ -56,9 +56,9 @@
+             android:layout_height="wrap_content"
+             android:layout_marginStart="16dp"
+             android:layout_marginEnd="16dp"
++            android:footerDividersEnabled="true"
+             android:paddingTop="8sp"
+             android:paddingBottom="8sp"
+-            android:footerDividersEnabled="true"
+             app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/add_btn.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/custom_border.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/input_field_rectangle.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/item_border_radius.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/main.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/project_item_shape.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_1.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_2.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_3.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_4.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_dialog.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/search_btn.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_main.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml\" value=\"0.20520833333333333\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_screen.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/project_item_layout.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/signup_layout.xml\" value=\"0.20520833333333333\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml\" value=\"0.27943840579710144\" />\r\n        <entry key=\"app/src/main/res/drawable-v24/ic_launcher_foreground.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/add.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/add_task_dialog.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/background.xml\" value=\"0.16666666666666666\" />\r\n        <entry key=\"app/src/main/res/drawable/cancel.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/ic_launcher_background.xml\" value=\"0.16666666666666666\" />\r\n        <entry key=\"app/src/main/res/drawable/input_field_rectangle.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/item_border_radius.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/rectangle_1.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/rectangle_2.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/rectangle_dialog.xml\" value=\"0.15729166666666666\" />\r\n        <entry key=\"app/src/main/res/layout/activity_main.xml\" value=\"0.17708333333333334\" />\r\n        <entry key=\"app/src/main/res/layout/activity_signup.xml\" value=\"0.25\" />\r\n        <entry key=\"app/src/main/res/layout/add_project_dialog.xml\" value=\"0.25\" />\r\n        <entry key=\"app/src/main/res/layout/add_task_dialog.xml\" value=\"0.13145896656534956\" />\r\n        <entry key=\"app/src/main/res/layout/login_layout.xml\" value=\"0.25\" />\r\n        <entry key=\"app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.13145896656534956\" />\r\n        <entry key=\"app/src/main/res/layout/project_item_layout.xml\" value=\"0.24003623188405798\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"Android Studio default JDK\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 649979654562ef085533766da2ce07a31e64a6a7)
++++ b/.idea/misc.xml	(date 1639489716527)
+@@ -17,7 +17,7 @@
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/search_btn.xml" value="0.3828125" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
+-        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml" value="0.20520833333333333" />
++        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml" value="0.33" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml" value="0.33" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_menu_item_layout.xml" value="0.36666666666666664" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_screen.xml" value="0.36666666666666664" />

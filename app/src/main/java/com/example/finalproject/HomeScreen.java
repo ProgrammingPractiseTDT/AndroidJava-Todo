@@ -9,10 +9,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,14 +29,17 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.paperdb.Paper;
+
 
 //test
-public class HomeScreen extends AppCompatActivity {
+public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
     private ListView lv;
     private List<String> menu;
     private TextView userGreeting;
     private FirebaseUser user;
     private RecyclerView rv;
+    private ImageView appMenu;
     ProjectAdapter projectAdapter;
     ArrayList<String> ProjectNames;
 
@@ -75,6 +82,7 @@ public class HomeScreen extends AppCompatActivity {
         rv = findViewById(R.id.project_recycler_view);
         projectAdapter = new ProjectAdapter(HomeScreen.this, ProjectNames);
         rv.setAdapter(projectAdapter);
+
     }
 
     private List<String> getMenuItem(){
@@ -126,5 +134,31 @@ public class HomeScreen extends AppCompatActivity {
 
     void setProjectNames(ArrayList<String> ProjectNames){
         this.ProjectNames = ProjectNames;
+    }
+
+    public void showPopup(View view){
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.setOnMenuItemClickListener(this);
+        popupMenu.inflate(R.menu.popup_menu);
+        popupMenu.setGravity(Gravity.END);
+        popupMenu.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        switch (menuItem.getItemId()){
+            case R.id.userProfile:
+                Toast.makeText(this, "UserProfile", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.settings:
+                Toast.makeText(this, "UserProfile", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.logoutBtn:
+                Paper.book().destroy();
+                startActivity(new Intent(HomeScreen.this, StartingScreen.class));
+                return true;
+            default:
+                return false;
+        }
     }
 }
