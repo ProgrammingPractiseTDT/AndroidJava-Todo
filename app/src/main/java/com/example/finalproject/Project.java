@@ -2,7 +2,9 @@ package com.example.finalproject;
 
 public class Project {
     private String projectName;
+    private  Project(){
 
+    }
     public Project(String projectName) {
         this.projectName = projectName;
     }

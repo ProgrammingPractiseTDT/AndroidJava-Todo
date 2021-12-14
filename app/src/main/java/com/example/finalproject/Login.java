@@ -21,10 +21,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class Login extends AppCompatActivity {
 
     private TextView txt_signUp;
     private FirebaseAuth mAuth;
+    ArrayList<String> ProjectNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,9 +89,12 @@ public class Login extends AppCompatActivity {
                 });
     }
     public void updateUI(FirebaseUser account){
+        ProjectNames= new ArrayList<String>();
+        ProjectNames.add("Order");
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("projects",ProjectNames);
         if(account != null){
-            Toast.makeText(this,"Successfully!",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,ProjectNames.get(0),Toast.LENGTH_LONG).show();
             startActivity(intent);
         }else {
             Toast.makeText(this,"Invalid email or password.",Toast.LENGTH_LONG).show();
@@ -96,4 +102,28 @@ public class Login extends AppCompatActivity {
 
     }
 
+    ArrayList<String> getProjectFromUser(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        ArrayList<String> projectNamesArray = new ArrayList<String>();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects");
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                    Project project = dsp.getValue(Project.class);
+                    projectNamesArray.add(project.getProjectName()); //add result into array list
+                }
+                // ..
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("FetchError", "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+        reference.addValueEventListener(postListener);
+        return projectNamesArray;
+    }
 }
