@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ public class Login extends AppCompatActivity {
 
     private TextView txt_signUp;
     private FirebaseAuth mAuth;
+    private CheckBox cb_rememberMe;
     ArrayList<String> ProjectNames;
 
     @Override
@@ -93,6 +95,7 @@ public class Login extends AppCompatActivity {
         ProjectNames.add("Order");
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("projects",ProjectNames);
+        Intent intent = new Intent(this, HomeScreen.class);
         if(account != null){
             Toast.makeText(this,ProjectNames.get(0),Toast.LENGTH_LONG).show();
             startActivity(intent);

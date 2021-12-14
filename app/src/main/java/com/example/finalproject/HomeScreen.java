@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -38,16 +39,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-//        ProjectNames = new ArrayList<String>();
-//        ProjectNames=getIntent().getExtras().getStringArrayList("projects");
-        //The key argument here must match that used in the other activity
+        setContentView(R.layout.home_screen_layout);
+
+
         //User Greeting
         userGreeting = findViewById(R.id.txt_userGreeting);
         user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("User");
         if(user!=null){
             String uid = user.getUid();
+
             reference.child(uid).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+
         //list main menu
         ProjectNames = new ArrayList<String>();
         getProjectFromUser();
@@ -69,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         MainMenuAdapter mainMenuAdapter = new MainMenuAdapter(this, menu);
         lv.setAdapter(mainMenuAdapter);
 
-//        Log.d("name", ProjectNames.get(0));
 
         rv = findViewById(R.id.project_recycler_view);
         projectAdapter = new ProjectAdapter(MainActivity.this, ProjectNames);

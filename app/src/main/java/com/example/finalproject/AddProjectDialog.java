@@ -34,7 +34,6 @@ public class AddProjectDialog extends Dialog implements
         no = (Button) findViewById(R.id.cancel_dialog_btn);
         yes.setOnClickListener(this);
         no.setOnClickListener(this);
-
     }
 
     @Override
@@ -54,7 +53,6 @@ public class AddProjectDialog extends Dialog implements
     }
 
     private void addProject() {
-
         EditText title_field = findViewById(R.id.project_title_input);
         String title = title_field.getText().toString();
         Project project = new Project(title);
