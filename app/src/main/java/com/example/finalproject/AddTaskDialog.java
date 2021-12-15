@@ -2,7 +2,6 @@ package com.example.finalproject;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -59,9 +58,11 @@ public class AddTaskDialog extends Dialog implements View.OnClickListener {
     private void addTask() {
         EditText title_field = findViewById(R.id.project_title_input);
         DatePicker datePick = findViewById(R.id.datePicker);
+        EditText txtDescription = findViewById(R.id.txt_descriptionEdit);
         String dateFormat = Integer.toString(datePick.getDayOfMonth()) + "-" + Integer.toString(datePick.getMonth() + 1) + "-" + Integer.toString(datePick.getYear());
         String title = title_field.getText().toString();
-        Task task = new Task(title,dateFormat);
+        String description = txtDescription.getText().toString();
+        Task task = new Task(title,dateFormat,description);
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         String uid = "";
         FirebaseAuth auth = FirebaseAuth.getInstance();

@@ -1,11 +1,14 @@
 package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,6 +47,8 @@ public class ProjectView extends AppCompatActivity {
         rv = findViewById(R.id.task_recycler_view);
         taskList = new ArrayList<Task>();
         fetchTaskFromProject(ProjectKey);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), DividerItemDecoration.VERTICAL);
+        rv.addItemDecoration(dividerItemDecoration);
         taskAdapter = new TaskAdapter(this,taskList);
         rv.setAdapter(taskAdapter);
         atd = new AddTaskDialog(ProjectView.this, ProjectKey);

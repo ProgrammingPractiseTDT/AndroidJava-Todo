@@ -7,6 +7,7 @@ public class Task {
     private String endTime;
     private String folder;
     private int priority;
+    private boolean checkingStatus;
 
 //    public Task(String title){
 //        this.title = title;
@@ -16,12 +17,13 @@ public class Task {
 //        this.folder = "";
 //        this.priority = 4;
 //    }
-    public Task(String title, String endTime){
+    public Task(String title, String endTime, String description){
         this.title = title;
-        this.description = "";
+        this.description = description;
         this.endTime = endTime;
         this.folder = "";
         this.priority = 4;
+        this.checkingStatus = false;
     }
 //    public Task(String title, String description, String startTime, String endTime, String folder, int priority) {
 //        this.title = title;
@@ -33,6 +35,14 @@ public class Task {
 //    }
     public Task(){
 
+    }
+
+    public boolean isCheckingStatus() {
+        return checkingStatus;
+    }
+
+    public void setCheckingStatus(boolean checkingStatus) {
+        this.checkingStatus = checkingStatus;
     }
 
     public String getTitle() {

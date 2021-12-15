@@ -30,7 +30,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
                      Intent intent = new Intent(view.getContext()  , ProjectView.class);
-                    intent.putExtra("Project title",textView.getText().toString());
+                     intent.putExtra("Project title",textView.getText().toString());
                      intent.putExtra("Project key",textView.getTag().toString());
                      view.getContext().startActivity(intent);
                 }
