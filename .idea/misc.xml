@@ -56,7 +56,9 @@
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/add_project_dialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/add_task_dialog.xml" value="0.13145896656534956" />
+        <entry key="app/src/main/res/layout/edit_project_dialog.xml" value="0.19369369369369369" />
         <entry key="app/src/main/res/layout/login_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/long_touch_option_dialog.xml" value="0.12162162162162163" />
         <entry key="app/src/main/res/layout/main_menu_item_layout.xml" value="0.13145896656534956" />
         <entry key="app/src/main/res/layout/project_item_layout.xml" value="0.24003623188405798" />
       </map>
