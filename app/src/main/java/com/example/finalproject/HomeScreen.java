@@ -43,6 +43,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
     private ImageView appMenu;
     ProjectAdapter projectAdapter;
     ArrayList<String> ProjectNames;
+    ArrayList<String> ProjectKeys;
     AddProjectDialog cdd;
 
     @Override
@@ -75,6 +76,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
 
         //list main menu
         ProjectNames = new ArrayList<String>();
+        ProjectKeys = new ArrayList<String>();
         getProjectFromUser();
         menu = getMenuItem();
         lv = findViewById(R.id.listview_mainMenu);
@@ -83,7 +85,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
 
 
         rv = findViewById(R.id.project_recycler_view);
-        projectAdapter = new ProjectAdapter(HomeScreen.this, ProjectNames);
+        projectAdapter = new ProjectAdapter(HomeScreen.this, ProjectNames, ProjectKeys);
         rv.setAdapter(projectAdapter);
 
         //add project dialog
@@ -125,8 +127,10 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 ProjectNames.clear();
+                ProjectKeys.clear();
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                     Project project = dsp.getValue(Project.class);
+                    ProjectKeys.add(dsp.getKey());
                     ProjectNames.add(project.getProjectName()); //add result into array list
                     projectAdapter.notifyDataSetChanged();
                 }

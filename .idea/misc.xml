@@ -29,10 +29,15 @@
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/menu/popup_menu.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/drawable/add.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable/add_btn.xml" value="0.13288288288288289" />
         <entry key="app/src/main/res/drawable/add_task_btn_background.xml" value="0.1009009009009009" />
         <entry key="app/src/main/res/drawable/add_task_dialog.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable/background.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/drawable/cancel.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/drawable/circle_color_choice.xml" value="0.13288288288288289" />
+        <entry key="app/src/main/res/drawable/circle_color_choice2.xml" value="0.13288288288288289" />
+        <entry key="app/src/main/res/drawable/circle_color_choice3.xml" value="0.13288288288288289" />
+        <entry key="app/src/main/res/drawable/circle_color_choice4.xml" value="0.13288288288288289" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.16666666666666666" />
         <entry key="app/src/main/res/drawable/input_field_rectangle.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable/item_border_radius.xml" value="0.23148148148148148" />

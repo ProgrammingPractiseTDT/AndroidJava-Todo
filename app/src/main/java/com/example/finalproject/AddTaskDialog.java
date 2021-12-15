@@ -17,10 +17,13 @@ public class AddTaskDialog extends Dialog implements View.OnClickListener {
     public Activity c;
     public Dialog d;
     public Button yes, no;
+    private String ProjectKey;
 
-    public AddTaskDialog(Activity a) {
+    public AddTaskDialog(Activity a, String key) {
         super(a);
         this.c = a;
+        ProjectKey = key;
+
     }
 
     @Override
@@ -61,7 +64,7 @@ public class AddTaskDialog extends Dialog implements View.OnClickListener {
         if (user != null) {
             uid = user.getUid();
         }
-        DatabaseReference ref = rootRef.child("User").child(uid).child("tasks");
+        DatabaseReference ref = rootRef.child("User").child(uid).child("projects").child(ProjectKey).child("tasks");
         ref.push().setValue(task);
     }
 }

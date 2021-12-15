@@ -10,19 +10,22 @@ public class Task {
 
     public Task(String title){
         this.title = title;
-        this.description = null;
-        this.startTime = null;
-        this.endTime = null;
-        this.folder = null;
+        this.description = "";
+        this.startTime = "";
+        this.endTime = "";
+        this.folder = "";
         this.priority = 4;
     }
-    public Task(String title, String description, String startTime, String endTime, String folder, int priority) {
-        this.title = title;
-        this.description = description;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.folder = folder;
-        this.priority = priority;
+//    public Task(String title, String description, String startTime, String endTime, String folder, int priority) {
+//        this.title = title;
+//        this.description = description;
+//        this.startTime = startTime;
+//        this.endTime = endTime;
+//        this.folder = folder;
+//        this.priority = priority;
+//    }
+    public Task(){
+
     }
 
     public String getTitle() {

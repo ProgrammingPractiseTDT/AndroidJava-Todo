@@ -15,6 +15,7 @@ import java.util.List;
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder>{
     private ArrayList<String> localDataSet;
+    private ArrayList<String> keys;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
@@ -28,7 +29,8 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
                      Intent intent = new Intent(view.getContext()  , ProjectView.class);
-                     intent.putExtra("Project Title",textView.getText().toString());
+                    intent.putExtra("Project title",textView.getText().toString());
+                     intent.putExtra("Project key",textView.getTag().toString());
                      view.getContext().startActivity(intent);
                 }
             });
@@ -40,8 +42,9 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
     }
 
 
-    public ProjectAdapter(Context context, ArrayList<String> dataSet) {
+    public ProjectAdapter(Context context, ArrayList<String> dataSet, ArrayList<String> keys) {
         localDataSet = dataSet;
+        this.keys = keys;
     }
 
 
@@ -65,6 +68,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.getTextView().setText(localDataSet.get(position));
+        viewHolder.getTextView().setTag(keys.get(position));
 //        viewHolder.
     }
 
