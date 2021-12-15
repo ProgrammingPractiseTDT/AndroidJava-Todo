@@ -44,8 +44,6 @@ public class ProjectView extends AppCompatActivity {
         rv = findViewById(R.id.task_recycler_view);
         taskList = new ArrayList<Task>();
         fetchTaskFromProject(ProjectKey);
-        taskList.add( new Task("Shopping"));
-        taskList.add(new Task("Study"));
         taskAdapter = new TaskAdapter(this,taskList);
         rv.setAdapter(taskAdapter);
         atd = new AddTaskDialog(ProjectView.this, ProjectKey);

@@ -42,7 +42,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
     private RecyclerView rv;
     private ImageView appMenu;
     ProjectAdapter projectAdapter;
-    ArrayList<String> ProjectNames;
+    ArrayList<Project> ProjectNames;
     ArrayList<String> ProjectKeys;
     AddProjectDialog cdd;
 
@@ -75,7 +75,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         }
 
         //list main menu
-        ProjectNames = new ArrayList<String>();
+        ProjectNames = new ArrayList<Project>();
         ProjectKeys = new ArrayList<String>();
         getProjectFromUser();
         menu = getMenuItem();
@@ -131,7 +131,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                     Project project = dsp.getValue(Project.class);
                     ProjectKeys.add(dsp.getKey());
-                    ProjectNames.add(project.getProjectName()); //add result into array list
+                    ProjectNames.add(project); //add result into array list
                     projectAdapter.notifyDataSetChanged();
                 }
                 // ..
@@ -148,7 +148,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
 
 
 
-    void setProjectNames(ArrayList<String> ProjectNames){
+    void setProjectNames(ArrayList<Project> ProjectNames){
         this.ProjectNames = ProjectNames;
     }
 

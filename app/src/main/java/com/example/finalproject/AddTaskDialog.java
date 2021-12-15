@@ -2,16 +2,19 @@ package com.example.finalproject;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 
 public class AddTaskDialog extends Dialog implements View.OnClickListener {
     public Activity c;
@@ -55,8 +58,10 @@ public class AddTaskDialog extends Dialog implements View.OnClickListener {
 
     private void addTask() {
         EditText title_field = findViewById(R.id.project_title_input);
+        DatePicker datePick = findViewById(R.id.datePicker);
+        String dateFormat = Integer.toString(datePick.getDayOfMonth()) + "-" + Integer.toString(datePick.getMonth() + 1) + "-" + Integer.toString(datePick.getYear());
         String title = title_field.getText().toString();
-        Task task = new Task(title);
+        Task task = new Task(title,dateFormat);
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         String uid = "";
         FirebaseAuth auth = FirebaseAuth.getInstance();

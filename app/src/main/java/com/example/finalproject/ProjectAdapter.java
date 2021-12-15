@@ -2,6 +2,7 @@ package com.example.finalproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder>{
-    private ArrayList<String> localDataSet;
+    private ArrayList<Project> localDataSet;
     private ArrayList<String> keys;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -42,7 +43,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
     }
 
 
-    public ProjectAdapter(Context context, ArrayList<String> dataSet, ArrayList<String> keys) {
+    public ProjectAdapter(Context context, ArrayList<Project> dataSet, ArrayList<String> keys) {
         localDataSet = dataSet;
         this.keys = keys;
     }
@@ -67,7 +68,8 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.getTextView().setText(localDataSet.get(position));
+        viewHolder.getTextView().setText(localDataSet.get(position).getProjectName());
+        viewHolder.textView.setBackgroundColor(localDataSet.get(position).getColorID());
         viewHolder.getTextView().setTag(keys.get(position));
 //        viewHolder.
     }

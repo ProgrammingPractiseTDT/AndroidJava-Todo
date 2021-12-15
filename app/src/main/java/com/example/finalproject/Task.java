@@ -8,11 +8,18 @@ public class Task {
     private String folder;
     private int priority;
 
-    public Task(String title){
+//    public Task(String title){
+//        this.title = title;
+//        this.description = "";
+//        this.startTime = "";
+//        this.endTime = "";
+//        this.folder = "";
+//        this.priority = 4;
+//    }
+    public Task(String title, String endTime){
         this.title = title;
         this.description = "";
-        this.startTime = "";
-        this.endTime = "";
+        this.endTime = endTime;
         this.folder = "";
         this.priority = 4;
     }

@@ -79,13 +79,18 @@ public class AddProjectDialog extends Dialog implements
                 String title = title_field.getText().toString();
                 ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);
                 ColorDrawable viewColor = (ColorDrawable) lay.getBackground();
-                int colorId = viewColor.getColor();
+                int colorId;
+                if (viewColor == null){
+                    colorId = Color.parseColor("#FFFFFF");
+                }
+                else{
+                    colorId = viewColor.getColor();
+                }
                 if (title.isEmpty()){
                     title_field.setError("Please enter project title");
                     title_field.requestFocus();
                 }
                 else{
-
                     addProject(title, colorId);
                     dismiss();
                 }
