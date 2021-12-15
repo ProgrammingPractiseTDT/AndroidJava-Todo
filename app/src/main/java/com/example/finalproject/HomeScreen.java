@@ -110,13 +110,13 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
 
     public void showAddProjectDialog(View view) {
         AddProjectDialog cdd=new AddProjectDialog(HomeScreen.this);
-        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                getProjectFromUser();
-                projectAdapter.notifyDataSetChanged();
-            }
-        });
+//        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//            @Override
+//            public void onDismiss(DialogInterface dialog) {
+//                getProjectFromUser();
+//                projectAdapter.notifyDataSetChanged();
+//            }
+//        });
         cdd.show();
     }
 

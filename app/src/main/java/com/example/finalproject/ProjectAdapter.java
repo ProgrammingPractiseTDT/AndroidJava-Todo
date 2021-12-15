@@ -1,8 +1,11 @@
 package com.example.finalproject;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +36,16 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
                     intent.putExtra("Project title",textView.getText().toString());
                      intent.putExtra("Project key",textView.getTag().toString());
                      view.getContext().startActivity(intent);
+                }
+            });
+
+            view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    String ProjectKey = textView.getTag().toString();
+                    LongClickProjectDialog epd = new LongClickProjectDialog(view.getContext(), ProjectKey);
+                    epd.show();
+                    return true;
                 }
             });
         }
