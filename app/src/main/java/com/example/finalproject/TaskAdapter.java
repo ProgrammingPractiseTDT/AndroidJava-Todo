@@ -1,6 +1,7 @@
 package com.example.finalproject;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         private final TextView taskName,dateTime, description, fullTitle;
         private final CheckBox checkingStatus;
         private final ConstraintLayout layoutExpand;
+        private final ConstraintLayout Fulllayout;
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
@@ -33,6 +35,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
             layoutExpand = (ConstraintLayout) view.findViewById(R.id.ly_expandLayout);
             description = (TextView) view.findViewById(R.id.txt_description);
             fullTitle = (TextView) view.findViewById(R.id.txt_fullTitle);
+            Fulllayout = (ConstraintLayout) view.findViewById(R.id.ly_fullLayout);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -55,6 +58,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                     return true;
                 }
             });
+        }
+
+        public ConstraintLayout getFulllayout() {
+            return Fulllayout;
         }
 
         public TextView getFullTitle() {
@@ -127,6 +134,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         viewHolder.getCheckingStatus().setChecked(tasks.get(position).isCheckingStatus());
         String key = keys.get(position);
         viewHolder.getTaskName().setTag(key);
+        if (tasks.get(position).getPriority() == 1){
+            viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#68ED8C"));
+        }
+        else if (tasks.get(position).getPriority() == 2){
+            viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#fcfc21"));
+        }
+        else{
+            viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#f04646"));
+        }
         viewHolder.getCheckingStatus().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
