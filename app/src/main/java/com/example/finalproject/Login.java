@@ -29,7 +29,7 @@ import io.paperdb.Paper;
 public class Login extends AppCompatActivity {
     private EditText emailTextField;
     private EditText passwordTextField;
-    private TextView txt_signUp;
+    private TextView txt_signUp, txt_forgotPassword;
     private FirebaseAuth mAuth;
     private CheckBox cb_rememberMe;
     ArrayList<String> ProjectNames;
@@ -42,7 +42,14 @@ public class Login extends AppCompatActivity {
         emailTextField = findViewById(R.id.login_email);
         passwordTextField = findViewById(R.id.login_password);
         cb_rememberMe = (CheckBox) findViewById(R.id.cb_rememberMe);
-
+        txt_forgotPassword = (TextView) findViewById(R.id.txt_forgotPassword);
+        txt_forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddResetPasswordDialog reset = new AddResetPasswordDialog(Login.this);
+                reset.show();
+            }
+        });
         txt_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
