@@ -2,6 +2,7 @@ package com.example.finalproject;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,18 +20,18 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import io.grpc.Context;
-
 public class EditProjectDialog extends Dialog implements
         android.view.View.OnClickListener {
 
     public android.content.Context c;
     public Dialog d;
     public Button yes, no;
+    private  String projectKey;
     private Button red, yellow, green, orange;
-    public EditProjectDialog(android.content.Context a) {
+    public EditProjectDialog(Context a, String projectKey) {
         super(a);
         this.c = a;
+        this.projectKey = projectKey;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
