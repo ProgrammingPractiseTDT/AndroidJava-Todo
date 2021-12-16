@@ -1,10 +1,13 @@
 package com.example.finalproject;
 
+import android.util.Log;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.example.finalproject.Adapter.MultiProjectTaskAdapter;
+import com.example.finalproject.DataClass.Task;
 import com.example.finalproject.DataClass.Project;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -14,6 +17,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 public class FirebaseOperator {
     private FirebaseUser user;
     private Project project;
@@ -22,6 +28,38 @@ public class FirebaseOperator {
     public FirebaseOperator(){
         user = FirebaseAuth.getInstance().getCurrentUser();
     }
+
+
+    public boolean todayTasksFiller(MultiProjectTaskAdapter multiProjectTaskAdapter, ArrayList<Task> tasks, ArrayList<String> taskKeys, ArrayList<String> projectKeys){
+        Calendar nowDate = Calendar.getInstance();
+        String toDayString = Integer.toString(nowDate.get(5))+"-"+Integer.toString(nowDate.get(2)+1)+"-"+Integer.toString(nowDate.get(1));
+        Log.d("now", toDayString);
+        DatabaseReference projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects");
+        projectsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                tasks.clear();
+                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+
+                    for (DataSnapshot dsp2 : dsp.child("tasks").getChildren()) {
+                        Task task = dsp2.getValue(Task.class);
+                        if(task.getEndTime().equals(toDayString)) {
+                            tasks.add(task);
+                            taskKeys.add(dsp2.getKey());
+                            projectKeys.add(dsp.getKey());
+                        }
+                    }
+                }
+                multiProjectTaskAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        return true;
+    }
+
 
     public boolean deleteProjectByProjectKey(String projectKey) {
         DatabaseReference projectref = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
