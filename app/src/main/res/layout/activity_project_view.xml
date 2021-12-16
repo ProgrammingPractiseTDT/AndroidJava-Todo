@@ -36,15 +36,12 @@
         android:id="@+id/add_task_btn"
         android:layout_width="72dp"
         android:layout_height="68dp"
-        android:layout_marginStart="296dp"
-        android:layout_marginTop="572dp"
-        android:layout_marginEnd="16dp"
-        android:onClick="addTask"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/add_task_btn_background"
+        android:onClick="addTask"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_projectName" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

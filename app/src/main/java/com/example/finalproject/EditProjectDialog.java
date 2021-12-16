@@ -80,18 +80,18 @@ public class EditProjectDialog extends Dialog implements
             case R.id.add_dialog_btn:
                 EditText title_field = findViewById(R.id.project_title_input);
                 String title = title_field.getText().toString();
-                ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);
-                ColorDrawable viewColor = (ColorDrawable) lay.getBackground();
-                int colorId = viewColor.getColor();
-                if (title.isEmpty()){
-                    title_field.setError("Please enter project title");
-                    title_field.requestFocus();
-                }
-                else{
-
-                    addProject(title, colorId);
+//                ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);
+//                ColorDrawable viewColor = (ColorDrawable) lay.getBackground();
+//                int colorId = viewColor.getColor();
+//                if (title.isEmpty()){
+//                    title_field.setError("Please enter project title");
+//                    title_field.requestFocus();
+//                }
+//                else{
+                    FirebaseOperator firebaseOperator = new FirebaseOperator();
+                    firebaseOperator.updateProject(projectKey,title);
                     dismiss();
-                }
+//                }
                 break;
             case R.id.cancel_dialog_btn:
                 dismiss();

@@ -19,7 +19,7 @@ public class FirebaseOperator {
     }
 
 
-    boolean updateProject(String projectKey, String newTitle, String newColor){
+    boolean updateProject(String projectKey, String newTitle){
         DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
         projectRef.child("projectName").setValue(newTitle);
         return true;
