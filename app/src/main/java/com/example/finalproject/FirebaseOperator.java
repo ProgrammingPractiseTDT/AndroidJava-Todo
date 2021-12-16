@@ -5,7 +5,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.example.finalproject.Dialog.Project;
+import com.example.finalproject.DataClass.Project;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

@@ -20,11 +20,11 @@ import android.widget.Toast;
 
 import com.example.finalproject.Adapter.ProjectAdapter;
 import com.example.finalproject.Dialog.AddProjectDialog;
-import com.example.finalproject.Dialog.ImportantTask;
-import com.example.finalproject.Dialog.Project;
-import com.example.finalproject.Dialog.QuickTask;
-import com.example.finalproject.Dialog.TodayTask;
-import com.example.finalproject.Dialog.User;
+import com.example.finalproject.DataClass.ImportantTask;
+import com.example.finalproject.DataClass.Project;
+import com.example.finalproject.DataClass.QuickTask;
+import com.example.finalproject.DataClass.TodayTask;
+import com.example.finalproject.DataClass.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

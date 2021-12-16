@@ -1,4 +1,4 @@
-package com.example.finalproject.Dialog;
+package com.example.finalproject.DataClass;
 
 import android.os.Bundle;
 

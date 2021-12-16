@@ -1,4 +1,4 @@
-package com.example.finalproject.Dialog;
+package com.example.finalproject.DataClass;
 
 public class User {
     private String fullName;

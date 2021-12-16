@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.finalproject.Adapter.TaskAdapter;
 import com.example.finalproject.Dialog.AddTaskDialog;
-import com.example.finalproject.Dialog.Task;
+import com.example.finalproject.DataClass.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

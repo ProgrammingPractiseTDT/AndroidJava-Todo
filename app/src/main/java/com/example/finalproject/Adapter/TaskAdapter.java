@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.finalproject.FirebaseOperator;
 import com.example.finalproject.Dialog.LongClickTaskDialog;
 import com.example.finalproject.R;
-import com.example.finalproject.Dialog.Task;
+import com.example.finalproject.DataClass.Task;
 
 import java.util.ArrayList;
 

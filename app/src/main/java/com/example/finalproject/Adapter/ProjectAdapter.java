@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject.Dialog.LongClickProjectDialog;
-import com.example.finalproject.Dialog.Project;
+import com.example.finalproject.DataClass.Project;
 import com.example.finalproject.ProjectView;
 import com.example.finalproject.R;
 
