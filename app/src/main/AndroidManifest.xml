@@ -15,9 +15,6 @@
             android:name=".ProjectView"
             android:exported="false" />
         <activity
-            android:name=".Project_Activity"
-            android:exported="false" />
-        <activity
             android:name=".StartingScreen"
             android:exported="true">
             <intent-filter>

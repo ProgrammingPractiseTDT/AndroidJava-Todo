@@ -78,10 +78,6 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         ProjectNames = new ArrayList<Project>();
         ProjectKeys = new ArrayList<String>();
         getProjectFromUser();
-        menu = getMenuItem();
-        lv = findViewById(R.id.listview_mainMenu);
-        MainMenuAdapter mainMenuAdapter = new MainMenuAdapter(this, menu);
-        lv.setAdapter(mainMenuAdapter);
 
 
         rv = findViewById(R.id.project_recycler_view);
@@ -99,14 +95,6 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         });
     }
 
-    private List<String> getMenuItem(){
-        List<String> menu = new ArrayList<String>();
-        menu.add("Today");
-        menu.add("Important");
-        menu.add("All tasks");
-
-        return menu;
-    }
 
     public void showAddProjectDialog(View view) {
         AddProjectDialog cdd=new AddProjectDialog(HomeScreen.this);
@@ -167,7 +155,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
                 Toast.makeText(this, "UserProfile", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.settings:
-                Toast.makeText(this, "UserProfile", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.logoutBtn:
                 Paper.book().destroy();
