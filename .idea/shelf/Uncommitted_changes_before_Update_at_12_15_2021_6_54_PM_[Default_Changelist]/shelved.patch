@@ -1,0 +1,141 @@
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.finalproject\">\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.FinalProject\">\r\n        <activity\r\n            android:name=\".ProjectView\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".Project_Activity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".StartingScreen\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity\r\n            android:name=\".Signup\"\r\n            android:exported=\"true\" />\r\n        <activity android:name=\".Login\" />\r\n        <activity android:name=\".HomeScreen\" />\r\n\r\n        <meta-data\r\n            android:name=\"preloaded_fonts\"\r\n            android:resource=\"@array/preloaded_fonts\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 02b58189aad3cbd77354bbd3cd244f60cdca18ba)
++++ b/app/src/main/AndroidManifest.xml	(date 1639541582667)
+@@ -15,9 +15,6 @@
+             android:name=".ProjectView"
+             android:exported="false" />
+         <activity
+-            android:name=".Project_Activity"
+-            android:exported="false" />
+-        <activity
+             android:name=".StartingScreen"
+             android:exported="true">
+             <intent-filter>
+Index: app/src/main/res/drawable/item_border_radius.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<shape xmlns:android=\"http://schemas.android.com/apk/res/android\" android:shape=\"rectangle\">\r\n    <corners android:radius=\"24sp\" />\r\n    <solid android:color=\"#24E6B4B4\" />\r\n</shape>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/item_border_radius.xml b/app/src/main/res/drawable/item_border_radius.xml
+--- a/app/src/main/res/drawable/item_border_radius.xml	(revision 02b58189aad3cbd77354bbd3cd244f60cdca18ba)
++++ b/app/src/main/res/drawable/item_border_radius.xml	(date 1639541926804)
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+-    <corners android:radius="24sp" />
+-    <solid android:color="#24E6B4B4" />
++    <corners android:radius="4sp" />
++    <solid android:color="#AD9DCA" />
+ </shape>
+\ No newline at end of file
+Index: .idea/deploymentTargetDropDown.xml
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+deleted file mode 100644
+--- a/.idea/deploymentTargetDropDown.xml	(revision 02b58189aad3cbd77354bbd3cd244f60cdca18ba)
++++ /dev/null	(revision 02b58189aad3cbd77354bbd3cd244f60cdca18ba)
+@@ -1,17 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="deploymentTargetDropDown">
+-    <runningDeviceTargetSelectedWithDropDown>
+-      <Target>
+-        <type value="RUNNING_DEVICE_TARGET" />
+-        <deviceKey>
+-          <Key>
+-            <type value="SERIAL_NUMBER" />
+-            <value value="R3CN703Z75E" />
+-          </Key>
+-        </deviceKey>
+-      </Target>
+-    </runningDeviceTargetSelectedWithDropDown>
+-    <timeTargetWasSelectedWithDropDown value="2021-12-14T19:10:49.603436Z" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">To do Things</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision 02b58189aad3cbd77354bbd3cd244f60cdca18ba)
++++ b/app/src/main/res/values/strings.xml	(date 1639539661669)
+@@ -1,3 +1,3 @@
+ <resources>
+-    <string name="app_name">To do Things</string>
++    <string name="app_name">To Do Things</string>
+ </resources>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/font/aguafina_script.xml\" value=\"0.2328125\" />\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/activity_project_view.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/activity_signup.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/login_layout.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/project_item_layout.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/starting_screen.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/add_btn.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/custom_border.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/item_border_radius.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/main.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/project_item_shape.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_1.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/search_btn.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_main.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/layout_popup_menu.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_screen.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/project_item_layout.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/signup_layout.xml\" value=\"0.20520833333333333\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml\" value=\"0.27943840579710144\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/menu/popup_menu.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"app/src/main/res/drawable-v24/ic_launcher_foreground.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/add.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/add_task_btn_background.xml\" value=\"0.1009009009009009\" />\r\n        <entry key=\"app/src/main/res/drawable/add_task_dialog.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/background.xml\" value=\"0.16666666666666666\" />\r\n        <entry key=\"app/src/main/res/drawable/cancel.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/ic_launcher_background.xml\" value=\"0.16666666666666666\" />\r\n        <entry key=\"app/src/main/res/drawable/input_field_rectangle.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/item_border_radius.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/rectangle_1.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/rectangle_2.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/rectangle_dialog.xml\" value=\"0.15729166666666666\" />\r\n        <entry key=\"app/src/main/res/layout/activity_main.xml\" value=\"0.17708333333333334\" />\r\n        <entry key=\"app/src/main/res/layout/activity_signup.xml\" value=\"0.25\" />\r\n        <entry key=\"app/src/main/res/layout/add_project_dialog.xml\" value=\"0.25\" />\r\n        <entry key=\"app/src/main/res/layout/add_task_dialog.xml\" value=\"0.13145896656534956\" />\r\n        <entry key=\"app/src/main/res/layout/login_layout.xml\" value=\"0.25\" />\r\n        <entry key=\"app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.13145896656534956\" />\r\n        <entry key=\"app/src/main/res/layout/project_item_layout.xml\" value=\"0.24003623188405798\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"Android Studio default JDK\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 02b58189aad3cbd77354bbd3cd244f60cdca18ba)
++++ b/.idea/misc.xml	(date 1639539663084)
+@@ -27,6 +27,7 @@
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/signup_layout.xml" value="0.20520833333333333" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml" value="0.27943840579710144" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/menu/popup_menu.xml" value="0.36666666666666664" />
++        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3310810810810811" />
+         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23148148148148148" />
+         <entry key="app/src/main/res/drawable/add.xml" value="0.21666666666666667" />
+         <entry key="app/src/main/res/drawable/add_task_btn_background.xml" value="0.1009009009009009" />
+Index: app/src/main/java/com/example/finalproject/Login.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.CheckBox;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.google.android.gms.tasks.OnCompleteListener;\r\nimport com.google.firebase.auth.AuthResult;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.auth.FirebaseUser;\r\nimport com.google.firebase.database.DataSnapshot;\r\nimport com.google.firebase.database.DatabaseError;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\nimport com.google.firebase.database.ValueEventListener;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class Login extends AppCompatActivity {\r\n    private EditText emailTextField;\r\n    private EditText passwordTextField;\r\n    private TextView txt_signUp;\r\n    private FirebaseAuth mAuth;\r\n    private CheckBox cb_rememberMe;\r\n    ArrayList<String> ProjectNames;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.login_layout);\r\n        txt_signUp = (TextView) findViewById(R.id.txt_signUp);\r\n        emailTextField = findViewById(R.id.login_email);\r\n        passwordTextField = findViewById(R.id.login_password);\r\n        txt_signUp.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                goToSignUp();\r\n            }\r\n        });\r\n\r\n\r\n        //sign in\r\n        mAuth = FirebaseAuth.getInstance();\r\n    }\r\n\r\n    @Override\r\n    public void onStart() {\r\n        super.onStart();\r\n        // Check if user is signed in (non-null) and update UI accordingly.\r\n        FirebaseUser currentUser = mAuth.getCurrentUser();\r\n        if(currentUser != null){\r\n            currentUser.reload();\r\n        }\r\n    }\r\n\r\n    private void goToSignUp(){\r\n        Intent intent = new Intent(this,Signup.class);\r\n        startActivity(intent);\r\n    }\r\n\r\n    public void signIn(View view) {\r\n        emailTextField = findViewById(R.id.login_email);\r\n        passwordTextField = findViewById(R.id.login_password);\r\n\r\n        String email = emailTextField.getText().toString().trim();\r\n        String password = passwordTextField.getText().toString().trim();\r\n        if (email.isEmpty()){\r\n            emailTextField.setError(\"Email is required\");\r\n            emailTextField.requestFocus();\r\n        }\r\n        else if (password.isEmpty()){\r\n            passwordTextField.setError(\"Password is require\");\r\n            passwordTextField.requestFocus();\r\n        }\r\n        else {\r\n            mAuth.signInWithEmailAndPassword(email, password)\r\n                    .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {\r\n\r\n                        @Override\r\n                        public void onComplete(@NonNull com.google.android.gms.tasks.Task<AuthResult> task) {\r\n                            if (task.isSuccessful()) {\r\n                                // Sign in success, update UI with the signed-in user's information\r\n                                Log.d(\"signin\", \"signInWithEmail:success\");\r\n                                FirebaseUser user = mAuth.getCurrentUser();\r\n                                updateUI(user);\r\n                            } else {\r\n                                // If sign in fails, display a message to the user.\r\n                                Log.w(\"error\", \"signInWithEmail:failure\");\r\n                                Toast.makeText(Login.this, \"Authentication failed.\\n\" + email + \"\\n\" + password + task.getException().getMessage(),\r\n                                        Toast.LENGTH_SHORT).show();\r\n                                updateUI(null);\r\n                            }\r\n                        }\r\n                    });\r\n        }\r\n    }\r\n    public void updateUI(FirebaseUser account){\r\n        ProjectNames= new ArrayList<String>();\r\n        ProjectNames.add(\"Order\");\r\n        Intent intent = new Intent(this, HomeScreen.class);\r\n        intent.putExtra(\"projects\",ProjectNames);\r\n        if(account != null){\r\n            Toast.makeText(this,ProjectNames.get(0),Toast.LENGTH_LONG).show();\r\n            startActivity(intent);\r\n        }else {\r\n            Toast.makeText(this,\"Invalid email or password.\",Toast.LENGTH_LONG).show();\r\n        }\r\n\r\n    }\r\n\r\n    ArrayList<String> getProjectFromUser(){\r\n        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();\r\n        ArrayList<String> projectNamesArray = new ArrayList<String>();\r\n        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\");\r\n        ValueEventListener postListener = new ValueEventListener() {\r\n            @Override\r\n            public void onDataChange(DataSnapshot dataSnapshot) {\r\n                // Get Post object and use the values to update the UI\r\n                for (DataSnapshot dsp : dataSnapshot.getChildren()) {\r\n                    Project project = dsp.getValue(Project.class);\r\n                    projectNamesArray.add(project.getProjectName()); //add result into array list\r\n                }\r\n                // ..\r\n            }\r\n\r\n            @Override\r\n            public void onCancelled(DatabaseError databaseError) {\r\n                // Getting Post failed, log a message\r\n                Log.w(\"FetchError\", \"loadPost:onCancelled\", databaseError.toException());\r\n            }\r\n        };\r\n        reference.addValueEventListener(postListener);\r\n        return projectNamesArray;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/Login.java b/app/src/main/java/com/example/finalproject/Login.java
+--- a/app/src/main/java/com/example/finalproject/Login.java	(revision 02b58189aad3cbd77354bbd3cd244f60cdca18ba)
++++ b/app/src/main/java/com/example/finalproject/Login.java	(date 1639537131785)
+@@ -24,6 +24,8 @@
+ 
+ import java.util.ArrayList;
+ 
++import io.paperdb.Paper;
++
+ public class Login extends AppCompatActivity {
+     private EditText emailTextField;
+     private EditText passwordTextField;
+@@ -39,6 +41,8 @@
+         txt_signUp = (TextView) findViewById(R.id.txt_signUp);
+         emailTextField = findViewById(R.id.login_email);
+         passwordTextField = findViewById(R.id.login_password);
++        cb_rememberMe = (CheckBox) findViewById(R.id.cb_rememberMe);
++
+         txt_signUp.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+@@ -81,6 +85,14 @@
+             passwordTextField.requestFocus();
+         }
+         else {
++
++            //if RememberMe checkbox is checked -> store email, password by Paper.book()
++            if(cb_rememberMe.isChecked()){
++                Paper.book().write(SyncingUser.userEmail, email);
++                Paper.book().write(SyncingUser.userPassword, password);
++            }
++
++
+             mAuth.signInWithEmailAndPassword(email, password)
+                     .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+ 

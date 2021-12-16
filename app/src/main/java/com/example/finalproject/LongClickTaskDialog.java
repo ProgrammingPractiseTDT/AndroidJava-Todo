@@ -1,6 +1,5 @@
 package com.example.finalproject;
 
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -21,17 +20,20 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class LongClickProjectDialog extends Dialog implements
+
+public class LongClickTaskDialog extends Dialog implements
         android.view.View.OnClickListener {
 
     public android.content.Context c;
     public Dialog d;
     public Button delete, edit;
     private String projectKey;
-    public LongClickProjectDialog(Context a, String projectKey) {
+    private String tasksKey;
+    public LongClickTaskDialog(Context a, String projectKey, String tasksKey) {
         super(a);
         this.c = a;
         this.projectKey=projectKey;
+        this.tasksKey = tasksKey;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class LongClickProjectDialog extends Dialog implements
         switch (v.getId()) {
             case R.id.delete_project_btn:
                 FirebaseOperator firebaseOperator = new FirebaseOperator();
-                firebaseOperator.deleteProjectByProjectKey(projectKey);
+                firebaseOperator.deleteTasks(projectKey, tasksKey);
                 dismiss();
                 break;
             case R.id.edit_project_btn:

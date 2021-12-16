@@ -91,14 +91,14 @@
                     android:backgroundTint="@color/light_red" />
 
                 <Button
-                    android:id="@+id/btn_orangeButton"
+                    android:id="@+id/btn_blueButton"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
-                    android:backgroundTint="@color/light_orange" />
+                    android:backgroundTint="@color/light_blue" />
 
                 <Button
                     android:id="@+id/btn_yellowButton"

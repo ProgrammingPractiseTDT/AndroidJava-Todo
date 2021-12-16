@@ -5,18 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     static ArrayList<Task> tasks;
+    private ArrayList<String> keys;
+    public static String ProjectKey;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView taskName,dateTime, description;
+        private final TextView taskName,dateTime, description, fullTitle;
         private final CheckBox checkingStatus;
         private final ConstraintLayout layoutExpand;
         public ViewHolder(View view) {
@@ -27,6 +32,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
             checkingStatus = (CheckBox) view.findViewById(R.id.chk_jobCheckingStatus);
             layoutExpand = (ConstraintLayout) view.findViewById(R.id.ly_expandLayout);
             description = (TextView) view.findViewById(R.id.txt_description);
+            fullTitle = (TextView) view.findViewById(R.id.txt_fullTitle);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -41,6 +47,22 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                     }
                 }
             });
+            view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    LongClickTaskDialog epd = new LongClickTaskDialog(view.getContext(), ProjectKey, taskName.getTag().toString());
+                    epd.show();
+                    return true;
+                }
+            });
+        }
+
+        public TextView getFullTitle() {
+            return fullTitle;
+        }
+
+        public CheckBox getCheckingStatus() {
+            return checkingStatus;
         }
 
         public TextView getTaskName() {
@@ -61,8 +83,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     }
 
 
-    public TaskAdapter(Context context, ArrayList<Task> dataSet) {
+    public TaskAdapter(Context context, ArrayList<Task> dataSet, ArrayList<String> keys, String ProjectKey) {
         tasks = dataSet;
+        this.keys = keys;
+        this.ProjectKey = ProjectKey;
     }
 
 
@@ -88,6 +112,18 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         viewHolder.getTaskName().setText(tasks.get(position).getTitle());
         viewHolder.getDateTime().setText(tasks.get(position).getEndTime());
         viewHolder.getDescription().setText(tasks.get(position).getDescription());
+        viewHolder.getFullTitle().setText(tasks.get(position).getTitle());
+        viewHolder.getCheckingStatus().setChecked(tasks.get(position).isCheckingStatus());
+        String key = keys.get(position);
+        viewHolder.getTaskName().setTag(key);
+        viewHolder.getCheckingStatus().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                boolean checking = viewHolder.getCheckingStatus().isChecked();
+                FirebaseOperator taskUpdate = new FirebaseOperator();
+                taskUpdate.updateTasks(ProjectKey, key, checking);
+            }
+        });
     }
 
 
@@ -95,6 +131,5 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     public int getItemCount() {
         return tasks.size();
     }
-
 
 }

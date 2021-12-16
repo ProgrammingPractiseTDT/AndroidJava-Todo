@@ -13,6 +13,8 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
@@ -40,7 +42,9 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
     private TextView userGreeting;
     private FirebaseUser user;
     private RecyclerView rv;
-    private ImageView appMenu;
+    private Button todayBtn;
+    private Button importantBtn;
+    private Button quickTaskBtn;
     ProjectAdapter projectAdapter;
     ArrayList<Project> ProjectNames;
     ArrayList<String> ProjectKeys;
@@ -51,6 +55,32 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.home_screen_layout);
+
+        todayBtn = findViewById(R.id.btn_today);
+        importantBtn = findViewById(R.id.btn_important);
+        quickTaskBtn = findViewById(R.id.btn_quickTask);
+
+        todayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeScreen.this, TodayTask.class));
+            }
+        });
+        importantBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeScreen.this, ImportantTask.class));
+            }
+        });
+        quickTaskBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeScreen.this, QuickTask.class));
+            }
+        });
+
+
+
 
 
         //User Greeting
@@ -78,10 +108,6 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         ProjectNames = new ArrayList<Project>();
         ProjectKeys = new ArrayList<String>();
         getProjectFromUser();
-        menu = getMenuItem();
-        lv = findViewById(R.id.listview_mainMenu);
-        MainMenuAdapter mainMenuAdapter = new MainMenuAdapter(this, menu);
-        lv.setAdapter(mainMenuAdapter);
 
 
         rv = findViewById(R.id.project_recycler_view);
@@ -103,7 +129,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         List<String> menu = new ArrayList<String>();
         menu.add("Today");
         menu.add("Important");
-        menu.add("All tasks");
+        menu.add("Common Task");
 
         return menu;
     }
@@ -132,9 +158,8 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
                     Project project = dsp.getValue(Project.class);
                     ProjectKeys.add(dsp.getKey());
                     ProjectNames.add(project); //add result into array list
-                    projectAdapter.notifyDataSetChanged();
                 }
-                // ..
+                projectAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -167,7 +192,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
                 Toast.makeText(this, "UserProfile", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.settings:
-                Toast.makeText(this, "UserProfile", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.logoutBtn:
                 Paper.book().destroy();

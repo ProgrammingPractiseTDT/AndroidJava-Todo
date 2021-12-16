@@ -25,7 +25,7 @@ public class AddProjectDialog extends Dialog implements
     public Activity c;
     public Dialog d;
     public Button yes, no;
-    private Button red, yellow, green, orange;
+    private Button red, yellow, green, blue;
     public AddProjectDialog(Activity a) {
         super(a);
         this.c = a;
@@ -39,7 +39,7 @@ public class AddProjectDialog extends Dialog implements
         ConstraintLayout dialoglayout = (ConstraintLayout) findViewById(R.id.layout_dialog);
         red = findViewById(R.id.btn_redButton);
         yellow = findViewById(R.id.btn_yellowButton);
-        orange = findViewById(R.id.btn_orangeButton);
+        blue = findViewById(R.id.btn_blueButton);
         green = findViewById(R.id.btn_greenButton);
         yes = (Button) findViewById(R.id.add_dialog_btn);
         no = (Button) findViewById(R.id.cancel_dialog_btn);
@@ -49,10 +49,10 @@ public class AddProjectDialog extends Dialog implements
                 dialoglayout.setBackgroundColor(Color.parseColor("#EF5959"));
             }
         });
-        orange.setOnClickListener(new View.OnClickListener() {
+        blue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialoglayout.setBackgroundColor(Color.parseColor("#FF5722"));
+                dialoglayout.setBackgroundColor(Color.parseColor("#29ACF3"));
             }
         });
         green.setOnClickListener(new View.OnClickListener() {

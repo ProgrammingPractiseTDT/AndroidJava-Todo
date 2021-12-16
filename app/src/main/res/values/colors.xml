@@ -8,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_red">#EF5959</color>
-    <color name="light_orange">#FF5722</color>
+    <color name="light_blue">#29ACF3</color>
     <color name="light_yellow">#FFEB3B</color>
     <color name="light_green">#8BC34A</color>
 </resources>
