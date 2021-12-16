@@ -50,6 +50,7 @@ public class ProjectView extends AppCompatActivity {
         fetchTaskFromProject(ProjectKey);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), DividerItemDecoration.VERTICAL);
         rv.addItemDecoration(dividerItemDecoration);
+
         taskAdapter = new TaskAdapter(this,taskList, TasksKey, ProjectKey);
         rv.setAdapter(taskAdapter);
         atd = new AddTaskDialog(ProjectView.this, ProjectKey);

@@ -109,6 +109,17 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
+        for (int i = 0; i < tasks.size(); i++){
+            for (int j = 0; j < tasks.size() - i - 1; j++){
+                int a = tasks.get(j).getPriority();
+                int b = tasks.get(j+1).getPriority();
+                if(a < b){
+                    Task temp = tasks.get(j);
+                    tasks.set(j, tasks.get(j+1));
+                    tasks.set(j+1, temp);
+                }
+            }
+        }
         viewHolder.getTaskName().setText(tasks.get(position).getTitle());
         viewHolder.getDateTime().setText(tasks.get(position).getEndTime());
         viewHolder.getDescription().setText(tasks.get(position).getDescription());

@@ -17,12 +17,12 @@ public class Task {
 //        this.folder = "";
 //        this.priority = 4;
 //    }
-    public Task(String title, String endTime, String description){
+    public Task(String title, String endTime, String description, int priority){
         this.title = title;
         this.description = description;
         this.endTime = endTime;
         this.folder = "";
-        this.priority = 4;
+        this.priority = priority;
         this.checkingStatus = false;
     }
 //    public Task(String title, String description, String startTime, String endTime, String folder, int priority) {

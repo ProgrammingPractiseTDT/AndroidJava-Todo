@@ -8,10 +8,10 @@
 
     <TextView
         android:id="@+id/txt_taskTitle"
-        android:layout_width="286dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="314dp"
+        android:layout_height="37dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:ellipsize="end"
         android:gravity="center|left"
         android:paddingLeft="16sp"
@@ -19,20 +19,21 @@
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/chk_jobCheckingStatus"
-        app:layout_constraintHorizontal_bias="0.079"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/chk_jobCheckingStatus"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_deadline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
         android:text="TextView"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/chk_jobCheckingStatus"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/txt_taskTitle"
         app:layout_constraintTop_toBottomOf="@+id/txt_taskTitle" />
 
@@ -40,19 +41,19 @@
         android:id="@+id/chk_jobCheckingStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="24dp"
         android:scaleX="1.4"
         android:scaleY="1.4"
         app:layout_constraintBottom_toTopOf="@+id/ly_expandLayout"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.491" />
+        app:layout_constraintVertical_bias="0.541" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ly_expandLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -79,8 +80,8 @@
             android:id="@+id/txt_fullTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="16dp"
             android:layout_marginRight="10dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
