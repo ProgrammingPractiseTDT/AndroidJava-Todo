@@ -17,4 +17,16 @@ public class FirebaseOperator {
         projectref.removeValue();
         return true;
     }
+
+
+    boolean updateProject(String projectKey, String newTitle, String newColor){
+        DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
+        projectRef.child("projectName").setValue(newTitle);
+        return true;
+    }
+
+//    Project getProjectByKey(String projectKey){
+//        DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
+//
+//    }
 }

@@ -56,6 +56,8 @@ public class LongClickProjectDialog extends Dialog implements
                 dismiss();
                 break;
             case R.id.edit_project_btn:
+                EditProjectDialog editProjectDialog = new EditProjectDialog(v.getContext(), projectKey);
+                editProjectDialog.show();
                 dismiss();
                 break;
             default:
