@@ -1,0 +1,146 @@
+Index: app/src/main/java/com/example/finalproject/EditProjectDialog.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\n\nimport android.app.Activity;\nimport android.app.Dialog;\nimport android.content.Context;\nimport android.graphics.Color;\nimport android.graphics.drawable.ColorDrawable;\nimport android.os.Bundle;\nimport android.view.View;\nimport android.view.Window;\nimport android.widget.Button;\nimport android.widget.EditText;\nimport android.widget.RelativeLayout;\n\nimport androidx.constraintlayout.widget.ConstraintLayout;\nimport androidx.core.content.ContextCompat;\n\nimport com.google.firebase.auth.FirebaseAuth;\nimport com.google.firebase.auth.FirebaseUser;\nimport com.google.firebase.database.DatabaseReference;\nimport com.google.firebase.database.FirebaseDatabase;\n\npublic class EditProjectDialog extends Dialog implements\n        android.view.View.OnClickListener {\n\n    public android.content.Context c;\n    public Dialog d;\n    public Button yes, no;\n    private  String projectKey;\n    private Button red, yellow, green, orange;\n    public EditProjectDialog(Context a, String projectKey) {\n        super(a);\n        this.c = a;\n        this.projectKey = projectKey;\n    }\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n\n        requestWindowFeature(Window.FEATURE_NO_TITLE);\n        setContentView(R.layout.edit_project_dialog);\n        ConstraintLayout dialoglayout = (ConstraintLayout) findViewById(R.id.layout_dialog);\n        red = findViewById(R.id.btn_redButton);\n        yellow = findViewById(R.id.btn_yellowButton);\n        orange = findViewById(R.id.btn_orangeButton);\n        green = findViewById(R.id.btn_greenButton);\n        yes = (Button) findViewById(R.id.add_dialog_btn);\n        no = (Button) findViewById(R.id.cancel_dialog_btn);\n        red.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                dialoglayout.setBackgroundColor(Color.parseColor(\"#EF5959\"));\n            }\n        });\n        orange.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                dialoglayout.setBackgroundColor(Color.parseColor(\"#FF5722\"));\n            }\n        });\n        green.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                dialoglayout.setBackgroundColor(Color.parseColor(\"#8BC34A\"));\n            }\n        });\n        yellow.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                dialoglayout.setBackgroundColor(Color.parseColor(\"#FFEB3B\"));\n            }\n        });\n        yes.setOnClickListener(this);\n        no.setOnClickListener(this);\n    }\n\n    @Override\n    public void onClick(View v) {\n        switch (v.getId()) {\n            case R.id.add_dialog_btn:\n                EditText title_field = findViewById(R.id.project_title_input);\n                String title = title_field.getText().toString();\n//                ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);\n//                ColorDrawable viewColor = (ColorDrawable) lay.getBackground();\n//                int colorId = viewColor.getColor();\n//                if (title.isEmpty()){\n//                    title_field.setError(\"Please enter project title\");\n//                    title_field.requestFocus();\n//                }\n//                else{\n                    FirebaseOperator firebaseOperator = new FirebaseOperator();\n                    firebaseOperator.updateProject(projectKey,title);\n                    dismiss();\n//                }\n                break;\n            case R.id.cancel_dialog_btn:\n                dismiss();\n                break;\n            default:\n                break;\n        }\n    }\n\n    private void addProject(String title, int color) {\n\n\n        Project project = new Project(title, color);\n        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();\n        String uid = \"\";\n        FirebaseAuth auth = FirebaseAuth.getInstance();\n        FirebaseUser user = auth.getCurrentUser();\n        if (user != null) {\n            uid = user.getUid();\n        }\n        DatabaseReference ref = rootRef.child(\"User\").child(uid).child(\"projects\");\n        ref.push().setValue(project);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/EditProjectDialog.java b/app/src/main/java/com/example/finalproject/EditProjectDialog.java
+--- a/app/src/main/java/com/example/finalproject/EditProjectDialog.java	(revision 041bebab2ec24c980753a2e62d4c999595115df8)
++++ b/app/src/main/java/com/example/finalproject/EditProjectDialog.java	(date 1639651827876)
+@@ -28,6 +28,9 @@
+     public Button yes, no;
+     private  String projectKey;
+     private Button red, yellow, green, orange;
++    EditText title_field;
++    FirebaseOperator firebaseOperator;
++
+     public EditProjectDialog(Context a, String projectKey) {
+         super(a);
+         this.c = a;
+@@ -36,7 +39,7 @@
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+-
++        firebaseOperator = new FirebaseOperator();
+         requestWindowFeature(Window.FEATURE_NO_TITLE);
+         setContentView(R.layout.edit_project_dialog);
+         ConstraintLayout dialoglayout = (ConstraintLayout) findViewById(R.id.layout_dialog);
+@@ -72,13 +75,17 @@
+         });
+         yes.setOnClickListener(this);
+         no.setOnClickListener(this);
++
++        title_field = findViewById(R.id.project_title_input);
++        Project project = firebaseOperator.getProjectByKey(projectKey);
++//        title_field.setText(project.getProjectName());
+     }
+ 
+     @Override
+     public void onClick(View v) {
+         switch (v.getId()) {
+             case R.id.add_dialog_btn:
+-                EditText title_field = findViewById(R.id.project_title_input);
++
+                 String title = title_field.getText().toString();
+ //                ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);
+ //                ColorDrawable viewColor = (ColorDrawable) lay.getBackground();
+@@ -88,7 +95,6 @@
+ //                    title_field.requestFocus();
+ //                }
+ //                else{
+-                    FirebaseOperator firebaseOperator = new FirebaseOperator();
+                     firebaseOperator.updateProject(projectKey,title);
+                     dismiss();
+ //                }
+@@ -101,18 +107,4 @@
+         }
+     }
+ 
+-    private void addProject(String title, int color) {
+-
+-
+-        Project project = new Project(title, color);
+-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+-        String uid = "";
+-        FirebaseAuth auth = FirebaseAuth.getInstance();
+-        FirebaseUser user = auth.getCurrentUser();
+-        if (user != null) {
+-            uid = user.getUid();
+-        }
+-        DatabaseReference ref = rootRef.child("User").child(uid).child("projects");
+-        ref.push().setValue(project);
+-    }
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/example/finalproject/FirebaseOperator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\n\nimport com.google.firebase.auth.FirebaseAuth;\nimport com.google.firebase.auth.FirebaseUser;\nimport com.google.firebase.database.DatabaseReference;\nimport com.google.firebase.database.FirebaseDatabase;\n\npublic class FirebaseOperator {\n    private FirebaseUser user;\n\n    public FirebaseOperator(){\n        user = FirebaseAuth.getInstance().getCurrentUser();\n    }\n\n    boolean deleteProjectByProjectKey(String projectKey) {\n        DatabaseReference projectref = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\").child(projectKey);\n        projectref.removeValue();\n        return true;\n    }\n\n\n    boolean updateProject(String projectKey, String newTitle){\n        DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\").child(projectKey);\n        projectRef.child(\"projectName\").setValue(newTitle);\n        return true;\n    }\n    boolean deleteTasks(String projectKey, String tasksKey){\n        DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child(\"User\").\n                child(user.getUid()).child(\"projects\").child(projectKey).child(\"tasks\").child(tasksKey);\n        taskRef.removeValue();\n        return true;\n    }\n\n    boolean updateTasks(String projectKey, String tasksKey, boolean checkBox){\n        DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child(\"User\").\n                child(user.getUid()).child(\"projects\").child(projectKey).child(\"tasks\").child(tasksKey);\n        taskRef.child(\"checkingStatus\").setValue(checkBox);\n        return true;\n    }\n\n//    boolean updateTask(String)\n\n//    Project getProjectByKey(String projectKey){\n//        DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\").child(projectKey);\n//\n//    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/FirebaseOperator.java b/app/src/main/java/com/example/finalproject/FirebaseOperator.java
+--- a/app/src/main/java/com/example/finalproject/FirebaseOperator.java	(revision 041bebab2ec24c980753a2e62d4c999595115df8)
++++ b/app/src/main/java/com/example/finalproject/FirebaseOperator.java	(date 1639647279220)
+@@ -1,12 +1,19 @@
+ package com.example.finalproject;
+ 
++import androidx.annotation.NonNull;
++
++import com.google.android.gms.tasks.OnSuccessListener;
+ import com.google.firebase.auth.FirebaseAuth;
+ import com.google.firebase.auth.FirebaseUser;
++import com.google.firebase.database.DataSnapshot;
++import com.google.firebase.database.DatabaseError;
+ import com.google.firebase.database.DatabaseReference;
+ import com.google.firebase.database.FirebaseDatabase;
++import com.google.firebase.database.ValueEventListener;
+ 
+ public class FirebaseOperator {
+     private FirebaseUser user;
++    private Project project;
+ 
+     public FirebaseOperator(){
+         user = FirebaseAuth.getInstance().getCurrentUser();
+@@ -44,4 +51,21 @@
+ //        DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
+ //
+ //    }
++
++    Project getProjectByKey(String projectKey){
++        DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
++        projectRef.addValueEventListener(new ValueEventListener() {
++            @Override
++            public void onDataChange(@NonNull DataSnapshot snapshot) {
++                project = snapshot.getValue(Project.class);
++
++            }
++
++            @Override
++            public void onCancelled(@NonNull DatabaseError error) {
++
++            }
++        });
++        return project;
++    }
+ }
+Index: app/src/main/java/com/example/finalproject/ProjectView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\n\nimport androidx.appcompat.app.AppCompatActivity;\nimport androidx.constraintlayout.widget.ConstraintLayout;\nimport androidx.recyclerview.widget.DividerItemDecoration;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport android.os.Bundle;\nimport android.util.Log;\nimport android.view.View;\nimport android.widget.LinearLayout;\nimport android.widget.TextView;\n\nimport com.google.firebase.auth.FirebaseAuth;\nimport com.google.firebase.auth.FirebaseUser;\nimport com.google.firebase.database.DataSnapshot;\nimport com.google.firebase.database.DatabaseError;\nimport com.google.firebase.database.DatabaseReference;\nimport com.google.firebase.database.FirebaseDatabase;\nimport com.google.firebase.database.ValueEventListener;\n\nimport java.util.ArrayList;\n\npublic class ProjectView extends AppCompatActivity {\n    AddTaskDialog atd;\n    RecyclerView rv;\n    TaskAdapter taskAdapter;\n    ArrayList<Task> taskList;\n    private FirebaseUser user;\n    String ProjectKey;\n    ArrayList<String> TasksKey;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_project_view);\n        String ProjectTitle;\n        ProjectTitle =getIntent().getExtras().getString(\"Project title\");\n        user = FirebaseAuth.getInstance().getCurrentUser();\n\n        ProjectKey = getIntent().getExtras().getString(\"Project key\");\n        TextView tv = findViewById(R.id.txt_projectName);\n        tv.setText(ProjectTitle);\n\n        //firebase user variable\n        TasksKey = new ArrayList<String>();\n        //recycler view init\n        rv = findViewById(R.id.task_recycler_view);\n        taskList = new ArrayList<Task>();\n        fetchTaskFromProject(ProjectKey);\n        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), DividerItemDecoration.VERTICAL);\n        rv.addItemDecoration(dividerItemDecoration);\n        taskAdapter = new TaskAdapter(this,taskList, TasksKey, ProjectKey);\n        rv.setAdapter(taskAdapter);\n        atd = new AddTaskDialog(ProjectView.this, ProjectKey);\n    }\n\n    public void addTask(View view) {\n        //execute when click add task button\n        atd.show();\n    }\n\n    public void fetchTaskFromProject(String ProjectKey){\n        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\").child(ProjectKey).child(\"tasks\");\n        ValueEventListener postListener = new ValueEventListener() {\n            @Override\n            public void onDataChange(DataSnapshot dataSnapshot) {\n                // Get Post object and use the values to update the UI\n                taskList.clear();\n                for (DataSnapshot dsp : dataSnapshot.getChildren()) {\n                    Task task = dsp.getValue(Task.class);\n                    TasksKey.add(dsp.getKey());\n                    taskList.add(task); //add result into array list\n\n                }\n                taskAdapter.notifyDataSetChanged();\n            }\n\n            @Override\n            public void onCancelled(DatabaseError databaseError) {\n                // Getting Post failed, log a message\n                Log.w(\"FetchError\", \"loadPost:onCancelled\", databaseError.toException());\n            }\n        };\n        reference.addValueEventListener(postListener);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/ProjectView.java b/app/src/main/java/com/example/finalproject/ProjectView.java
+--- a/app/src/main/java/com/example/finalproject/ProjectView.java	(revision 041bebab2ec24c980753a2e62d4c999595115df8)
++++ b/app/src/main/java/com/example/finalproject/ProjectView.java	(date 1639644169509)
+@@ -71,7 +71,6 @@
+                     Task task = dsp.getValue(Task.class);
+                     TasksKey.add(dsp.getKey());
+                     taskList.add(task); //add result into array list
+-
+                 }
+                 taskAdapter.notifyDataSetChanged();
+             }
