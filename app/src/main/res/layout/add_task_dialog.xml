@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="600dp"
-    android:background="@drawable/rectangle_dialog"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="555dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-96dp">
 
@@ -32,11 +31,9 @@
 
         <DatePicker
             android:id="@+id/datePicker"
-            style="@style/datepicker"
             android:layout_width="246dp"
             android:layout_height="100dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/rectangle_2"
             android:calendarTextColor="@color/black"
             android:calendarViewShown="false"
             android:datePickerMode="spinner"
@@ -112,27 +109,25 @@
             android:id="@+id/cancel_dialog_btn"
             android:layout_width="70dp"
             android:layout_height="29dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginBottom="56dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginBottom="40dp"
             android:background="?android:attr/selectableItemBackground"
             android:text="@android:string/cancel"
             android:textColor="@android:color/holo_red_light"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/add_dialog_btn"
             android:layout_width="70dp"
             android:layout_height="29dp"
-            android:layout_marginBottom="56dp"
+            android:layout_marginBottom="40dp"
             android:background="?android:attr/selectableItemBackground"
             android:text="Add"
             android:textColor="@color/design_default_color_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.798"
+            app:layout_constraintHorizontal_bias="0.761"
             app:layout_constraintStart_toEndOf="@+id/cancel_dialog_btn" />
 
         <EditText
