@@ -24,6 +24,12 @@ public class FirebaseOperator {
         projectRef.child("projectName").setValue(newTitle);
         return true;
     }
+    boolean deleteTasks(String projectKey, String tasksKey){
+        DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
+                child(user.getUid()).child("projects").child(projectKey).child("tasks").child(tasksKey);
+        taskRef.removeValue();
+        return true;
+    }
 
     boolean updateTasks(String projectKey, String tasksKey, boolean checkBox){
         DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").

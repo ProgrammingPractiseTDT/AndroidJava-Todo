@@ -125,6 +125,14 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         });
     }
 
+    private List<String> getMenuItem(){
+        List<String> menu = new ArrayList<String>();
+        menu.add("Today");
+        menu.add("Important");
+        menu.add("Common Task");
+
+        return menu;
+    }
 
     public void showAddProjectDialog(View view) {
         AddProjectDialog cdd=new AddProjectDialog(HomeScreen.this);
@@ -150,9 +158,8 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
                     Project project = dsp.getValue(Project.class);
                     ProjectKeys.add(dsp.getKey());
                     ProjectNames.add(project); //add result into array list
-                    projectAdapter.notifyDataSetChanged();
                 }
-                // ..
+                projectAdapter.notifyDataSetChanged();
             }
 
             @Override

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     static ArrayList<Task> tasks;
     private ArrayList<String> keys;
-    private String ProjectKey;
+    public static String ProjectKey;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView taskName,dateTime, description, fullTitle;
@@ -45,6 +45,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                     else{
                         layoutExpand.setVisibility(View.GONE);
                     }
+                }
+            });
+            view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    LongClickTaskDialog epd = new LongClickTaskDialog(view.getContext(), ProjectKey, taskName.getTag().toString());
+                    epd.show();
+                    return true;
                 }
             });
         }
@@ -107,6 +115,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         viewHolder.getFullTitle().setText(tasks.get(position).getTitle());
         viewHolder.getCheckingStatus().setChecked(tasks.get(position).isCheckingStatus());
         String key = keys.get(position);
+        viewHolder.getTaskName().setTag(key);
         viewHolder.getCheckingStatus().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
