@@ -1,0 +1,142 @@
+Index: app/src/main/java/com/example/finalproject/EditProjectDialog.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\n\nimport android.app.Activity;\nimport android.app.Dialog;\nimport android.content.Context;\nimport android.graphics.Color;\nimport android.graphics.drawable.ColorDrawable;\nimport android.os.Bundle;\nimport android.view.View;\nimport android.view.Window;\nimport android.widget.Button;\nimport android.widget.EditText;\nimport android.widget.RelativeLayout;\n\nimport androidx.constraintlayout.widget.ConstraintLayout;\nimport androidx.core.content.ContextCompat;\n\nimport com.google.firebase.auth.FirebaseAuth;\nimport com.google.firebase.auth.FirebaseUser;\nimport com.google.firebase.database.DatabaseReference;\nimport com.google.firebase.database.FirebaseDatabase;\n\npublic class EditProjectDialog extends Dialog implements\n        android.view.View.OnClickListener {\n\n    public android.content.Context c;\n    public Dialog d;\n    public Button yes, no;\n    private  String projectKey;\n    private Button red, yellow, green, orange;\n    public EditProjectDialog(Context a, String projectKey) {\n        super(a);\n        this.c = a;\n        this.projectKey = projectKey;\n    }\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n\n        requestWindowFeature(Window.FEATURE_NO_TITLE);\n        setContentView(R.layout.edit_project_dialog);\n        ConstraintLayout dialoglayout = (ConstraintLayout) findViewById(R.id.layout_dialog);\n        red = findViewById(R.id.btn_redButton);\n        yellow = findViewById(R.id.btn_yellowButton);\n        orange = findViewById(R.id.btn_orangeButton);\n        green = findViewById(R.id.btn_greenButton);\n        yes = (Button) findViewById(R.id.add_dialog_btn);\n        no = (Button) findViewById(R.id.cancel_dialog_btn);\n        red.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                dialoglayout.setBackgroundColor(Color.parseColor(\"#EF5959\"));\n            }\n        });\n        orange.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                dialoglayout.setBackgroundColor(Color.parseColor(\"#FF5722\"));\n            }\n        });\n        green.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                dialoglayout.setBackgroundColor(Color.parseColor(\"#8BC34A\"));\n            }\n        });\n        yellow.setOnClickListener(new View.OnClickListener() {\n            @Override\n            public void onClick(View view) {\n                dialoglayout.setBackgroundColor(Color.parseColor(\"#FFEB3B\"));\n            }\n        });\n        yes.setOnClickListener(this);\n        no.setOnClickListener(this);\n    }\n\n    @Override\n    public void onClick(View v) {\n        switch (v.getId()) {\n            case R.id.add_dialog_btn:\n                EditText title_field = findViewById(R.id.project_title_input);\n                String title = title_field.getText().toString();\n                ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);\n                ColorDrawable viewColor = (ColorDrawable) lay.getBackground();\n                int colorId = viewColor.getColor();\n                if (title.isEmpty()){\n                    title_field.setError(\"Please enter project title\");\n                    title_field.requestFocus();\n                }\n                else{\n\n                    addProject(title, colorId);\n                    dismiss();\n                }\n                break;\n            case R.id.cancel_dialog_btn:\n                dismiss();\n                break;\n            default:\n                break;\n        }\n    }\n\n    private void addProject(String title, int color) {\n\n\n        Project project = new Project(title, color);\n        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();\n        String uid = \"\";\n        FirebaseAuth auth = FirebaseAuth.getInstance();\n        FirebaseUser user = auth.getCurrentUser();\n        if (user != null) {\n            uid = user.getUid();\n        }\n        DatabaseReference ref = rootRef.child(\"User\").child(uid).child(\"projects\");\n        ref.push().setValue(project);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/EditProjectDialog.java b/app/src/main/java/com/example/finalproject/EditProjectDialog.java
+--- a/app/src/main/java/com/example/finalproject/EditProjectDialog.java	(revision c7aef54a933d8048a80071e908431214ee3dcc50)
++++ b/app/src/main/java/com/example/finalproject/EditProjectDialog.java	(date 1639640577925)
+@@ -80,18 +80,18 @@
+             case R.id.add_dialog_btn:
+                 EditText title_field = findViewById(R.id.project_title_input);
+                 String title = title_field.getText().toString();
+-                ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);
+-                ColorDrawable viewColor = (ColorDrawable) lay.getBackground();
+-                int colorId = viewColor.getColor();
+-                if (title.isEmpty()){
+-                    title_field.setError("Please enter project title");
+-                    title_field.requestFocus();
+-                }
+-                else{
+-
+-                    addProject(title, colorId);
++//                ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);
++//                ColorDrawable viewColor = (ColorDrawable) lay.getBackground();
++//                int colorId = viewColor.getColor();
++//                if (title.isEmpty()){
++//                    title_field.setError("Please enter project title");
++//                    title_field.requestFocus();
++//                }
++//                else{
++                    FirebaseOperator firebaseOperator = new FirebaseOperator();
++                    firebaseOperator.updateProject(projectKey,title);
+                     dismiss();
+-                }
++//                }
+                 break;
+             case R.id.cancel_dialog_btn:
+                 dismiss();
+Index: app/src/main/java/com/example/finalproject/FirebaseOperator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\n\nimport com.google.firebase.auth.FirebaseAuth;\nimport com.google.firebase.auth.FirebaseUser;\nimport com.google.firebase.database.DatabaseReference;\nimport com.google.firebase.database.FirebaseDatabase;\n\npublic class FirebaseOperator {\n    private FirebaseUser user;\n\n    public FirebaseOperator(){\n        user = FirebaseAuth.getInstance().getCurrentUser();\n    }\n\n    boolean deleteProjectByProjectKey(String projectKey) {\n        DatabaseReference projectref = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\").child(projectKey);\n        projectref.removeValue();\n        return true;\n    }\n\n\n    boolean updateProject(String projectKey, String newTitle, String newColor){\n        DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\").child(projectKey);\n        projectRef.child(\"projectName\").setValue(newTitle);\n        return true;\n    }\n\n//    Project getProjectByKey(String projectKey){\n//        DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\").child(projectKey);\n//\n//    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/FirebaseOperator.java b/app/src/main/java/com/example/finalproject/FirebaseOperator.java
+--- a/app/src/main/java/com/example/finalproject/FirebaseOperator.java	(revision c7aef54a933d8048a80071e908431214ee3dcc50)
++++ b/app/src/main/java/com/example/finalproject/FirebaseOperator.java	(date 1639642110720)
+@@ -1,7 +1,14 @@
+ package com.example.finalproject;
+ 
++import android.util.Log;
++
++import androidx.annotation.NonNull;
++
++import com.google.android.gms.tasks.OnCompleteListener;
++import com.google.android.gms.tasks.OnSuccessListener;
+ import com.google.firebase.auth.FirebaseAuth;
+ import com.google.firebase.auth.FirebaseUser;
++import com.google.firebase.database.DataSnapshot;
+ import com.google.firebase.database.DatabaseReference;
+ import com.google.firebase.database.FirebaseDatabase;
+ 
+@@ -19,14 +26,21 @@
+     }
+ 
+ 
+-    boolean updateProject(String projectKey, String newTitle, String newColor){
++    boolean updateProject(String projectKey, String newTitle/*, String newColor*/){
+         DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
+         projectRef.child("projectName").setValue(newTitle);
+         return true;
+     }
+ 
+-//    Project getProjectByKey(String projectKey){
+-//        DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
+-//
+-//    }
++    Project getProjectByKey(String projectKey){
++        final Project[] output = {new Project()};
++        DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
++        projectRef.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
++            @Override
++            public void onSuccess(DataSnapshot dataSnapshot) {
++                output[0] = dataSnapshot.getValue(Project.class);
++            }
++        });
++        return output[0];
++    }
+ }
+Index: app/src/main/res/layout/activity_project_view.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:background=\"@drawable/mainscreen\"\n    tools:context=\".ProjectView\">\n    <TextView\n        android:id=\"@+id/txt_projectName\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"36dp\"\n        android:text=\"My project\"\n        android:textColor=\"@color/white\"\n        android:textSize=\"20sp\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.498\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\"></TextView>\n\n    <androidx.recyclerview.widget.RecyclerView\n        android:id=\"@+id/task_recycler_view\"\n        android:layout_width=\"337dp\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"1dp\"\n        android:layout_marginTop=\"36dp\"\n        android:layout_marginEnd=\"1dp\"\n        app:layoutManager=\"LinearLayoutManager\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.491\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/txt_projectName\" />\n\n    <androidx.appcompat.widget.AppCompatButton\n        android:id=\"@+id/add_task_btn\"\n        android:layout_width=\"72dp\"\n        android:layout_height=\"68dp\"\n        android:layout_marginStart=\"296dp\"\n        android:layout_marginTop=\"572dp\"\n        android:layout_marginEnd=\"16dp\"\n        android:onClick=\"addTask\"\n        android:background=\"@drawable/add_task_btn_background\"\n        android:textColor=\"@color/black\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"1.0\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/txt_projectName\" />\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_project_view.xml b/app/src/main/res/layout/activity_project_view.xml
+--- a/app/src/main/res/layout/activity_project_view.xml	(revision c7aef54a933d8048a80071e908431214ee3dcc50)
++++ b/app/src/main/res/layout/activity_project_view.xml	(date 1639642348602)
+@@ -36,15 +36,12 @@
+         android:id="@+id/add_task_btn"
+         android:layout_width="72dp"
+         android:layout_height="68dp"
+-        android:layout_marginStart="296dp"
+-        android:layout_marginTop="572dp"
+-        android:layout_marginEnd="16dp"
+-        android:onClick="addTask"
++        android:layout_marginEnd="36dp"
++        android:layout_marginBottom="36dp"
+         android:background="@drawable/add_task_btn_background"
++        android:onClick="addTask"
+         android:textColor="@color/black"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="1.0"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/txt_projectName" />
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent" />
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"DesignSurface\">\n    <option name=\"filePathToZoomLevelMap\">\n      <map>\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/drawable/circle_color_choice2.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/drawable/project_item_shape.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/drawable/sk_line_divider.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/font/aguafina_script.xml\" value=\"0.2328125\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/activity_project_view.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/activity_signup.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/add_project_dialog.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/add_task_dialog.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/home_screen_layout.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/login_layout.xml\" value=\"0.33\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/project_item_layout.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/starting_screen.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/task_item_layout.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/add_btn.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/custom_border.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/item_border_radius.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/main.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/project_item_shape.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_1.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/search_btn.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_main.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml\" value=\"0.33\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/layout_popup_menu.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml\" value=\"0.33\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_screen.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/project_item_layout.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/signup_layout.xml\" value=\"0.20520833333333333\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml\" value=\"0.27943840579710144\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/menu/popup_menu.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"app/src/main/res/drawable-v24/ic_launcher_foreground.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/add.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/add_btn.xml\" value=\"0.13288288288288289\" />\n        <entry key=\"app/src/main/res/drawable/add_task_btn_background.xml\" value=\"0.1009009009009009\" />\n        <entry key=\"app/src/main/res/drawable/add_task_dialog.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/background.xml\" value=\"0.16666666666666666\" />\n        <entry key=\"app/src/main/res/drawable/cancel.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/circle_color_choice.xml\" value=\"0.13288288288288289\" />\n        <entry key=\"app/src/main/res/drawable/circle_color_choice2.xml\" value=\"0.13288288288288289\" />\n        <entry key=\"app/src/main/res/drawable/circle_color_choice3.xml\" value=\"0.13288288288288289\" />\n        <entry key=\"app/src/main/res/drawable/circle_color_choice4.xml\" value=\"0.13288288288288289\" />\n        <entry key=\"app/src/main/res/drawable/ic_launcher_background.xml\" value=\"0.16666666666666666\" />\n        <entry key=\"app/src/main/res/drawable/input_field_rectangle.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/item_border_radius.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/rectangle_1.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/rectangle_2.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/rectangle_dialog.xml\" value=\"0.15729166666666666\" />\n        <entry key=\"app/src/main/res/layout/activity_main.xml\" value=\"0.17708333333333334\" />\n        <entry key=\"app/src/main/res/layout/activity_signup.xml\" value=\"0.25\" />\n        <entry key=\"app/src/main/res/layout/add_project_dialog.xml\" value=\"0.25\" />\n        <entry key=\"app/src/main/res/layout/add_task_dialog.xml\" value=\"0.13145896656534956\" />\n        <entry key=\"app/src/main/res/layout/edit_project_dialog.xml\" value=\"0.19369369369369369\" />\n        <entry key=\"app/src/main/res/layout/login_layout.xml\" value=\"0.25\" />\n        <entry key=\"app/src/main/res/layout/long_touch_option_dialog.xml\" value=\"0.12162162162162163\" />\n        <entry key=\"app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.13145896656534956\" />\n        <entry key=\"app/src/main/res/layout/project_item_layout.xml\" value=\"0.24003623188405798\" />\n      </map>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"Android Studio default JDK\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision c7aef54a933d8048a80071e908431214ee3dcc50)
++++ b/.idea/misc.xml	(date 1639642111058)
+@@ -53,6 +53,7 @@
+         <entry key="app/src/main/res/drawable/rectangle_2.xml" value="0.23148148148148148" />
+         <entry key="app/src/main/res/drawable/rectangle_dialog.xml" value="0.15729166666666666" />
+         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17708333333333334" />
++        <entry key="app/src/main/res/layout/activity_project_view.xml" value="0.12072072072072072" />
+         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.25" />
+         <entry key="app/src/main/res/layout/add_project_dialog.xml" value="0.25" />
+         <entry key="app/src/main/res/layout/add_task_dialog.xml" value="0.13145896656534956" />
