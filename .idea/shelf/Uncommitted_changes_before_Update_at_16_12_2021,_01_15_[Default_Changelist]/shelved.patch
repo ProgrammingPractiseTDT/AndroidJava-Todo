@@ -1,0 +1,613 @@
+Index: app/src/main/java/com/example/finalproject/HomeScreen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\n\nimport androidx.annotation.NonNull;\nimport androidx.annotation.Nullable;\nimport androidx.appcompat.app.AppCompatActivity;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport android.content.DialogInterface;\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.util.Log;\nimport android.view.Gravity;\nimport android.view.MenuItem;\nimport android.view.View;\nimport android.view.Window;\nimport android.widget.ImageView;\nimport android.widget.ListView;\nimport android.widget.PopupMenu;\nimport android.widget.TextView;\nimport android.widget.Toast;\n\nimport com.google.firebase.auth.FirebaseAuth;\nimport com.google.firebase.auth.FirebaseUser;\nimport com.google.firebase.database.DataSnapshot;\nimport com.google.firebase.database.DatabaseError;\nimport com.google.firebase.database.DatabaseReference;\nimport com.google.firebase.database.FirebaseDatabase;\nimport com.google.firebase.database.ValueEventListener;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\nimport io.paperdb.Paper;\n\n\n//test\npublic class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {\n    private ListView lv;\n    private List<String> menu;\n    private TextView userGreeting;\n    private FirebaseUser user;\n    private RecyclerView rv;\n    private ImageView appMenu;\n    ProjectAdapter projectAdapter;\n    ArrayList<String> ProjectNames;\n    ArrayList<String> ProjectKeys;\n    AddProjectDialog cdd;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        requestWindowFeature(Window.FEATURE_NO_TITLE);\n        setContentView(R.layout.home_screen_layout);\n\n\n        //User Greeting\n        userGreeting = findViewById(R.id.txt_userGreeting);\n        user = FirebaseAuth.getInstance().getCurrentUser();\n        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(\"User\");\n        if(user!=null){\n            String uid = user.getUid();\n\n            reference.child(uid).addValueEventListener(new ValueEventListener() {\n                @Override\n                public void onDataChange(@NonNull DataSnapshot snapshot) {\n                    User user = snapshot.getValue(User.class);\n                    userGreeting.setText(\"Hello, \"+user.getFullName()+\"!\");\n                }\n\n                @Override\n                public void onCancelled(@NonNull DatabaseError error) {\n\n                }\n            });\n        }\n\n        //list main menu\n        ProjectNames = new ArrayList<String>();\n        ProjectKeys = new ArrayList<String>();\n        getProjectFromUser();\n        menu = getMenuItem();\n        lv = findViewById(R.id.listview_mainMenu);\n        MainMenuAdapter mainMenuAdapter = new MainMenuAdapter(this, menu);\n        lv.setAdapter(mainMenuAdapter);\n\n\n        rv = findViewById(R.id.project_recycler_view);\n        projectAdapter = new ProjectAdapter(HomeScreen.this, ProjectNames, ProjectKeys);\n        rv.setAdapter(projectAdapter);\n\n        //add project dialog\n        cdd=new AddProjectDialog(HomeScreen.this);\n        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {\n            @Override\n            public void onDismiss(DialogInterface dialog) {\n                getProjectFromUser();\n                projectAdapter.notifyDataSetChanged();\n            }\n        });\n    }\n\n    private List<String> getMenuItem(){\n        List<String> menu = new ArrayList<String>();\n        menu.add(\"Today\");\n        menu.add(\"Important\");\n        menu.add(\"All tasks\");\n\n        return menu;\n    }\n\n    public void showAddProjectDialog(View view) {\n        AddProjectDialog cdd=new AddProjectDialog(HomeScreen.this);\n        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {\n            @Override\n            public void onDismiss(DialogInterface dialog) {\n                getProjectFromUser();\n                projectAdapter.notifyDataSetChanged();\n            }\n        });\n        cdd.show();\n    }\n\n    void getProjectFromUser(){\n        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\");\n        ValueEventListener postListener = new ValueEventListener() {\n            @Override\n            public void onDataChange(DataSnapshot dataSnapshot) {\n                // Get Post object and use the values to update the UI\n                ProjectNames.clear();\n                ProjectKeys.clear();\n                for (DataSnapshot dsp : dataSnapshot.getChildren()) {\n                    Project project = dsp.getValue(Project.class);\n                    ProjectKeys.add(dsp.getKey());\n                    ProjectNames.add(project.getProjectName()); //add result into array list\n                    projectAdapter.notifyDataSetChanged();\n                }\n                // ..\n            }\n\n            @Override\n            public void onCancelled(DatabaseError databaseError) {\n                // Getting Post failed, log a message\n                Log.w(\"FetchError\", \"loadPost:onCancelled\", databaseError.toException());\n            }\n        };\n        reference.addValueEventListener(postListener);\n    }\n\n\n\n    void setProjectNames(ArrayList<String> ProjectNames){\n        this.ProjectNames = ProjectNames;\n    }\n\n    public void showPopup(View view){\n        PopupMenu popupMenu = new PopupMenu(this, view);\n        popupMenu.setOnMenuItemClickListener(this);\n        popupMenu.inflate(R.menu.popup_menu);\n        popupMenu.setGravity(Gravity.END);\n        popupMenu.show();\n    }\n\n    @Override\n    public boolean onMenuItemClick(MenuItem menuItem) {\n        switch (menuItem.getItemId()){\n            case R.id.userProfile:\n                Toast.makeText(this, \"UserProfile\", Toast.LENGTH_SHORT).show();\n                return true;\n            case R.id.settings:\n                Toast.makeText(this, \"UserProfile\", Toast.LENGTH_SHORT).show();\n                return true;\n            case R.id.logoutBtn:\n                Paper.book().destroy();\n                startActivity(new Intent(HomeScreen.this, StartingScreen.class));\n                return true;\n            default:\n                return false;\n        }\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/HomeScreen.java b/app/src/main/java/com/example/finalproject/HomeScreen.java
+--- a/app/src/main/java/com/example/finalproject/HomeScreen.java	(revision 3575bee9743cd90f6b2ab3922a999ec63a0a920d)
++++ b/app/src/main/java/com/example/finalproject/HomeScreen.java	(date 1639575192731)
+@@ -110,13 +110,13 @@
+ 
+     public void showAddProjectDialog(View view) {
+         AddProjectDialog cdd=new AddProjectDialog(HomeScreen.this);
+-        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {
+-            @Override
+-            public void onDismiss(DialogInterface dialog) {
+-                getProjectFromUser();
+-                projectAdapter.notifyDataSetChanged();
+-            }
+-        });
++//        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {
++//            @Override
++//            public void onDismiss(DialogInterface dialog) {
++//                getProjectFromUser();
++//                projectAdapter.notifyDataSetChanged();
++//            }
++//        });
+         cdd.show();
+     }
+ 
+Index: app/src/main/java/com/example/finalproject/ProjectAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\n\nimport android.content.Context;\nimport android.content.Intent;\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.TextView;\n\nimport androidx.annotation.NonNull;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\npublic class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder>{\n    private ArrayList<String> localDataSet;\n    private ArrayList<String> keys;\n\n    public static class ViewHolder extends RecyclerView.ViewHolder {\n        private final TextView textView;\n\n        public ViewHolder(View view) {\n            super(view);\n            // Define click listener for the ViewHolder's View\n\n            textView = (TextView) view.findViewById(R.id.txt_projectName);\n            view.setOnClickListener(new View.OnClickListener() {\n                @Override\n                public void onClick(View v) {\n                     Intent intent = new Intent(view.getContext()  , ProjectView.class);\n                    intent.putExtra(\"Project title\",textView.getText().toString());\n                     intent.putExtra(\"Project key\",textView.getTag().toString());\n                     view.getContext().startActivity(intent);\n                }\n            });\n        }\n\n        public TextView getTextView() {\n            return textView;\n        }\n    }\n\n\n    public ProjectAdapter(Context context, ArrayList<String> dataSet, ArrayList<String> keys) {\n        localDataSet = dataSet;\n        this.keys = keys;\n    }\n\n\n\n\n    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {\n        // Create a new view, which defines the UI of the list item\n        View view = LayoutInflater.from(viewGroup.getContext())\n                .inflate(R.layout.project_item_layout,\n                        viewGroup,\n                        false);\n\n        return new ViewHolder(view);\n    }\n\n\n\n    @Override\n    public void onBindViewHolder(ViewHolder viewHolder, final int position) {\n\n        // Get element from your dataset at this position and replace the\n        // contents of the view with that element\n        viewHolder.getTextView().setText(localDataSet.get(position));\n        viewHolder.getTextView().setTag(keys.get(position));\n//        viewHolder.\n    }\n\n\n    @Override\n    public int getItemCount() {\n        return localDataSet.size();\n    }\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/ProjectAdapter.java b/app/src/main/java/com/example/finalproject/ProjectAdapter.java
+--- a/app/src/main/java/com/example/finalproject/ProjectAdapter.java	(revision 3575bee9743cd90f6b2ab3922a999ec63a0a920d)
++++ b/app/src/main/java/com/example/finalproject/ProjectAdapter.java	(date 1639573811895)
+@@ -1,7 +1,10 @@
+ package com.example.finalproject;
+ 
++import android.app.AlertDialog;
++import android.app.Dialog;
+ import android.content.Context;
+ import android.content.Intent;
++import android.os.Bundle;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
+@@ -34,6 +37,16 @@
+                      view.getContext().startActivity(intent);
+                 }
+             });
++
++            view.setOnLongClickListener(new View.OnLongClickListener() {
++                @Override
++                public boolean onLongClick(View v) {
++                    String ProjectKey = textView.getTag().toString();
++                    LongClickProjectDialog epd = new LongClickProjectDialog(view.getContext(), ProjectKey);
++                    epd.show();
++                    return true;
++                }
++            });
+         }
+ 
+         public TextView getTextView() {
+Index: app/src/main/java/com/example/finalproject/ProjectView.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\n\nimport androidx.appcompat.app.AppCompatActivity;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport android.os.Bundle;\nimport android.util.Log;\nimport android.view.View;\nimport android.widget.TextView;\n\nimport com.google.firebase.auth.FirebaseAuth;\nimport com.google.firebase.auth.FirebaseUser;\nimport com.google.firebase.database.DataSnapshot;\nimport com.google.firebase.database.DatabaseError;\nimport com.google.firebase.database.DatabaseReference;\nimport com.google.firebase.database.FirebaseDatabase;\nimport com.google.firebase.database.ValueEventListener;\n\nimport java.util.ArrayList;\n\npublic class ProjectView extends AppCompatActivity {\n    AddTaskDialog atd;\n    RecyclerView rv;\n    TaskAdapter taskAdapter;\n    ArrayList<Task> taskList;\n    private FirebaseUser user;\n    String ProjectKey;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.activity_project_view);\n        String ProjectTitle;\n        ProjectTitle =getIntent().getExtras().getString(\"Project title\");\n        user = FirebaseAuth.getInstance().getCurrentUser();\n\n        ProjectKey = getIntent().getExtras().getString(\"Project key\");\n        TextView tv = findViewById(R.id.txt_projectName);\n        tv.setText(ProjectTitle);\n\n        //firebase user variable\n\n        //recycler view init\n        rv = findViewById(R.id.task_recycler_view);\n        taskList = new ArrayList<Task>();\n        fetchTaskFromProject(ProjectKey);\n        taskList.add( new Task(\"Shopping\"));\n        taskList.add(new Task(\"Study\"));\n        taskAdapter = new TaskAdapter(this,taskList);\n        rv.setAdapter(taskAdapter);\n        atd = new AddTaskDialog(ProjectView.this, ProjectKey);\n    }\n\n    public void addTask(View view) {\n        //execute when click add task button\n        atd.show();\n    }\n\n    public void fetchTaskFromProject(String ProjectKey){\n        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\").child(ProjectKey).child(\"tasks\");\n        ValueEventListener postListener = new ValueEventListener() {\n            @Override\n            public void onDataChange(DataSnapshot dataSnapshot) {\n                // Get Post object and use the values to update the UI\n                taskList.clear();\n                for (DataSnapshot dsp : dataSnapshot.getChildren()) {\n                    Task task = dsp.getValue(Task.class);\n                    taskList.add(task); //add result into array list\n                    taskAdapter.notifyDataSetChanged();\n                }\n                // ..\n            }\n\n            @Override\n            public void onCancelled(DatabaseError databaseError) {\n                // Getting Post failed, log a message\n                Log.w(\"FetchError\", \"loadPost:onCancelled\", databaseError.toException());\n            }\n        };\n        reference.addValueEventListener(postListener);\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/ProjectView.java b/app/src/main/java/com/example/finalproject/ProjectView.java
+--- a/app/src/main/java/com/example/finalproject/ProjectView.java	(revision 3575bee9743cd90f6b2ab3922a999ec63a0a920d)
++++ b/app/src/main/java/com/example/finalproject/ProjectView.java	(date 1639564398844)
+@@ -44,8 +44,6 @@
+         rv = findViewById(R.id.task_recycler_view);
+         taskList = new ArrayList<Task>();
+         fetchTaskFromProject(ProjectKey);
+-        taskList.add( new Task("Shopping"));
+-        taskList.add(new Task("Study"));
+         taskAdapter = new TaskAdapter(this,taskList);
+         rv.setAdapter(taskAdapter);
+         atd = new AddTaskDialog(ProjectView.this, ProjectKey);
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"DesignSurface\">\n    <option name=\"filePathToZoomLevelMap\">\n      <map>\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/font/aguafina_script.xml\" value=\"0.2328125\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/activity_project_view.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/activity_signup.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/login_layout.xml\" value=\"0.33\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/project_item_layout.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/starting_screen.xml\" value=\"0.20260416666666667\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/add_btn.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/custom_border.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/item_border_radius.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/main.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/project_item_shape.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_1.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/search_btn.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_main.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml\" value=\"0.33\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/layout_popup_menu.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml\" value=\"0.33\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_screen.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/project_item_layout.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/signup_layout.xml\" value=\"0.20520833333333333\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml\" value=\"0.27943840579710144\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/menu/popup_menu.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"app/src/main/res/drawable-v24/ic_launcher_foreground.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/add.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/add_btn.xml\" value=\"0.13288288288288289\" />\n        <entry key=\"app/src/main/res/drawable/add_task_btn_background.xml\" value=\"0.1009009009009009\" />\n        <entry key=\"app/src/main/res/drawable/add_task_dialog.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/background.xml\" value=\"0.16666666666666666\" />\n        <entry key=\"app/src/main/res/drawable/cancel.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/circle_color_choice.xml\" value=\"0.13288288288288289\" />\n        <entry key=\"app/src/main/res/drawable/circle_color_choice2.xml\" value=\"0.13288288288288289\" />\n        <entry key=\"app/src/main/res/drawable/circle_color_choice3.xml\" value=\"0.13288288288288289\" />\n        <entry key=\"app/src/main/res/drawable/circle_color_choice4.xml\" value=\"0.13288288288288289\" />\n        <entry key=\"app/src/main/res/drawable/ic_launcher_background.xml\" value=\"0.16666666666666666\" />\n        <entry key=\"app/src/main/res/drawable/input_field_rectangle.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/item_border_radius.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/rectangle_1.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/rectangle_2.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/rectangle_dialog.xml\" value=\"0.15729166666666666\" />\n        <entry key=\"app/src/main/res/layout/activity_main.xml\" value=\"0.17708333333333334\" />\n        <entry key=\"app/src/main/res/layout/activity_signup.xml\" value=\"0.25\" />\n        <entry key=\"app/src/main/res/layout/add_project_dialog.xml\" value=\"0.25\" />\n        <entry key=\"app/src/main/res/layout/add_task_dialog.xml\" value=\"0.13145896656534956\" />\n        <entry key=\"app/src/main/res/layout/login_layout.xml\" value=\"0.25\" />\n        <entry key=\"app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.13145896656534956\" />\n        <entry key=\"app/src/main/res/layout/project_item_layout.xml\" value=\"0.24003623188405798\" />\n      </map>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"Android Studio default JDK\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 3575bee9743cd90f6b2ab3922a999ec63a0a920d)
++++ b/.idea/misc.xml	(date 1639571455282)
+@@ -48,7 +48,9 @@
+         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.25" />
+         <entry key="app/src/main/res/layout/add_project_dialog.xml" value="0.25" />
+         <entry key="app/src/main/res/layout/add_task_dialog.xml" value="0.13145896656534956" />
++        <entry key="app/src/main/res/layout/edit_project_dialog.xml" value="0.19369369369369369" />
+         <entry key="app/src/main/res/layout/login_layout.xml" value="0.25" />
++        <entry key="app/src/main/res/layout/long_touch_option_dialog.xml" value="0.12162162162162163" />
+         <entry key="app/src/main/res/layout/main_menu_item_layout.xml" value="0.13145896656534956" />
+         <entry key="app/src/main/res/layout/project_item_layout.xml" value="0.24003623188405798" />
+       </map>
+Index: app/src/main/java/com/example/finalproject/EditProjectDialog.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/EditProjectDialog.java b/app/src/main/java/com/example/finalproject/EditProjectDialog.java
+new file mode 100644
+--- /dev/null	(date 1639569434877)
++++ b/app/src/main/java/com/example/finalproject/EditProjectDialog.java	(date 1639569434877)
+@@ -0,0 +1,117 @@
++package com.example.finalproject;
++
++import android.app.Activity;
++import android.app.Dialog;
++import android.graphics.Color;
++import android.graphics.drawable.ColorDrawable;
++import android.os.Bundle;
++import android.view.View;
++import android.view.Window;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.RelativeLayout;
++
++import androidx.constraintlayout.widget.ConstraintLayout;
++import androidx.core.content.ContextCompat;
++
++import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.auth.FirebaseUser;
++import com.google.firebase.database.DatabaseReference;
++import com.google.firebase.database.FirebaseDatabase;
++
++import io.grpc.Context;
++
++public class EditProjectDialog extends Dialog implements
++        android.view.View.OnClickListener {
++
++    public android.content.Context c;
++    public Dialog d;
++    public Button yes, no;
++    private Button red, yellow, green, orange;
++    public EditProjectDialog(android.content.Context a) {
++        super(a);
++        this.c = a;
++    }
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++
++        requestWindowFeature(Window.FEATURE_NO_TITLE);
++        setContentView(R.layout.edit_project_dialog);
++        ConstraintLayout dialoglayout = (ConstraintLayout) findViewById(R.id.layout_dialog);
++        red = findViewById(R.id.btn_redButton);
++        yellow = findViewById(R.id.btn_yellowButton);
++        orange = findViewById(R.id.btn_orangeButton);
++        green = findViewById(R.id.btn_greenButton);
++        yes = (Button) findViewById(R.id.add_dialog_btn);
++        no = (Button) findViewById(R.id.cancel_dialog_btn);
++        red.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                dialoglayout.setBackgroundColor(Color.parseColor("#EF5959"));
++            }
++        });
++        orange.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                dialoglayout.setBackgroundColor(Color.parseColor("#FF5722"));
++            }
++        });
++        green.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                dialoglayout.setBackgroundColor(Color.parseColor("#8BC34A"));
++            }
++        });
++        yellow.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                dialoglayout.setBackgroundColor(Color.parseColor("#FFEB3B"));
++            }
++        });
++        yes.setOnClickListener(this);
++        no.setOnClickListener(this);
++    }
++
++    @Override
++    public void onClick(View v) {
++        switch (v.getId()) {
++            case R.id.add_dialog_btn:
++                EditText title_field = findViewById(R.id.project_title_input);
++                String title = title_field.getText().toString();
++                ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);
++                ColorDrawable viewColor = (ColorDrawable) lay.getBackground();
++                int colorId = viewColor.getColor();
++                if (title.isEmpty()){
++                    title_field.setError("Please enter project title");
++                    title_field.requestFocus();
++                }
++                else{
++
++                    addProject(title, colorId);
++                    dismiss();
++                }
++                break;
++            case R.id.cancel_dialog_btn:
++                dismiss();
++                break;
++            default:
++                break;
++        }
++    }
++
++    private void addProject(String title, int color) {
++
++
++        Project project = new Project(title, color);
++        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
++        String uid = "";
++        FirebaseAuth auth = FirebaseAuth.getInstance();
++        FirebaseUser user = auth.getCurrentUser();
++        if (user != null) {
++            uid = user.getUid();
++        }
++        DatabaseReference ref = rootRef.child("User").child(uid).child("projects");
++        ref.push().setValue(project);
++    }
++}
+\ No newline at end of file
+Index: app/src/main/res/layout/long_touch_option_dialog.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/long_touch_option_dialog.xml b/app/src/main/res/layout/long_touch_option_dialog.xml
+new file mode 100644
+--- /dev/null	(date 1639573454104)
++++ b/app/src/main/res/layout/long_touch_option_dialog.xml	(date 1639573454104)
+@@ -0,0 +1,42 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="300dp"
++    android:background="@drawable/rectangle_dialog"
++    android:orientation="vertical">
++
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:layout_width="match_parent"
++        android:layout_height="match_parent">
++
++
++        <androidx.appcompat.widget.AppCompatButton
++            android:id="@+id/edit_project_btn"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginBottom="96dp"
++            android:text="Edit project"
++            android:background="@color/white"
++            android:textColor="@color/design_default_color_primary"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintHorizontal_bias="0.0"
++            app:layout_constraintStart_toStartOf="parent"></androidx.appcompat.widget.AppCompatButton>
++
++        <androidx.appcompat.widget.AppCompatButton
++            android:id="@+id/delete_project_btn"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:layout_marginTop="80dp"
++            android:background="@color/white"
++            android:text="Delete"
++            android:textColor="@color/light_red"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintHorizontal_bias="1.0"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatButton>
++    </androidx.constraintlayout.widget.ConstraintLayout>
++
++</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/finalproject/FirebaseOperator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/FirebaseOperator.java b/app/src/main/java/com/example/finalproject/FirebaseOperator.java
+new file mode 100644
+--- /dev/null	(date 1639574351655)
++++ b/app/src/main/java/com/example/finalproject/FirebaseOperator.java	(date 1639574351655)
+@@ -0,0 +1,20 @@
++package com.example.finalproject;
++
++import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.auth.FirebaseUser;
++import com.google.firebase.database.DatabaseReference;
++import com.google.firebase.database.FirebaseDatabase;
++
++public class FirebaseOperator {
++    private FirebaseUser user;
++
++    public FirebaseOperator(){
++        user = FirebaseAuth.getInstance().getCurrentUser();
++    }
++
++    boolean deleteProjectByProjectKey(String projectKey) {
++        DatabaseReference projectref = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
++        projectref.removeValue();
++        return true;
++    }
++}
+Index: app/src/main/res/layout/edit_project_dialog.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/edit_project_dialog.xml b/app/src/main/res/layout/edit_project_dialog.xml
+new file mode 100644
+--- /dev/null	(date 1639571341423)
++++ b/app/src/main/res/layout/edit_project_dialog.xml	(date 1639571341423)
+@@ -0,0 +1,193 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="wrap_content"
++    android:layout_height="300dp"
++    android:background="@drawable/rectangle_dialog"
++    android:orientation="vertical">
++
++    <androidx.constraintlayout.widget.ConstraintLayout
++        android:id="@+id/layout_dialog"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        tools:layout_editor_absoluteX="0dp"
++        tools:layout_editor_absoluteY="-96dp">
++
++        <EditText
++            android:id="@+id/project_title_input"
++            android:layout_width="250dp"
++            android:layout_height="57dp"
++            android:layout_marginStart="35dp"
++            android:layout_marginTop="96dp"
++            android:layout_marginEnd="35dp"
++            android:background="@drawable/input_field_rectangle"
++            android:ems="10"
++            android:hint="title"
++            android:inputType="textPersonName"
++            android:textAlignment="center"
++            android:textColor="@color/black"
++            android:textColorHint="@android:color/darker_gray"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintHorizontal_bias="0.493"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent" />
++
++        <androidx.appcompat.widget.AppCompatButton
++            android:id="@+id/cancel_dialog_btn"
++            android:layout_width="80dp"
++            android:layout_height="40dp"
++            android:background="?android:attr/selectableItemBackground"
++            android:elevation="100dp"
++            android:text="@android:string/cancel"
++            android:textColor="@android:color/holo_red_light"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintStart_toStartOf="@+id/horizontalScrollView"
++            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
++            app:layout_constraintVertical_bias="0.393" />
++
++        <androidx.appcompat.widget.AppCompatButton
++            android:id="@+id/add_dialog_btn"
++            android:layout_width="100dp"
++            android:layout_height="40dp"
++            android:background="?android:attr/selectableItemBackground"
++            android:elevation="25dp"
++            android:text="Comfirm"
++            android:textColor="@color/design_default_color_primary"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintEnd_toEndOf="@+id/horizontalScrollView"
++            app:layout_constraintHorizontal_bias="1.0"
++            app:layout_constraintStart_toEndOf="@+id/cancel_dialog_btn"
++            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
++            app:layout_constraintVertical_bias="0.393" />
++
++        <HorizontalScrollView
++            android:id="@+id/horizontalScrollView"
++            android:layout_width="250dp"
++            android:layout_height="60dp"
++            android:backgroundTint="@color/purple_200"
++            android:foregroundGravity="center"
++            app:layout_constraintBottom_toBottomOf="parent"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintHorizontal_bias="0.496"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toBottomOf="@+id/project_title_input"
++            app:layout_constraintVertical_bias="0.215">
++
++            <LinearLayout
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:backgroundTint="@color/purple_200"
++                android:orientation="horizontal">
++
++                <Button
++                    android:id="@+id/btn_redButton"
++                    android:layout_width="50dp"
++                    android:layout_height="50dp"
++                    android:layout_marginLeft="5dp"
++                    android:layout_marginTop="5dp"
++                    android:layout_marginRight="5dp"
++                    android:layout_marginBottom="5dp"
++                    android:backgroundTint="@color/light_red" />
++
++                <Button
++                    android:id="@+id/btn_orangeButton"
++                    android:layout_width="50dp"
++                    android:layout_height="50dp"
++                    android:layout_marginLeft="5dp"
++                    android:layout_marginTop="5dp"
++                    android:layout_marginRight="5dp"
++                    android:layout_marginBottom="5dp"
++                    android:backgroundTint="@color/light_orange" />
++
++                <Button
++                    android:id="@+id/btn_yellowButton"
++                    android:layout_width="50dp"
++                    android:layout_height="50dp"
++                    android:layout_marginLeft="5dp"
++                    android:layout_marginTop="5dp"
++                    android:layout_marginRight="5dp"
++                    android:layout_marginBottom="5dp"
++                    android:backgroundTint="@color/light_yellow" />
++
++                <Button
++                    android:id="@+id/btn_greenButton"
++                    android:layout_width="50dp"
++                    android:layout_height="50dp"
++                    android:layout_marginLeft="5dp"
++                    android:layout_marginTop="5dp"
++                    android:layout_marginRight="5dp"
++                    android:layout_marginBottom="5dp"
++                    android:backgroundTint="@color/light_green" />
++
++                <!--                <androidx.appcompat.widget.AppCompatButton-->
++                <!--                    android:id="@+id/btn_choice_red"-->
++                <!--                    android:layout_width="50dp"-->
++                <!--                    android:layout_height="50dp"-->
++                <!--                    android:layout_marginLeft="5dp"-->
++                <!--                    android:layout_marginTop="10dp"-->
++                <!--                    android:layout_marginRight="5dp"-->
++                <!--                    android:layout_marginBottom="10dp"-->
++                <!--                    android:background="@drawable/circle_color_choice" />-->
++
++                <!--                <androidx.appcompat.widget.AppCompatButton-->
++                <!--                    android:id="@+id/btn_choice_yellow"-->
++                <!--                    android:layout_width="50dp"-->
++                <!--                    android:layout_height="50dp"-->
++                <!--                    android:layout_marginLeft="5dp"-->
++                <!--                    android:layout_marginTop="10dp"-->
++                <!--                    android:layout_marginRight="5dp"-->
++                <!--                    android:layout_marginBottom="10dp"-->
++                <!--                    android:background="@drawable/circle_color_choice2" />-->
++
++                <!--                <androidx.appcompat.widget.AppCompatButton-->
++                <!--                    android:id="@+id/btn_choice_green"-->
++                <!--                    android:layout_width="50dp"-->
++                <!--                    android:layout_height="50dp"-->
++                <!--                    android:layout_marginLeft="5dp"-->
++                <!--                    android:layout_marginTop="10dp"-->
++                <!--                    android:layout_marginRight="5dp"-->
++                <!--                    android:layout_marginBottom="10dp"-->
++                <!--                    android:background="@drawable/circle_color_choice3" />-->
++
++                <!--                <androidx.appcompat.widget.AppCompatButton-->
++                <!--                    android:id="@+id/btn_choice_orange"-->
++                <!--                    android:layout_width="50dp"-->
++                <!--                    android:layout_height="50dp"-->
++                <!--                    android:layout_marginLeft="5dp"-->
++                <!--                    android:layout_marginTop="10dp"-->
++                <!--                    android:layout_marginRight="5dp"-->
++                <!--                    android:layout_marginBottom="10dp"-->
++                <!--                    android:background="@drawable/circle_color_choice4" />-->
++                <!--                <RadioButton-->
++                <!--                    android:layout_width="50dp"-->
++                <!--                    android:layout_height="50dp"-->
++                <!--                    android:scaleX="1"-->
++                <!--                    android:scaleY="1"-->
++                <!--                    android:buttonTint="@color/purple_200"-->
++                <!--                    android:layout_marginTop="10dp"-->
++                <!--                    android:layout_marginBottom="10dp"-->
++                <!--                    android:layout_marginRight="10dp"-->
++                <!--                    android:layout_marginLeft="10dp"/>-->
++
++            </LinearLayout>
++        </HorizontalScrollView>
++
++        <TextView
++            android:id="@+id/txt_edit_project"
++            android:layout_width="wrap_content"
++            android:layout_height="wrap_content"
++            android:layout_marginBottom="36dp"
++            android:text="Edit Project folder"
++            android:textColor="@color/design_default_color_primary"
++            android:textSize="20sp"
++            app:layout_constraintBottom_toTopOf="@+id/project_title_input"
++            app:layout_constraintEnd_toEndOf="parent"
++            app:layout_constraintStart_toStartOf="parent"
++            app:layout_constraintTop_toTopOf="parent"
++            app:layout_constraintVertical_bias="0.804" />
++
++
++    </androidx.constraintlayout.widget.ConstraintLayout>
++
++</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/finalproject/LongClickProjectDialog.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/LongClickProjectDialog.java b/app/src/main/java/com/example/finalproject/LongClickProjectDialog.java
+new file mode 100644
+--- /dev/null	(date 1639574509889)
++++ b/app/src/main/java/com/example/finalproject/LongClickProjectDialog.java	(date 1639574509889)
+@@ -0,0 +1,80 @@
++package com.example.finalproject;
++
++
++import android.app.Activity;
++import android.app.Dialog;
++import android.content.Context;
++import android.graphics.Color;
++import android.graphics.drawable.ColorDrawable;
++import android.os.Bundle;
++import android.view.View;
++import android.view.Window;
++import android.widget.Button;
++import android.widget.EditText;
++import android.widget.RelativeLayout;
++
++import androidx.constraintlayout.widget.ConstraintLayout;
++import androidx.core.content.ContextCompat;
++
++import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.auth.FirebaseUser;
++import com.google.firebase.database.DatabaseReference;
++import com.google.firebase.database.FirebaseDatabase;
++
++public class LongClickProjectDialog extends Dialog implements
++        android.view.View.OnClickListener {
++
++    public android.content.Context c;
++    public Dialog d;
++    public Button delete, edit;
++    private String projectKey;
++    public LongClickProjectDialog(Context a, String projectKey) {
++        super(a);
++        this.c = a;
++        this.projectKey=projectKey;
++    }
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++
++        requestWindowFeature(Window.FEATURE_NO_TITLE);
++        setContentView(R.layout.long_touch_option_dialog);
++
++
++        delete = (Button) findViewById(R.id.delete_project_btn);
++        edit = (Button) findViewById(R.id.edit_project_btn);
++        delete.setOnClickListener(this);
++        edit.setOnClickListener(this);
++    }
++
++    @Override
++    public void onClick(View v) {
++        switch (v.getId()) {
++            case R.id.delete_project_btn:
++                FirebaseOperator firebaseOperator = new FirebaseOperator();
++                firebaseOperator.deleteProjectByProjectKey(projectKey);
++                dismiss();
++                break;
++            case R.id.edit_project_btn:
++                dismiss();
++                break;
++            default:
++                break;
++        }
++    }
++
++    private void addProject(String title, int color) {
++
++
++        Project project = new Project(title, color);
++        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
++        String uid = "";
++        FirebaseAuth auth = FirebaseAuth.getInstance();
++        FirebaseUser user = auth.getCurrentUser();
++        if (user != null) {
++            uid = user.getUid();
++        }
++        DatabaseReference ref = rootRef.child("User").child(uid).child("projects");
++        ref.push().setValue(project);
++    }
++}

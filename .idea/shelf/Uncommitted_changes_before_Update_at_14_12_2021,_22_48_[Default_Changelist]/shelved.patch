@@ -1,0 +1,261 @@
+Index: app/src/main/java/com/example/finalproject/HomeScreen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\n\nimport androidx.annotation.NonNull;\nimport androidx.annotation.Nullable;\nimport androidx.appcompat.app.AppCompatActivity;\nimport androidx.recyclerview.widget.RecyclerView;\n\nimport android.content.DialogInterface;\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.util.Log;\nimport android.view.View;\nimport android.widget.ImageView;\nimport android.widget.ListView;\nimport android.widget.TextView;\n\nimport com.google.firebase.auth.FirebaseAuth;\nimport com.google.firebase.auth.FirebaseUser;\nimport com.google.firebase.database.DataSnapshot;\nimport com.google.firebase.database.DatabaseError;\nimport com.google.firebase.database.DatabaseReference;\nimport com.google.firebase.database.FirebaseDatabase;\nimport com.google.firebase.database.ValueEventListener;\n\nimport java.util.ArrayList;\nimport java.util.List;\n\n\n//test\npublic class HomeScreen extends AppCompatActivity {\n    private ListView lv;\n    private List<String> menu;\n    private TextView userGreeting;\n    private FirebaseUser user;\n    private RecyclerView rv;\n    ProjectAdapter projectAdapter;\n    ArrayList<String> ProjectNames;\n    AddProjectDialog cdd;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        super.onCreate(savedInstanceState);\n        setContentView(R.layout.home_screen_layout);\n\n\n        //User Greeting\n        userGreeting = findViewById(R.id.txt_userGreeting);\n        user = FirebaseAuth.getInstance().getCurrentUser();\n        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(\"User\");\n        if(user!=null){\n            String uid = user.getUid();\n\n            reference.child(uid).addValueEventListener(new ValueEventListener() {\n                @Override\n                public void onDataChange(@NonNull DataSnapshot snapshot) {\n                    User user = snapshot.getValue(User.class);\n                    userGreeting.setText(\"Hello, \"+user.getFullName()+\"!\");\n                }\n\n                @Override\n                public void onCancelled(@NonNull DatabaseError error) {\n\n                }\n            });\n        }\n\n        //list main menu\n        ProjectNames = new ArrayList<String>();\n        getProjectFromUser();\n        menu = getMenuItem();\n        lv = findViewById(R.id.listview_mainMenu);\n        MainMenuAdapter mainMenuAdapter = new MainMenuAdapter(this, menu);\n        lv.setAdapter(mainMenuAdapter);\n\n\n        rv = findViewById(R.id.project_recycler_view);\n        projectAdapter = new ProjectAdapter(HomeScreen.this, ProjectNames);\n        rv.setAdapter(projectAdapter);\n\n        //add project dialog\n        cdd=new AddProjectDialog(HomeScreen.this);\n        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {\n            @Override\n            public void onDismiss(DialogInterface dialog) {\n                getProjectFromUser();\n                projectAdapter.notifyDataSetChanged();\n            }\n        });\n    }\n\n    private List<String> getMenuItem(){\n        List<String> menu = new ArrayList<String>();\n        menu.add(\"Today\");\n        menu.add(\"Important\");\n        menu.add(\"All tasks\");\n\n        return menu;\n    }\n\n    public void showAddProjectDialog(View view) {\n        cdd.show();\n    }\n\n    void getProjectFromUser(){\n        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\");\n        ValueEventListener postListener = new ValueEventListener() {\n            @Override\n            public void onDataChange(DataSnapshot dataSnapshot) {\n                // Get Post object and use the values to update the UI\n                ProjectNames.clear();\n                for (DataSnapshot dsp : dataSnapshot.getChildren()) {\n                    Project project = dsp.getValue(Project.class);\n                    ProjectNames.add(project.getProjectName()); //add result into array list\n                    projectAdapter.notifyDataSetChanged();\n                }\n                // ..\n            }\n\n            @Override\n            public void onCancelled(DatabaseError databaseError) {\n                // Getting Post failed, log a message\n                Log.w(\"FetchError\", \"loadPost:onCancelled\", databaseError.toException());\n            }\n        };\n        reference.addValueEventListener(postListener);\n    }\n\n\n\n    void setProjectNames(ArrayList<String> ProjectNames){\n        this.ProjectNames = ProjectNames;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/HomeScreen.java b/app/src/main/java/com/example/finalproject/HomeScreen.java
+--- a/app/src/main/java/com/example/finalproject/HomeScreen.java	(revision 8186cd1c03c72cc63a847bd56939134ef6940e0b)
++++ b/app/src/main/java/com/example/finalproject/HomeScreen.java	(date 1639496248688)
+@@ -10,6 +10,7 @@
+ import android.os.Bundle;
+ import android.util.Log;
+ import android.view.View;
++import android.view.Window;
+ import android.widget.ImageView;
+ import android.widget.ListView;
+ import android.widget.TextView;
+@@ -40,6 +41,7 @@
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
++        requestWindowFeature(Window.FEATURE_NO_TITLE);
+         setContentView(R.layout.home_screen_layout);
+ 
+ 
+Index: app/src/main/res/layout/activity_project_view.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:background=\"@drawable/project_view_image\"\n    tools:context=\".ProjectView\">\n\n    <TextView\n        android:id=\"@+id/txt_projectName\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginTop=\"36dp\"\n        android:text=\"My project\"\n        android:textColor=\"@color/white\"\n        android:textSize=\"20sp\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.498\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\"></TextView>\n\n    <androidx.recyclerview.widget.RecyclerView\n        android:id=\"@+id/project_recycler_view\"\n        android:layout_width=\"351dp\"\n        android:layout_height=\"594dp\"\n        android:layout_marginStart=\"1dp\"\n        android:layout_marginTop=\"36dp\"\n        android:layout_marginEnd=\"1dp\"\n        app:layoutManager=\"LinearLayoutManager\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.491\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/txt_projectName\" />\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_project_view.xml b/app/src/main/res/layout/activity_project_view.xml
+--- a/app/src/main/res/layout/activity_project_view.xml	(revision 8186cd1c03c72cc63a847bd56939134ef6940e0b)
++++ b/app/src/main/res/layout/activity_project_view.xml	(date 1639495793103)
+@@ -4,9 +4,8 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    android:background="@drawable/project_view_image"
++    android:background="@color/black"
+     tools:context=".ProjectView">
+-
+     <TextView
+         android:id="@+id/txt_projectName"
+         android:layout_width="wrap_content"
+@@ -22,8 +21,8 @@
+ 
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/project_recycler_view"
+-        android:layout_width="351dp"
+-        android:layout_height="594dp"
++        android:layout_width="337dp"
++        android:layout_height="wrap_content"
+         android:layout_marginStart="1dp"
+         android:layout_marginTop="36dp"
+         android:layout_marginEnd="1dp"
+@@ -33,4 +32,18 @@
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/txt_projectName" />
+ 
++    <androidx.appcompat.widget.AppCompatButton
++        android:id="@+id/add_task_btn"
++        android:layout_width="72dp"
++        android:layout_height="68dp"
++        android:layout_marginStart="296dp"
++        android:layout_marginTop="572dp"
++        android:layout_marginEnd="16dp"
++        android:background="@drawable/add_task_btn_background"
++        android:textColor="@color/black"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="1.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/txt_projectName" />
++
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/finalproject/Task.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\n\npublic class Task {\n    private String title;\n    private String description;\n    private String startTime;\n    private String endTime;\n    private String folder;\n    private int priority;\n\n    public Task(String title, String description, String startTime, String endTime, String folder, int priority) {\n        this.title = title;\n        this.description = description;\n        this.startTime = startTime;\n        this.endTime = endTime;\n        this.folder = folder;\n        this.priority = priority;\n    }\n\n    public String getTitle() {\n        return title;\n    }\n\n    public String getDescription() {\n        return description;\n    }\n\n    public String getStartTime() {\n        return startTime;\n    }\n\n    public String getEndTime() {\n        return endTime;\n    }\n\n    public String getFolder() {\n        return folder;\n    }\n\n    public int getPriority() {\n        return priority;\n    }\n\n    public void setTitle(String title) {\n        this.title = title;\n    }\n\n    public void setDescription(String description) {\n        this.description = description;\n    }\n\n    public void setStartTime(String startTime) {\n        this.startTime = startTime;\n    }\n\n    public void setEndTime(String endTime) {\n        this.endTime = endTime;\n    }\n\n    public void setFolder(String folder) {\n        this.folder = folder;\n    }\n\n    public void setPriority(int priority) {\n        this.priority = priority;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/Task.java b/app/src/main/java/com/example/finalproject/Task.java
+--- a/app/src/main/java/com/example/finalproject/Task.java	(revision 8186cd1c03c72cc63a847bd56939134ef6940e0b)
++++ b/app/src/main/java/com/example/finalproject/Task.java	(date 1639496873712)
+@@ -8,6 +8,14 @@
+     private String folder;
+     private int priority;
+ 
++    public Task(String title){
++        this.title = title;
++        this.description = null;
++        this.startTime = null;
++        this.endTime = null;
++        this.folder = null;
++        this.priority = 4;
++    }
+     public Task(String title, String description, String startTime, String endTime, String folder, int priority) {
+         this.title = title;
+         this.description = description;
+Index: app/src/main/java/com/example/finalproject/AddTaskDialog.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/AddTaskDialog.java b/app/src/main/java/com/example/finalproject/AddTaskDialog.java
+new file mode 100644
+--- /dev/null	(date 1639496907887)
++++ b/app/src/main/java/com/example/finalproject/AddTaskDialog.java	(date 1639496907887)
+@@ -0,0 +1,67 @@
++package com.example.finalproject;
++
++import android.app.Activity;
++import android.app.Dialog;
++import android.os.Bundle;
++import android.view.View;
++import android.view.Window;
++import android.widget.Button;
++import android.widget.EditText;
++
++import com.google.firebase.auth.FirebaseAuth;
++import com.google.firebase.auth.FirebaseUser;
++import com.google.firebase.database.DatabaseReference;
++import com.google.firebase.database.FirebaseDatabase;
++
++public class AddTaskDialog extends Dialog implements View.OnClickListener {
++    public Activity c;
++    public Dialog d;
++    public Button yes, no;
++
++    public AddTaskDialog(Activity a) {
++        super(a);
++        this.c = a;
++    }
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        requestWindowFeature(Window.FEATURE_NO_TITLE);
++        setContentView(R.layout.add_task_dialog);
++        yes = (Button) findViewById(R.id.add_dialog_btn);
++        no = (Button) findViewById(R.id.cancel_dialog_btn);
++        yes.setOnClickListener(this);
++        no.setOnClickListener(this);
++    }
++
++    @Override
++    public void onClick(View v) {
++        switch (v.getId()) {
++            case R.id.add_dialog_btn:
++                addTask();
++                dismiss();
++                break;
++            case R.id.cancel_dialog_btn:
++                dismiss();
++                break;
++            default:
++                break;
++        }
++        dismiss();
++    }
++
++    private void addTask() {
++        EditText title_field = findViewById(R.id.project_title_input);
++        String title = title_field.getText().toString();
++        Task task = new Task(title);
++        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
++        String uid = "";
++        FirebaseAuth auth = FirebaseAuth.getInstance();
++        FirebaseUser user = auth.getCurrentUser();
++        if (user != null) {
++            uid = user.getUid();
++        }
++        DatabaseReference ref = rootRef.child("User").child(uid).child("tasks");
++        ref.push().setValue(task);
++    }
++}
+Index: app/src/main/res/drawable/add_task_btn_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/add_task_btn_background.xml b/app/src/main/res/drawable/add_task_btn_background.xml
+new file mode 100644
+--- /dev/null	(date 1639494992882)
++++ b/app/src/main/res/drawable/add_task_btn_background.xml	(date 1639494992882)
+@@ -0,0 +1,21 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="88dp"
++    android:height="82dp"
++    android:viewportWidth="88"
++    android:viewportHeight="82">
++    <path
++        android:fillColor="#A3D5D5E1"
++        android:pathData="M44 0A44 41 0 1 0 44 82 44 41 0 1 0 44 0z"/>
++    <group>
++        <path
++            android:strokeColor="#FF151515"
++            android:strokeWidth="5"
++            android:pathData="M41.5 73L41.5 10"/>
++    </group>
++    <group>
++        <path
++            android:strokeColor="#FF000000"
++            android:strokeWidth="5"
++            android:pathData="M11 41.94L76 41"/>
++    </group>
++</vector>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"DesignSurface\">\n    <option name=\"filePathToZoomLevelMap\">\n      <map>\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/add_btn.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/custom_border.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/input_field_rectangle.xml\" value=\"0.3310810810810811\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/item_border_radius.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/main.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/project_item_shape.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_1.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_2.xml\" value=\"0.3310810810810811\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_3.xml\" value=\"0.3310810810810811\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_4.xml\" value=\"0.3310810810810811\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_dialog.xml\" value=\"0.3310810810810811\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/search_btn.xml\" value=\"0.3828125\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_main.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml\" value=\"0.20520833333333333\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml\" value=\"0.33\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_screen.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/project_item_layout.xml\" value=\"0.36666666666666664\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/signup_layout.xml\" value=\"0.20520833333333333\" />\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml\" value=\"0.27943840579710144\" />\n        <entry key=\"app/src/main/res/drawable-v24/ic_launcher_foreground.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/add.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/add_task_dialog.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/background.xml\" value=\"0.16666666666666666\" />\n        <entry key=\"app/src/main/res/drawable/cancel.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/ic_launcher_background.xml\" value=\"0.16666666666666666\" />\n        <entry key=\"app/src/main/res/drawable/input_field_rectangle.xml\" value=\"0.21666666666666667\" />\n        <entry key=\"app/src/main/res/drawable/item_border_radius.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/project_item_shape.xml\" value=\"0.12395833333333334\" />\n        <entry key=\"app/src/main/res/drawable/rectangle_1.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/rectangle_2.xml\" value=\"0.23148148148148148\" />\n        <entry key=\"app/src/main/res/drawable/rectangle_dialog.xml\" value=\"0.15729166666666666\" />\n        <entry key=\"app/src/main/res/layout/activity_main.xml\" value=\"0.26200873362445415\" />\n        <entry key=\"app/src/main/res/layout/activity_project_layout.xml\" value=\"0.1078125\" />\n        <entry key=\"app/src/main/res/layout/activity_project_view.xml\" value=\"0.20199275362318841\" />\n        <entry key=\"app/src/main/res/layout/activity_signup.xml\" value=\"0.25\" />\n        <entry key=\"app/src/main/res/layout/add_project_dialog.xml\" value=\"0.1\" />\n        <entry key=\"app/src/main/res/layout/add_task_dialog.xml\" value=\"0.13145896656534956\" />\n        <entry key=\"app/src/main/res/layout/home_screen_layout.xml\" value=\"0.10052083333333334\" />\n        <entry key=\"app/src/main/res/layout/login_layout.xml\" value=\"0.25\" />\n        <entry key=\"app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.13145896656534956\" />\n        <entry key=\"app/src/main/res/layout/project_item_layout.xml\" value=\"0.24003623188405798\" />\n      </map>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"Android Studio default JDK\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 8186cd1c03c72cc63a847bd56939134ef6940e0b)
++++ b/.idea/misc.xml	(date 1639495087527)
+@@ -26,9 +26,11 @@
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml" value="0.27943840579710144" />
+         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23148148148148148" />
+         <entry key="app/src/main/res/drawable/add.xml" value="0.21666666666666667" />
++        <entry key="app/src/main/res/drawable/add_task_btn_background.xml" value="0.10720720720720721" />
+         <entry key="app/src/main/res/drawable/add_task_dialog.xml" value="0.21666666666666667" />
+         <entry key="app/src/main/res/drawable/background.xml" value="0.16666666666666666" />
+         <entry key="app/src/main/res/drawable/cancel.xml" value="0.21666666666666667" />
++        <entry key="app/src/main/res/drawable/ellipse.xml" value="0.10720720720720721" />
+         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.16666666666666666" />
+         <entry key="app/src/main/res/drawable/input_field_rectangle.xml" value="0.21666666666666667" />
+         <entry key="app/src/main/res/drawable/item_border_radius.xml" value="0.23148148148148148" />
+@@ -38,7 +40,7 @@
+         <entry key="app/src/main/res/drawable/rectangle_dialog.xml" value="0.15729166666666666" />
+         <entry key="app/src/main/res/layout/activity_main.xml" value="0.26200873362445415" />
+         <entry key="app/src/main/res/layout/activity_project_layout.xml" value="0.1078125" />
+-        <entry key="app/src/main/res/layout/activity_project_view.xml" value="0.20199275362318841" />
++        <entry key="app/src/main/res/layout/activity_project_view.xml" value="0.13357186712849312" />
+         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.25" />
+         <entry key="app/src/main/res/layout/add_project_dialog.xml" value="0.1" />
+         <entry key="app/src/main/res/layout/add_task_dialog.xml" value="0.13145896656534956" />
+Index: app/src/main/res/drawable/ellipse.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/ellipse.xml b/app/src/main/res/drawable/ellipse.xml
+new file mode 100644
+--- /dev/null	(date 1639494625711)
++++ b/app/src/main/res/drawable/ellipse.xml	(date 1639494625711)
+@@ -0,0 +1,9 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="88dp"
++    android:height="82dp"
++    android:viewportWidth="88"
++    android:viewportHeight="82">
++    <path
++        android:fillColor="#A3D5D5E1"
++        android:pathData="M44 0A44 41 0 1 0 44 82 44 41 0 1 0 44 0z"/>
++</vector>
