@@ -1,8 +1,7 @@
-package com.example.finalproject;
+package com.example.finalproject.Dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -10,42 +9,36 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
 
+import com.example.finalproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class EditProjectDialog extends Dialog implements
+public class AddProjectDialog extends Dialog implements
         android.view.View.OnClickListener {
 
-    public android.content.Context c;
+    public Activity c;
     public Dialog d;
     public Button yes, no;
-    private  String projectKey;
-    private Button red, yellow, green, orange;
-    EditText title_field;
-    FirebaseOperator firebaseOperator;
-
-    public EditProjectDialog(Context a, String projectKey) {
+    private Button red, yellow, green, blue;
+    public AddProjectDialog(Activity a) {
         super(a);
         this.c = a;
-        this.projectKey = projectKey;
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        firebaseOperator = new FirebaseOperator();
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.edit_project_dialog);
+        setContentView(R.layout.add_project_dialog);
         ConstraintLayout dialoglayout = (ConstraintLayout) findViewById(R.id.layout_dialog);
         red = findViewById(R.id.btn_redButton);
         yellow = findViewById(R.id.btn_yellowButton);
-        orange = findViewById(R.id.btn_orangeButton);
+        blue = findViewById(R.id.btn_blueButton);
         green = findViewById(R.id.btn_greenButton);
         yes = (Button) findViewById(R.id.add_dialog_btn);
         no = (Button) findViewById(R.id.cancel_dialog_btn);
@@ -55,10 +48,10 @@ public class EditProjectDialog extends Dialog implements
                 dialoglayout.setBackgroundColor(Color.parseColor("#EF5959"));
             }
         });
-        orange.setOnClickListener(new View.OnClickListener() {
+        blue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialoglayout.setBackgroundColor(Color.parseColor("#FF5722"));
+                dialoglayout.setBackgroundColor(Color.parseColor("#29ACF3"));
             }
         });
         green.setOnClickListener(new View.OnClickListener() {
@@ -75,18 +68,12 @@ public class EditProjectDialog extends Dialog implements
         });
         yes.setOnClickListener(this);
         no.setOnClickListener(this);
-
-        title_field = findViewById(R.id.project_title_input);
-        String project;
-        firebaseOperator.autofillProjectEditor(projectKey, title_field, dialoglayout);
-//        title_field.setText(project);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.add_dialog_btn:
-
                 EditText title_field = findViewById(R.id.project_title_input);
                 String title = title_field.getText().toString();
                 ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);
@@ -103,7 +90,7 @@ public class EditProjectDialog extends Dialog implements
                     title_field.requestFocus();
                 }
                 else{
-                    firebaseOperator.updateProject(projectKey,title, colorId);
+                    addProject(title, colorId);
                     dismiss();
                 }
                 break;
@@ -115,4 +102,18 @@ public class EditProjectDialog extends Dialog implements
         }
     }
 
+    private void addProject(String title, int color) {
+
+
+        Project project = new Project(title, color);
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        String uid = "";
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        if (user != null) {
+            uid = user.getUid();
+        }
+        DatabaseReference ref = rootRef.child("User").child(uid).child("projects");
+        ref.push().setValue(project);
+    }
 }

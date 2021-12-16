@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.Adapter;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,7 +12,10 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
+import com.example.finalproject.FirebaseOperator;
+import com.example.finalproject.Dialog.LongClickTaskDialog;
+import com.example.finalproject.R;
+import com.example.finalproject.Dialog.Task;
 
 import java.util.ArrayList;
 

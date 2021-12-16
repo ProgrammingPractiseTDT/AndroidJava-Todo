@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.Dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.finalproject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;

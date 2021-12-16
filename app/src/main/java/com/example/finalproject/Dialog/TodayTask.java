@@ -1,9 +1,11 @@
-package com.example.finalproject;
+package com.example.finalproject.Dialog;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.finalproject.R;
 
 public class TodayTask extends AppCompatActivity {
 

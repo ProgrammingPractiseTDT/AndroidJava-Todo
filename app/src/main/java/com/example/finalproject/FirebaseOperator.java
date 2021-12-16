@@ -5,9 +5,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.example.finalproject.Dialog.Project;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -38,14 +36,14 @@ public class FirebaseOperator {
         projectRef.child("colorID").setValue(newColorID);
         return true;
     }
-    boolean deleteTasks(String projectKey, String tasksKey){
+    public boolean deleteTasks(String projectKey, String tasksKey){
         DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
                 child(user.getUid()).child("projects").child(projectKey).child("tasks").child(tasksKey);
         taskRef.removeValue();
         return true;
     }
 
-    boolean updateTasks(String projectKey, String tasksKey, boolean checkBox){
+    public boolean updateTasks(String projectKey, String tasksKey, boolean checkBox){
         DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
                 child(user.getUid()).child("projects").child(projectKey).child("tasks").child(tasksKey);
         taskRef.child("checkingStatus").setValue(checkBox);

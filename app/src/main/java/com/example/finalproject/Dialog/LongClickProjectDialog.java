@@ -1,25 +1,15 @@
-package com.example.finalproject;
+package com.example.finalproject.Dialog;
 
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.finalproject.FirebaseOperator;
+import com.example.finalproject.R;
 
 public class LongClickProjectDialog extends Dialog implements
         android.view.View.OnClickListener {

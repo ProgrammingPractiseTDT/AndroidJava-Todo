@@ -1,18 +1,17 @@
-package com.example.finalproject;
+package com.example.finalproject.Dialog;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class QuickTask extends AppCompatActivity {
+import com.example.finalproject.R;
 
+public class ImportantTask extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.quick_task_layout);
-
-
+        setContentView(R.layout.important_task_layout);
     }
 }

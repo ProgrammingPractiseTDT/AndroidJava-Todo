@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.Dialog;
 
 public class Task {
     private String title;

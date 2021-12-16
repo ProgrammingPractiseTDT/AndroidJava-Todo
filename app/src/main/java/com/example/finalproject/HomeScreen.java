@@ -1,7 +1,6 @@
 package com.example.finalproject;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,14 +12,19 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalproject.Adapter.ProjectAdapter;
+import com.example.finalproject.Dialog.AddProjectDialog;
+import com.example.finalproject.Dialog.ImportantTask;
+import com.example.finalproject.Dialog.Project;
+import com.example.finalproject.Dialog.QuickTask;
+import com.example.finalproject.Dialog.TodayTask;
+import com.example.finalproject.Dialog.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

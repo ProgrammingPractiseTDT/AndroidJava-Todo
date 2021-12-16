@@ -1,21 +1,20 @@
-package com.example.finalproject;
+package com.example.finalproject.Adapter;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.finalproject.Dialog.LongClickProjectDialog;
+import com.example.finalproject.Dialog.Project;
+import com.example.finalproject.ProjectView;
+import com.example.finalproject.R;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHolder>{
     private ArrayList<Project> localDataSet;
