@@ -28,6 +28,9 @@
             android:exported="true" />
         <activity android:name=".Login" />
         <activity android:name=".HomeScreen" />
+        <activity android:name=".TodayTask"/>
+        <activity android:name=".ImportantTask"/>
+        <activity android:name=".QuickTask"/>
 
         <meta-data
             android:name="preloaded_fonts"

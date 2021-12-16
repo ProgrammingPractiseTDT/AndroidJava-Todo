@@ -25,18 +25,25 @@
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_1.xml" value="0.3828125" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/search_btn.xml" value="0.3828125" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/sk_line_divider.xml" value="0.3310810810810811" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/today_task_shape.xml" value="0.3310810810810811" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_project_view.xml" value="0.3171171171171171" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/add_project_dialog.xml" value="0.17747747747747747" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/add_task_dialog.xml" value="0.17657657657657658" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/edit_project_dialog.xml" value="0.3171171171171171" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml" value="0.33" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/important_task_layout.xml" value="0.3171171171171171" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/layout_popup_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml" value="0.33" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_menu_item_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_screen.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/project_item_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/quick_task_layout.xml" value="0.3171171171171171" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/signup_layout.xml" value="0.20520833333333333" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml" value="0.27943840579710144" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/task_item_layout.xml" value="0.3171171171171171" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/today_task_layout.xml" value="0.3171171171171171" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/menu/popup_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3310810810810811" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23148148148148148" />
