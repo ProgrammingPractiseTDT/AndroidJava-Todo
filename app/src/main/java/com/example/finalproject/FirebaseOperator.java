@@ -25,6 +25,15 @@ public class FirebaseOperator {
         return true;
     }
 
+    boolean updateTasks(String projectKey, String tasksKey, boolean checkBox){
+        DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
+                child(user.getUid()).child("projects").child(projectKey).child("tasks").child(tasksKey);
+        taskRef.child("checkingStatus").setValue(checkBox);
+        return true;
+    }
+
+//    boolean updateTask(String)
+
 //    Project getProjectByKey(String projectKey){
 //        DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
 //

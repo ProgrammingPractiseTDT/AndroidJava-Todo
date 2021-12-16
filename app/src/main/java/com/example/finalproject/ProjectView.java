@@ -28,6 +28,7 @@ public class ProjectView extends AppCompatActivity {
     ArrayList<Task> taskList;
     private FirebaseUser user;
     String ProjectKey;
+    ArrayList<String> TasksKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +43,14 @@ public class ProjectView extends AppCompatActivity {
         tv.setText(ProjectTitle);
 
         //firebase user variable
-
+        TasksKey = new ArrayList<String>();
         //recycler view init
         rv = findViewById(R.id.task_recycler_view);
         taskList = new ArrayList<Task>();
         fetchTaskFromProject(ProjectKey);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), DividerItemDecoration.VERTICAL);
         rv.addItemDecoration(dividerItemDecoration);
-        taskAdapter = new TaskAdapter(this,taskList);
+        taskAdapter = new TaskAdapter(this,taskList, TasksKey, ProjectKey);
         rv.setAdapter(taskAdapter);
         atd = new AddTaskDialog(ProjectView.this, ProjectKey);
     }
@@ -68,6 +69,7 @@ public class ProjectView extends AppCompatActivity {
                 taskList.clear();
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                     Task task = dsp.getValue(Task.class);
+                    TasksKey.add(dsp.getKey());
                     taskList.add(task); //add result into array list
                     taskAdapter.notifyDataSetChanged();
                 }

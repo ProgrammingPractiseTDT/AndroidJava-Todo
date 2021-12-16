@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
@@ -59,7 +60,6 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("User");
         if(user!=null){
             String uid = user.getUid();
-
             reference.child(uid).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -82,7 +82,12 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         lv = findViewById(R.id.listview_mainMenu);
         MainMenuAdapter mainMenuAdapter = new MainMenuAdapter(this, menu);
         lv.setAdapter(mainMenuAdapter);
-
+//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//
+//            }
+//        });
 
         rv = findViewById(R.id.project_recycler_view);
         projectAdapter = new ProjectAdapter(HomeScreen.this, ProjectNames, ProjectKeys);
@@ -103,7 +108,7 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         List<String> menu = new ArrayList<String>();
         menu.add("Today");
         menu.add("Important");
-        menu.add("All tasks");
+        menu.add("Common Task");
 
         return menu;
     }
