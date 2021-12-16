@@ -23,14 +23,14 @@ public class FirebaseOperator {
         user = FirebaseAuth.getInstance().getCurrentUser();
     }
 
-    boolean deleteProjectByProjectKey(String projectKey) {
+    public boolean deleteProjectByProjectKey(String projectKey) {
         DatabaseReference projectref = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
         projectref.removeValue();
         return true;
     }
 
 
-    boolean updateProject(String projectKey, String newTitle, int newColorID){
+    public boolean updateProject(String projectKey, String newTitle, int newColorID){
         DatabaseReference projectRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(projectKey);
         projectRef.child("projectName").setValue(newTitle);
         projectRef.child("colorID").setValue(newColorID);
@@ -57,7 +57,7 @@ public class FirebaseOperator {
 //
 //    }
 
-    boolean autofillProjectEditor(String projectKey, EditText et, ConstraintLayout cl){
+    public boolean autofillProjectEditor(String projectKey, EditText et, ConstraintLayout cl){
         result = "";
         DatabaseReference titleRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid())
                 .child("projects").child(projectKey).child("projectName");
