@@ -72,7 +72,6 @@ public class ProjectView extends AppCompatActivity {
                     Task task = dsp.getValue(Task.class);
                     TasksKey.add(dsp.getKey());
                     taskList.add(task); //add result into array list
-
                 }
                 taskAdapter.notifyDataSetChanged();
             }

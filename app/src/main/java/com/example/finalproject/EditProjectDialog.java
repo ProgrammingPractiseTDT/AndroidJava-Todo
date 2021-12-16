@@ -28,6 +28,9 @@ public class EditProjectDialog extends Dialog implements
     public Button yes, no;
     private  String projectKey;
     private Button red, yellow, green, orange;
+    EditText title_field;
+    FirebaseOperator firebaseOperator;
+
     public EditProjectDialog(Context a, String projectKey) {
         super(a);
         this.c = a;
@@ -36,7 +39,7 @@ public class EditProjectDialog extends Dialog implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        firebaseOperator = new FirebaseOperator();
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.edit_project_dialog);
         ConstraintLayout dialoglayout = (ConstraintLayout) findViewById(R.id.layout_dialog);
@@ -72,26 +75,37 @@ public class EditProjectDialog extends Dialog implements
         });
         yes.setOnClickListener(this);
         no.setOnClickListener(this);
+
+        title_field = findViewById(R.id.project_title_input);
+        String project;
+        firebaseOperator.autofillProjectEditor(projectKey, title_field, dialoglayout);
+//        title_field.setText(project);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.add_dialog_btn:
+
                 EditText title_field = findViewById(R.id.project_title_input);
                 String title = title_field.getText().toString();
-//                ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);
-//                ColorDrawable viewColor = (ColorDrawable) lay.getBackground();
-//                int colorId = viewColor.getColor();
-//                if (title.isEmpty()){
-//                    title_field.setError("Please enter project title");
-//                    title_field.requestFocus();
-//                }
-//                else{
-                    FirebaseOperator firebaseOperator = new FirebaseOperator();
-                    firebaseOperator.updateProject(projectKey,title);
+                ConstraintLayout lay = (ConstraintLayout) findViewById(R.id.layout_dialog);
+                ColorDrawable viewColor = (ColorDrawable) lay.getBackground();
+                int colorId;
+                if (viewColor == null){
+                    colorId = Color.parseColor("#FFFFFF");
+                }
+                else{
+                    colorId = viewColor.getColor();
+                }
+                if (title.isEmpty()){
+                    title_field.setError("Please enter project title");
+                    title_field.requestFocus();
+                }
+                else{
+                    firebaseOperator.updateProject(projectKey,title, colorId);
                     dismiss();
-//                }
+                }
                 break;
             case R.id.cancel_dialog_btn:
                 dismiss();
@@ -101,18 +115,4 @@ public class EditProjectDialog extends Dialog implements
         }
     }
 
-    private void addProject(String title, int color) {
-
-
-        Project project = new Project(title, color);
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        String uid = "";
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
-        if (user != null) {
-            uid = user.getUid();
-        }
-        DatabaseReference ref = rootRef.child("User").child(uid).child("projects");
-        ref.push().setValue(project);
-    }
 }
