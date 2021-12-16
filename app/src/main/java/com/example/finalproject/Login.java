@@ -24,6 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import io.paperdb.Paper;
+
 public class Login extends AppCompatActivity {
     private EditText emailTextField;
     private EditText passwordTextField;
@@ -39,6 +41,8 @@ public class Login extends AppCompatActivity {
         txt_signUp = (TextView) findViewById(R.id.txt_signUp);
         emailTextField = findViewById(R.id.login_email);
         passwordTextField = findViewById(R.id.login_password);
+        cb_rememberMe = (CheckBox) findViewById(R.id.cb_rememberMe);
+
         txt_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,6 +85,14 @@ public class Login extends AppCompatActivity {
             passwordTextField.requestFocus();
         }
         else {
+
+            //if RememberMe checkbox is checked -> store email, password by Paper.book()
+            if(cb_rememberMe.isChecked()){
+                Paper.book().write(SyncingUser.userEmail, email);
+                Paper.book().write(SyncingUser.userPassword, password);
+            }
+
+
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
 
