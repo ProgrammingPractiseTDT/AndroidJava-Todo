@@ -29,6 +29,7 @@ public class QuickTask extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quick_task_layout);
+
         tasks = new ArrayList<>();
         taskKeys = new ArrayList<>();
         firebaseOperator = new FirebaseOperator();
