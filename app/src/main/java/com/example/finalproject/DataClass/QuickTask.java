@@ -33,7 +33,7 @@ public class QuickTask extends AppCompatActivity {
         taskKeys = new ArrayList<>();
         firebaseOperator = new FirebaseOperator();
 
-        taskAdapter = new TaskAdapter(QuickTask.this, tasks, taskKeys, "quick");
+        taskAdapter = new TaskAdapter(QuickTask.this, tasks, taskKeys, "QuickTasks");
         rv = findViewById(R.id.recView_quickTask);
 
 

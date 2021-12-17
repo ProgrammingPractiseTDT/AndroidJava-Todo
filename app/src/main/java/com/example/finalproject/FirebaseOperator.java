@@ -41,7 +41,6 @@ public class FirebaseOperator {
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
 
                     Task task = dsp.getValue(Task.class);
-
                         tasks.add(task);
                         taskKeys.add(dsp.getKey());
                 }
@@ -110,27 +109,26 @@ public class FirebaseOperator {
         });
 
 
-//        //get from quick tasks
-//        DatabaseReference projectsRef2 = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
-//        projectsRef2.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                tasks.clear();
-//                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-//
-//                    Task task = dsp.getValue(Task.class);
-//                    if(task.getEndTime().equals(toDayString)) {
-//                        quickTasks.add(task);
-//                        quickTaskKeys.add(dsp.getKey());
-//                    }
-//                }
-//                taskAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
+        //get from quick tasks
+        DatabaseReference projectsRef2 = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
+        projectsRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                quickTasks.clear();
+                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                    Task task = dsp.getValue(Task.class);
+                    if(task.getEndTime().equals(toDayString)) {
+                        quickTasks.add(task);
+                        quickTaskKeys.add(dsp.getKey());
+                    }
+                }
+                taskAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
         return true;
     }
 
@@ -149,17 +147,33 @@ public class FirebaseOperator {
         return true;
     }
     public boolean deleteTasks(String projectKey, String tasksKey){
-        DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
-                child(user.getUid()).child("projects").child(projectKey).child("tasks").child(tasksKey);
-        taskRef.removeValue();
-        return true;
+        if(projectKey.equals("QuickTasks")){
+            DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
+                    child(user.getUid()).child("QuickTasks").child(tasksKey);
+            taskRef.removeValue();
+                    return true;
+        }
+        else {
+            DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
+                    child(user.getUid()).child("projects").child(projectKey).child("tasks").child(tasksKey);
+            taskRef.removeValue();
+            return true;
+        }
     }
 
     public boolean updateTasks(String projectKey, String tasksKey, boolean checkBox){
-        DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
-                child(user.getUid()).child("projects").child(projectKey).child("tasks").child(tasksKey);
-        taskRef.child("checkingStatus").setValue(checkBox);
-        return true;
+        if(projectKey.equals("QuickTasks")){
+            DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
+                    child(user.getUid()).child("QuickTasks").child(tasksKey);
+            taskRef.child("checkingStatus").setValue(checkBox);
+            return true;
+        }
+        else {
+            DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
+                    child(user.getUid()).child("projects").child(projectKey).child("tasks").child(tasksKey);
+            taskRef.child("checkingStatus").setValue(checkBox);
+            return true;
+        }
     }
 
 //    boolean updateTask(String)
