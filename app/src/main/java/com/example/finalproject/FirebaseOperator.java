@@ -17,10 +17,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class FirebaseOperator {
     private FirebaseUser user;
@@ -31,6 +33,72 @@ public class FirebaseOperator {
         user = FirebaseAuth.getInstance().getCurrentUser();
     }
 
+
+    public void searchAutoFiller(String keyword, MultiProjectTaskAdapter multiProjectTaskAdapter, ArrayList<Task> tasks, ArrayList<String> taskKeys, ArrayList<String> projectKeys,
+                                 TaskAdapter taskAdapter, ArrayList<Task> quickTasks, ArrayList<String> quickTaskKeys){
+
+//        Log.d("now", keyword);
+
+
+            tasks.clear();
+            quickTasks.clear();
+            multiProjectTaskAdapter.notifyDataSetChanged();
+            taskAdapter.notifyDataSetChanged();
+
+
+        if(keyword.length()>0) {
+
+            DatabaseReference projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects");
+            String finalKeyword = keyword.toLowerCase();
+            projectsRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    tasks.clear();
+                    for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                        for (DataSnapshot dsp2 : dsp.child("tasks").getChildren()) {
+                            Task task = dsp2.getValue(Task.class);
+                            String title = task.getTitle().toLowerCase();
+                            String description = task.getDescription().toLowerCase();
+                            if (title.contains(finalKeyword) || description.contains(finalKeyword) ) {
+                                tasks.add(task);
+                                taskKeys.add(dsp2.getKey());
+                                projectKeys.add(dsp.getKey());
+                            }
+                        }
+                    }
+                    multiProjectTaskAdapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
+
+            //get from quick tasks
+            DatabaseReference projectsRef2 = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
+            projectsRef2.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    quickTasks.clear();
+                    for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                        Task task = dsp.getValue(Task.class);
+                        String title = task.getTitle().toLowerCase();
+                        String description = task.getDescription().toLowerCase();
+                        if (title.contains(finalKeyword) || description.contains(finalKeyword)) {
+                            quickTasks.add(task);
+                            quickTaskKeys.add(dsp.getKey());
+                        }
+                    }
+                    taskAdapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
+    }
 
     public void QuickTasksFiller(TaskAdapter taskAdapter, ArrayList<Task> tasks, ArrayList<String> taskKeys) {
         DatabaseReference projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
@@ -90,7 +158,6 @@ public class FirebaseOperator {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 tasks.clear();
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-
                     for (DataSnapshot dsp2 : dsp.child("tasks").getChildren()) {
                         Task task = dsp2.getValue(Task.class);
                         if(task.getEndTime().equals(toDayString)) {
@@ -240,4 +307,6 @@ public class FirebaseOperator {
         });
         return  output[0];
     }
+
+
 }
