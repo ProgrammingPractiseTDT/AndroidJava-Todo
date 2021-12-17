@@ -59,6 +59,7 @@
                 android:layout_width="78dp"
                 android:layout_height="wrap_content"
                 android:text="low"
+                android:checked="true"
                 android:textColor="@color/black" />
 
             <RadioButton

@@ -21,16 +21,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recView_quickTask"
-        android:layout_width="match_parent"
-        android:layout_height="617dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_addQuickTask"
+        android:layout_width="394dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="1dp"
+        app:layoutManager="LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_headingQuickTask" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_addQuickTask"
@@ -39,7 +40,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/add_task_btn_background"
-        android:onClick="addTask"
+        android:onClick="addQuickTask"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
