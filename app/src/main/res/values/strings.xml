@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">To Do Things</string>
+    <string name="confirm_email">By clicking "Sign Up", you are sure that <font color='#ff0000'> your email is available</font>.</string>
 </resources>

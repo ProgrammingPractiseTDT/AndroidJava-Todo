@@ -20,8 +20,8 @@
         <item name="android:textColorPrimary">@color/black</item>>
     </style>
     <style name="appPopupMenu" parent="Widget.AppCompat.PopupMenu">
-        <item name="popupMenuBackground">@color/popupMenuBackground</item>
-        <item name="android:itemBackground">#7916D1</item>
+<!--        <item name="popupMenuBackground">@color/popupMenuBackground</item>-->
+        <item name="android:itemBackground">#AB5EEF</item>
         <item name="android:textColor">#ffffff</item>
     </style>
 </resources>

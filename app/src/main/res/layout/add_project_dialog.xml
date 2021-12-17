@@ -24,7 +24,7 @@
             android:background="@drawable/input_field_white_rectangle"
             android:ems="10"
             android:hint="title"
-            android:inputType="textPersonName"
+            android:inputType="textCapSentences"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textColorHint="@android:color/darker_gray"
