@@ -153,7 +153,7 @@ public class MultiProjectTaskAdapter extends RecyclerView.Adapter<MultiProjectTa
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 boolean checking = viewHolder.getCheckingStatus().isChecked();
                 FirebaseOperator taskUpdate = new FirebaseOperator();
-                taskUpdate.updateTasks(projectKey, taskKey, checking);
+                taskUpdate.updateTasks(projectKeys.get(position), taskKey, checking);
             }
         });
     }
