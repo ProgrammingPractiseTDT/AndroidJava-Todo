@@ -11,4 +11,5 @@
     <color name="light_blue">#29ACF3</color>
     <color name="light_yellow">#FFEB3B</color>
     <color name="light_green">#8BC34A</color>
+    <color name="popupMenuBackground">#7916D1</color>
 </resources>

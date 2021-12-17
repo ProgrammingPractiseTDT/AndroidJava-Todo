@@ -19,10 +19,12 @@ public class TodayTask extends AppCompatActivity {
     public RecyclerView rv;
     public FirebaseOperator firebaseOperator;
     public MultiProjectTaskAdapter multiProjectTaskAdapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.today_task_layout);
+
         tasks = new ArrayList<>();
         taskKeys = new ArrayList<>();
         projectKeys = new ArrayList<>();

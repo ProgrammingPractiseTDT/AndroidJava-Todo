@@ -4,15 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -33,6 +37,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,15 +46,15 @@ import io.paperdb.Paper;
 
 
 //test
-public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
-    private ListView lv;
-    private List<String> menu;
+public class HomeScreen extends AppCompatActivity{
     private TextView userGreeting;
     private FirebaseUser user;
     private RecyclerView rv;
     private Button todayBtn;
     private Button importantBtn;
     private Button quickTaskBtn;
+    private ImageView searchBtn;
+    private ImageView popupMenuBtn;
     ProjectAdapter projectAdapter;
     ArrayList<Project> ProjectNames;
     ArrayList<String> ProjectKeys;
@@ -60,10 +66,10 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.home_screen_layout);
 
+        //Move to TodayTask, ImportantTask, QuickTask
         todayBtn = findViewById(R.id.btn_today);
         importantBtn = findViewById(R.id.btn_important);
         quickTaskBtn = findViewById(R.id.btn_quickTask);
-
         todayBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,9 +89,23 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
             }
         });
 
+        //search Activity
+        searchBtn = findViewById(R.id.img_searchBtn);
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeScreen.this, SearchActivity.class));
+            }
+        });
 
-
-
+        //Popup Menu
+        popupMenuBtn = findViewById(R.id.img_menu);
+        popupMenuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopup(view);
+            }
+        });
 
         //User Greeting
         userGreeting = findViewById(R.id.txt_userGreeting);
@@ -108,7 +128,6 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
             });
         }
 
-        //list main menu
         ProjectNames = new ArrayList<Project>();
         ProjectKeys = new ArrayList<String>();
         getProjectFromUser();
@@ -127,15 +146,6 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
                 projectAdapter.notifyDataSetChanged();
             }
         });
-    }
-
-    private List<String> getMenuItem(){
-        List<String> menu = new ArrayList<String>();
-        menu.add("Today");
-        menu.add("Important");
-        menu.add("Common Task");
-
-        return menu;
     }
 
     public void showAddProjectDialog(View view) {
@@ -182,28 +192,46 @@ public class HomeScreen extends AppCompatActivity implements PopupMenu.OnMenuIte
     }
 
     public void showPopup(View view){
-        PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.setOnMenuItemClickListener(this);
-        popupMenu.inflate(R.menu.popup_menu);
-        popupMenu.setGravity(Gravity.END);
-        popupMenu.show();
-    }
+        Context theme = new ContextThemeWrapper(this, R.style.appPopupMenu);
+        PopupMenu popupMenu = new PopupMenu(theme, popupMenuBtn);
+        popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+             @Override
+             public boolean onMenuItemClick(MenuItem menuItem) {
+                 switch (menuItem.getItemId()){
+                     case R.id.userProfile:
+                         Toast.makeText(HomeScreen.this, "UserProfile", Toast.LENGTH_SHORT).show();
+                         return true;
+                     case R.id.settings:
+                         Toast.makeText(HomeScreen.this, "Settings", Toast.LENGTH_SHORT).show();
+                         return true;
+                     case R.id.logoutBtn:
+                         Paper.book().destroy();
+                         startActivity(new Intent(HomeScreen.this, StartingScreen.class));
+                         return true;
+                     default:
+                         return false;
+             }
+         }
+        });
+        try{
+            Field[] fields = popupMenu.getClass().getDeclaredFields();
+            for(Field field : fields){
+                if("mPopup".equals(field.getName())){
+                    field.setAccessible(true);
+                    Object menuPopupHelper = field.get(popupMenu);
+                    Class<?> classPopupHelper = Class.forName(menuPopupHelper.getClass().getName());
+                    Method setForceIcons = classPopupHelper.getMethod("setForceShowIcon", boolean.class);
+                    setForceIcons.invoke(menuPopupHelper, true);
+                    break;
+                }
+            }
 
-    @Override
-    public boolean onMenuItemClick(MenuItem menuItem) {
-        switch (menuItem.getItemId()){
-            case R.id.userProfile:
-                Toast.makeText(this, "UserProfile", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.settings:
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.logoutBtn:
-                Paper.book().destroy();
-                startActivity(new Intent(HomeScreen.this, StartingScreen.class));
-                return true;
-            default:
-                return false;
+        } catch (Exception e) {
+
+        }finally {
+            popupMenu.show();
         }
     }
+
 }
