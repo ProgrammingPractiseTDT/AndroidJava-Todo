@@ -11,11 +11,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.finalproject.DataClass.QuickTask;
 import com.example.finalproject.DataClass.Task;
-import com.example.finalproject.FirebaseOperator;
 import com.example.finalproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -53,6 +52,7 @@ public class AddTaskDialog extends Dialog implements View.OnClickListener {
         setContentView(R.layout.add_task_dialog);
         yes = (Button) findViewById(R.id.add_dialog_btn);
         no = (Button) findViewById(R.id.cancel_dialog_btn);
+
         yes.setOnClickListener(this);
         no.setOnClickListener(this);
     }
@@ -98,12 +98,18 @@ public class AddTaskDialog extends Dialog implements View.OnClickListener {
         DatePicker datePick = findViewById(R.id.datePicker);
         EditText txtDescription = findViewById(R.id.txt_descriptionEdit);
         String dateFormat = Integer.toString(datePick.getDayOfMonth()) + "-" + Integer.toString(datePick.getMonth() + 1) + "-" + Integer.toString(datePick.getYear());
+
+        //time picker
+        TimePicker timePicker = findViewById(R.id.timePicker);
+        String timeString = Integer.toString(timePicker.getHour())+':'+ Integer.toString(timePicker.getMinute());
+
+
         String title = title_field.getText().toString();
         RadioGroup radGroup = findViewById(R.id.rad_priority);
         int priority_id = radGroup.getCheckedRadioButtonId();
         int priority_number = checkPriority(priority_id);
         String description = txtDescription.getText().toString();
-        Task task = new Task(title,dateFormat,description, priority_number);
+        Task task = new Task(title,dateFormat,timeString,description, priority_number);
         DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
         String uid = "";
         FirebaseAuth auth = FirebaseAuth.getInstance();

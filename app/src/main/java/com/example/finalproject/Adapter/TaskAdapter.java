@@ -29,6 +29,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         private final CheckBox checkingStatus;
         private final ConstraintLayout layoutExpand;
         private final ConstraintLayout Fulllayout;
+        private final TextView clockText;
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
@@ -39,6 +40,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
             description = (TextView) view.findViewById(R.id.txt_description);
             fullTitle = (TextView) view.findViewById(R.id.txt_fullTitle);
             Fulllayout = (ConstraintLayout) view.findViewById(R.id.ly_fullLayout);
+            clockText = (TextView) view.findViewById(R.id.clockText);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -90,6 +92,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         public TextView getDescription() {
             return description;
         }
+        public TextView getClockText(){
+            return clockText;
+        }
     }
 
 
@@ -134,6 +139,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         viewHolder.getDateTime().setText(tasks.get(position).getEndTime());
         viewHolder.getDescription().setText(tasks.get(position).getDescription());
         viewHolder.getFullTitle().setText(tasks.get(position).getTitle());
+        viewHolder.getClockText().setText(tasks.get(position).getOnTime());
         viewHolder.getCheckingStatus().setChecked(tasks.get(position).isCheckingStatus());
         String key = keys.get(position);
         viewHolder.getTaskName().setTag(key);

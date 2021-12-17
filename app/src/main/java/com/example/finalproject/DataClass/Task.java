@@ -5,6 +5,7 @@ public class Task {
     private String description;
     private String startTime;
     private String endTime;
+    private String onTime;
     private String folder;
     private int priority;
     private boolean checkingStatus;
@@ -17,10 +18,11 @@ public class Task {
 //        this.folder = "";
 //        this.priority = 4;
 //    }
-    public Task(String title, String endTime, String description, int priority){
+    public Task(String title, String endTime,String onTime, String description, int priority){
         this.title = title;
         this.description = description;
         this.endTime = endTime;
+        this.onTime = onTime;
         this.folder = "";
         this.priority = priority;
         this.checkingStatus = false;
@@ -91,5 +93,13 @@ public class Task {
 
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+
+    public String getOnTime() {
+        return onTime;
+    }
+
+    public void setOnTime(String onTime) {
+        this.onTime = onTime;
     }
 }
