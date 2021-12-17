@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.finalproject.Adapter.MultiProjectTaskAdapter;
+import com.example.finalproject.Adapter.TaskAdapter;
+import com.example.finalproject.DataClass.QuickTask;
 import com.example.finalproject.DataClass.Task;
 import com.example.finalproject.DataClass.Project;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,7 +32,56 @@ public class FirebaseOperator {
     }
 
 
-    public boolean todayTasksFiller(MultiProjectTaskAdapter multiProjectTaskAdapter, ArrayList<Task> tasks, ArrayList<String> taskKeys, ArrayList<String> projectKeys){
+    public void QuickTasksFiller(TaskAdapter taskAdapter, ArrayList<Task> tasks, ArrayList<String> taskKeys) {
+        DatabaseReference projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
+        projectsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                tasks.clear();
+                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+
+                    Task task = dsp.getValue(Task.class);
+
+                        tasks.add(task);
+                        taskKeys.add(dsp.getKey());
+                }
+                taskAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    public void ImportantTasksFiller(MultiProjectTaskAdapter multiProjectTaskAdapter, ArrayList<Task> tasks, ArrayList<String> taskKeys, ArrayList<String> projectKeys) {
+        DatabaseReference projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects");
+        projectsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                tasks.clear();
+                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+
+                    for (DataSnapshot dsp2 : dsp.child("tasks").getChildren()) {
+                        Task task = dsp2.getValue(Task.class);
+                        if(task.getPriority() == 3) {
+                            tasks.add(task);
+                            taskKeys.add(dsp2.getKey());
+                            projectKeys.add(dsp.getKey());
+                        }
+                    }
+                }
+                multiProjectTaskAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+    }
+
+    public boolean todayTasksFiller(MultiProjectTaskAdapter multiProjectTaskAdapter, ArrayList<Task> tasks, ArrayList<String> taskKeys, ArrayList<String> projectKeys,
+                                    TaskAdapter taskAdapter, ArrayList<Task> quickTasks, ArrayList<String> quickTaskKeys){
         Calendar nowDate = Calendar.getInstance();
         String toDayString = Integer.toString(nowDate.get(5))+"-"+Integer.toString(nowDate.get(2)+1)+"-"+Integer.toString(nowDate.get(1));
         Log.d("now", toDayString);
@@ -38,7 +89,7 @@ public class FirebaseOperator {
         projectsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                tasks.clear();
+                tasks.clear();
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
 
                     for (DataSnapshot dsp2 : dsp.child("tasks").getChildren()) {
@@ -57,6 +108,29 @@ public class FirebaseOperator {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+
+//        //get from quick tasks
+//        DatabaseReference projectsRef2 = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
+//        projectsRef2.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                tasks.clear();
+//                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+//
+//                    Task task = dsp.getValue(Task.class);
+//                    if(task.getEndTime().equals(toDayString)) {
+//                        quickTasks.add(task);
+//                        quickTaskKeys.add(dsp.getKey());
+//                    }
+//                }
+//                taskAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
         return true;
     }
 
@@ -128,5 +202,28 @@ public class FirebaseOperator {
         });
         return true;
 
+    }
+
+
+    public String getQuickTasksProjectKey() {
+        final String[] output = {""};
+        DatabaseReference projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects");
+        projectsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot dsp : dataSnapshot.getChildren()) {
+                    Project project = dsp.getValue(Project.class);
+                    if(project.getProjectName().equals("QuickTask")){
+                        output[0] = project.getProjectName();
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        return  output[0];
     }
 }

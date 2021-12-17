@@ -13,7 +13,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalproject.DataClass.QuickTask;
 import com.example.finalproject.DataClass.Task;
+import com.example.finalproject.FirebaseOperator;
 import com.example.finalproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,11 +28,21 @@ public class AddTaskDialog extends Dialog implements View.OnClickListener {
     public Dialog d;
     public Button yes, no;
     private String ProjectKey;
+    public boolean isCategory = true;
 
     public AddTaskDialog(Activity a, String key) {
         super(a);
         this.c = a;
         ProjectKey = key;
+
+
+    }
+
+    public AddTaskDialog(Activity a) {
+        super(a);
+        this.c = a;
+        ProjectKey = "quick";
+        isCategory = false;
 
     }
 
@@ -99,7 +111,13 @@ public class AddTaskDialog extends Dialog implements View.OnClickListener {
         if (user != null) {
             uid = user.getUid();
         }
-        DatabaseReference ref = rootRef.child("User").child(uid).child("projects").child(ProjectKey).child("tasks");
-        ref.push().setValue(task);
+        if(isCategory == true ) {
+            DatabaseReference ref = rootRef.child("User").child(uid).child("projects").child(ProjectKey).child("tasks");
+            ref.push().setValue(task);
+        }
+        else{
+            DatabaseReference ref = rootRef.child("User").child(uid).child("QuickTasks");
+            ref.push().setValue(task);
+        }
     }
 }
