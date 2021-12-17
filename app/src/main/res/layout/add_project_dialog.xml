@@ -21,7 +21,7 @@
             android:layout_marginStart="35dp"
             android:layout_marginTop="44dp"
             android:layout_marginEnd="35dp"
-            android:background="@drawable/input_field_rectangle"
+            android:background="@drawable/input_field_white_rectangle"
             android:ems="10"
             android:hint="title"
             android:inputType="textPersonName"

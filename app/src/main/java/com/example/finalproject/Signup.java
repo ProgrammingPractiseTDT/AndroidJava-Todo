@@ -145,6 +145,9 @@ public class Signup extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
+                    prgProgress.setVisibility(View.GONE);
+                    txtEmail.setError("Email Existed");
+                    txtEmail.requestFocus();
                     Log.e("Signup","login fail");
                 }
             });;
