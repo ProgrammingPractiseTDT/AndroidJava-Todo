@@ -118,7 +118,7 @@ public class HomeScreen extends AppCompatActivity{
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     User user = snapshot.getValue(User.class);
-                    userGreeting.setText("Hello, "+user.getFullName()+"!");
+                    userGreeting.setText(getString(R.string.hello)+user.getFullName()+"!");
                 }
 
                 @Override

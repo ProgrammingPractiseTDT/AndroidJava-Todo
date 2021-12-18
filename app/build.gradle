@@ -46,4 +46,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-database:20.0.2'
     implementation 'io.github.pilgr:paperdb:2.7.1'
+    implementation 'androidx.preference:preference:1.1.0-alpha02'
 }

@@ -86,11 +86,11 @@ public class Login extends AppCompatActivity {
         String email = emailTextField.getText().toString().trim();
         String password = passwordTextField.getText().toString().trim();
         if (email.isEmpty()){
-            emailTextField.setError("Email is required");
+            emailTextField.setError(getString(R.string.requiredEmail));
             emailTextField.requestFocus();
         }
         else if (password.isEmpty()){
-            passwordTextField.setError("Password is require");
+            passwordTextField.setError(getString(R.string.requiredPassword));
             passwordTextField.requestFocus();
         }
         else {
@@ -114,9 +114,6 @@ public class Login extends AppCompatActivity {
                                 updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
-                                Log.w("error", "signInWithEmail:failure");
-                                Toast.makeText(Login.this, "Authentication failed.\n" + email + "\n" + password + task.getException().getMessage(),
-                                        Toast.LENGTH_SHORT).show();
                                 updateUI(null);
                             }
                         }
@@ -128,12 +125,11 @@ public class Login extends AppCompatActivity {
         Intent intent = new Intent(this, HomeScreen.class);
         intent.putExtra("projects",ProjectNames);
         if(account != null){
-            Toast.makeText(this,"login successfully",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.signInSuccessful),Toast.LENGTH_LONG).show();
             startActivity(intent);
         }else {
-            Toast.makeText(this,"Invalid email or password.",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getString(R.string.wrongAccount),Toast.LENGTH_LONG).show();
         }
-
     }
 
     ArrayList<String> getProjectFromUser(){

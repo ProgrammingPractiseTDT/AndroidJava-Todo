@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Important Tasks"
+        android:text="@string/importantTask"
         android:textColor="@color/black"
         android:textSize="24dp"
         android:textStyle="bold"

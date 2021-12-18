@@ -1,4 +1,84 @@
 <resources>
+    //some texts do not depend on Language setting.
     <string name="app_name">To Do Things</string>
+
+    //Texts in StartingScreen
+    <string name="joinNow">JOIN NOW</string>
+    <string name="alreadySignUp">Already have an account? Sign In!</string>
+
+    //Texts in SignIn
+    <string name="forgotPassword">Forgot Password?</string>
+    <string name="signIn">SIGN IN</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="rememberMe">Remember Me</string>
+    <string name="signInSuccessful">Sign In successfully!</string>
+    <string name="requiredEmail">Email is required</string>
+    <string name="requiredPassword">Password is required</string>
+    <string name="wrongAccount">Invalid email or password.</string>
+
+    //Texts in Forgot Password
+    <string name="requestForgotEmail">Enter your sign in email</string>
+    <string name="cancelBtn">Cancel</string>
+    <string name="submitBtn">Submit</string>
+    <string name="sendingMail">"Sending recovery email...."</string>
+    <string name="doneSent">Finished sending.</string>
+    <string name="errorOccur">Error Occur</string>
+    <string name="cantSent">Can not send recovery email.</string>
+
+    //Texts in SignUp
+    <string name="signUp">SIGN UP</string>
+    <string name="fullName"> Full name</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="backToSignIn">BACK TO SIGN IN</string>
+    <string name="welcomeNewUser">Welcome! Glad to see you here!</string>
     <string name="confirm_email">By clicking "Sign Up", you are sure that <font color='#ff0000'> your email is available</font>.</string>
+    <string name="requiredFullName">Fullname is required</string>
+    <string name="leastCharactersPassword">Password need at least 6 characters</string>
+    <string name="emailFormatError">Please provide valid email</string>
+    <string name="notMatchPassword">Password does not match</string>
+    <string name="signUpSuccessful">Sign up successfully!</string>
+    <string name="signUpFailed">Failed to sign up, please try again later!!!</string>
+    <string name="emailExisted">This email is already existed</string>
+
+    //texts in Home Screen
+    <string name="hello">Hello, </string>
+    <string name="today">TODAY</string>
+    <string name="important">IMPORTANT</string>
+    <string name="quick">QUICKTASK</string>
+    <string name="project">Project</string>
+    <string name="addBtn">ADD</string>
+    <string name="title">Title</string>
+    <string name="todayTask">Today Tasks</string>
+    <string name="importantTask">Important Tasks</string>
+    <string name="quickTask">Quick Tasks</string>
+
+    //texts in Long Touch Option Dialog
+    <string name="deleteBtn">DELETE</string>
+    <string name="editBtn">EDIT</string>
+
+    //texts in Edit Project Dialog
+    <string name="editProject">EDIT PROJECT</string>
+    <string name="confirmBtn">CONFIRM</string>
+
+    //texts in Popup Menu
+    <string name="myProfile">My Profile</string>
+    <string name="settings">Settings</string>
+    <string name="logoutBtn"><font color="#ff0000">Log Out</font></string>
+
+    //texts in Add Task Dialog
+    <string name="onDate">On date:</string>
+    <string name="onTime">At:</string>
+    <string name="priority">Priority:</string>
+    <string name="lowPriority">low</string>
+    <string name="mediumPriority">medium</string>
+    <string name="highPriority">high</string>
+    <string name="description">Description</string>
+
+    //texts in Search screen
+    <string name="searchHint">What are you looking for?</string>
+
+    //texts in Setting screen
+    <string name="language">Language</string>
+
 </resources>
