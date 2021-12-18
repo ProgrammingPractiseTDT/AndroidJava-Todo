@@ -141,6 +141,12 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         viewHolder.getFullTitle().setText(tasks.get(position).getTitle());
         viewHolder.getClockText().setText(tasks.get(position).getOnTime());
         viewHolder.getCheckingStatus().setChecked(tasks.get(position).isCheckingStatus());
+        if(tasks.get(position).isCheckingStatus() == true){
+                viewHolder.getFulllayout().setAlpha((float)0.5);
+        }
+        else{
+            viewHolder.getFulllayout().setAlpha((float)1);
+        }
         String key = keys.get(position);
         viewHolder.getTaskName().setTag(key);
         if (tasks.get(position).getPriority() == 1){

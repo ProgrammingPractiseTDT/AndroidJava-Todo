@@ -145,6 +145,12 @@ public class MultiProjectTaskAdapter extends RecyclerView.Adapter<MultiProjectTa
         viewHolder.getTaskName().setTag(taskKey);
         String projectKey = projectKeys.get(position);
         viewHolder.getDescription().setTag(projectKey);
+        if(tasks.get(position).isCheckingStatus() == true){
+            viewHolder.getFulllayout().setAlpha((float)0.5);
+        }
+        else{
+            viewHolder.getFulllayout().setAlpha((float)1);
+        }
         if (tasks.get(position).getPriority() == 1){
             viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#68ED8C"));
         }

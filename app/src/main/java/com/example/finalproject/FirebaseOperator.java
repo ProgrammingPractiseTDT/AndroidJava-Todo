@@ -35,7 +35,7 @@ public class FirebaseOperator {
 
 
 
-    public void updateTask(String projectKey, String taskKey, String title, String endTime, String onTime, String description, boolean isChecked){
+    public void editTask(String projectKey, String taskKey, String title, String endTime, String onTime, String description, boolean isChecked){
         if(projectKey.equals("QuickTasks")){
             DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
                     child(user.getUid()).child("QuickTasks").child(taskKey);
