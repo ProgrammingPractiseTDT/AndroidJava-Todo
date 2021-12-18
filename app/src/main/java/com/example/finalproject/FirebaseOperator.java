@@ -1,7 +1,11 @@
 package com.example.finalproject;
 
 import android.util.Log;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -33,12 +37,39 @@ public class FirebaseOperator {
         user = FirebaseAuth.getInstance().getCurrentUser();
     }
 
+    public  void autofillFromTask(String projectKey, String taskKey, TextView title, DatePicker datePicker, TextView description, TimePicker timePicker, RadioGroup radioGroup) {
+        DatabaseReference taskRef;
+        if(projectKey.equals("QuickTasks")) {
+            taskRef = FirebaseDatabase.getInstance().getReference().child("User").
+                    child(user.getUid()).child("QuickTasks").child(taskKey);
+        }
+        else {
+            taskRef = FirebaseDatabase.getInstance().getReference().child("User").
+                    child(user.getUid()).child("projects").child(projectKey).child("tasks").child(taskKey);
+        }
 
-    public void editTask(String projectKey, String taskKey, String title, String endTime, String onTime, String description, boolean isChecked){
+            taskRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Task task = snapshot.getValue(Task.class);
+                    title.setText(task.getTitle());
+                    description.setText(task.getDescription());
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+    }
+
+
+
+    public void editTask(String projectKey, String taskKey, String title, String endTime, String onTime, String description, int priority){
         if(projectKey.equals("QuickTasks")){
             DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
                     child(user.getUid()).child("QuickTasks").child(taskKey);
-            taskRef.child("checkingStatus").setValue(isChecked);
+            taskRef.child("priority").setValue(priority);
             taskRef.child("title").setValue(title);
             taskRef.child("endTime").setValue(endTime);
             taskRef.child("onTime").setValue(onTime);
@@ -47,7 +78,7 @@ public class FirebaseOperator {
         else {
             DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
                     child(user.getUid()).child("projects").child(projectKey).child("tasks").child(taskKey);
-            taskRef.child("checkingStatus").setValue(isChecked);
+            taskRef.child("priority").setValue(priority);
             taskRef.child("title").setValue(title);
             taskRef.child("endTime").setValue(endTime);
             taskRef.child("onTime").setValue(onTime);

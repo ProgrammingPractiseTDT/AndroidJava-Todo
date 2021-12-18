@@ -2,11 +2,13 @@ package com.example.finalproject.Dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+import com.example.finalproject.EditTaskActivity;
 import com.example.finalproject.FirebaseOperator;
 import com.example.finalproject.R;
 
@@ -48,8 +50,10 @@ public class LongClickTaskDialog extends Dialog implements
                 dismiss();
                 break;
             case R.id.edit_project_btn:
-                EditProjectDialog editProjectDialog = new EditProjectDialog(v.getContext(), projectKey);
-                editProjectDialog.show();
+                Intent intent = new Intent(c, EditTaskActivity.class);
+                intent.putExtra("projectKey", projectKey);
+                intent.putExtra("taskKey", tasksKey);
+                c.startActivity(intent);
                 dismiss();
                 break;
             default:

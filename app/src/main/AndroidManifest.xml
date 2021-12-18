@@ -34,6 +34,7 @@
         <activity android:name=".DataClass.QuickTask"/>
         <activity android:name=".SearchActivity"/>
         <activity android:name=".SettingsActivity"/>
+        <activity android:name=".EditTaskActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
