@@ -42,6 +42,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import io.paperdb.Paper;
 
 
@@ -206,7 +207,7 @@ public class HomeScreen extends AppCompatActivity{
                          intent.putExtra("User id", user);
                          return true;
                      case R.id.settings:
-                         Toast.makeText(HomeScreen.this, "Settings", Toast.LENGTH_SHORT).show();
+                         startActivity(new Intent(HomeScreen.this, SettingsActivity.class));
                          return true;
                      case R.id.logoutBtn:
                          Paper.book().destroy();

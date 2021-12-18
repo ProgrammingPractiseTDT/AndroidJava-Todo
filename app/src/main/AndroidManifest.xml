@@ -26,12 +26,13 @@
             android:name=".Signup"
             android:exported="true" />
         <activity android:name=".Login" />
-        <activity android:name=".UserProfile"/>
         <activity android:name=".HomeScreen" />
         <activity android:name=".DataClass.TodayTask"/>
         <activity android:name=".DataClass.ImportantTask"/>
         <activity android:name=".DataClass.QuickTask"/>
         <activity android:name=".SearchActivity"/>
+        <activity android:name=".SettingsActivity"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

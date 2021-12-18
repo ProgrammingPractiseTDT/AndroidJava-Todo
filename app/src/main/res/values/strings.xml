@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     //some texts do not depend on Language setting.
     <string name="app_name">To Do Things</string>
@@ -80,5 +81,16 @@
 
     //texts in Setting screen
     <string name="language">Language</string>
+    <string name="languageSummary">Choose your language.</string>
+    <string name="language_key" translatable="false">language_pref</string>
+
+    <string-array name="language_list">
+        <item name="english">English</item>
+        <item name="vietnamese">Tiếng Việt</item>
+    </string-array>
+    <string-array name="language_list_alias">
+        <item name="english">"en"</item>
+        <item name="vietnamese">"vi"</item>
+    </string-array>
 
 </resources>

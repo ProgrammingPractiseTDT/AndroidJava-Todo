@@ -84,10 +84,13 @@ public class AddTaskDialog extends Dialog implements View.OnClickListener {
         String text_priority = radioButton.getText().toString();
         switch (text_priority){
             case "high":
+            case "cao":
                 return 3;
             case "medium":
+            case "vừa":
                 return 2;
             case "low":
+            case "thấp":
                 return 1;
             default:
                 return 0;

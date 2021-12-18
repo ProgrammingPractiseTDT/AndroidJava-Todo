@@ -1,0 +1,85 @@
+
+<resources>
+    <string name="app_name">To Do Things</string>
+
+    //Texts in StartingScreen
+    <string name="joinNow">THAM GIA NGAY</string>
+    <string name="alreadySignUp">Đã có tài khoản? Đăng nhập ngay!</string>
+
+    //Texts in SignIn
+    <string name="forgotPassword">Quên mật khẩu?</string>
+    <string name="signIn">ĐĂNG NHẬP</string>
+    <string name="email">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="rememberMe">Ghi nhớ tài khoản</string>
+    <string name="signInSuccessful">Đăng nhập thành công!</string>
+    <string name="requiredEmail">Email không được để trống</string>
+    <string name="requiredPassword">Mật khẩu không được để trống</string>
+    <string name="wrongAccount">Email hoặc mật khẩu không đúng</string>
+
+    //Texts in Forgot Password
+    <string name="requestForgotEmail">Nhập email của bạn</string>
+    <string name="cancelBtn">THOÁT</string>
+    <string name="submitBtn">GỬI</string>
+    <string name="sendingMail">"Đang gửi email khôi phục...."</string>
+    <string name="doneSent">Đã gửi.</string>
+    <string name="errorOccur">Có lỗi xảy ra</string>
+    <string name="cantSent">Không thể gửi email khôi phục</string>
+
+    //Texts in SignUp
+    <string name="signUp">ĐĂNG KÝ</string>
+    <string name="fullName"> Họ và tên</string>
+    <string name="confirmPassword">Nhập lại mật khẩu</string>
+    <string name="backToSignIn">TRỞ VỀ ĐĂNG NHẬP</string>
+    <string name="welcomeNewUser">Chào mừng! Rất vui khi bạn ở đây!</string>
+    <string name="confirm_email">Bằng cách nhấn vào "Đăng Ký", bạn chắc chắn rằng <font color='#ff0000'> email của mình hợp lệ.</font>.</string>
+    <string name="requiredFullName">Họ và tên không được để trống</string>
+    <string name="leastCharactersPassword">Mật khẩu phải có ít nhất 6 ký tự</string>
+    <string name="emailFormatError">Vui lòng nhập email đúng định dạng</string>
+    <string name="notMatchPassword">Mật khẩu không khớp</string>
+    <string name="signUpSuccessful">Đăng ký thành công!</string>
+    <string name="signUpFailed">Đăng ký thất bại, vui lòng thử lại sau!!!</string>
+    <string name="emailExisted">Email này đã tồn tại</string>
+
+    //texts in Home Screen
+    <string name="hello">Xin chào, </string>
+    <string name="today">HÔM NAY</string>
+    <string name="important">QUAN TRỌNG</string>
+    <string name="quick">TÁC VỤ NHANH</string>
+    <string name="project">Dự án</string>
+    <string name="addBtn">THÊM</string>
+    <string name="title">Tiêu đề</string>
+    <string name="todayTask">Tác vụ hôm nay</string>
+    <string name="importantTask">Tác vụ quan trọng</string>
+    <string name="quickTask">Tác vụ nhanh</string>
+
+    //texts in Long Touch Option Dialog
+    <string name="deleteBtn">XÓA</string>
+    <string name="editBtn">CHỈNH SỬA</string>
+
+    //texts in Edit Project Dialog
+    <string name="editProject">CHỈNH SỬA DỰ ÁN</string>
+    <string name="confirmBtn">XÁC NHẬN</string>
+
+    //texts in Popup Menu
+    <string name="myProfile">Tài khoản của tôi</string>
+    <string name="settings">Thiết lập</string>
+    <string name="logoutBtn"><font color="#ff0000">Đăng xuất</font></string>
+
+    //texts in Add Task Dialog
+    <string name="onDate">Vào ngày:</string>
+    <string name="onTime">Vào lúc:</string>
+    <string name="priority">Độ ưu tiên:</string>
+    <string name="lowPriority">thấp</string>
+    <string name="mediumPriority">vừa</string>
+    <string name="highPriority">cao</string>
+    <string name="description">Mô tả</string>
+
+    //texts in Search screen
+    <string name="searchHint">Bạn đang tìm gì vậy?</string>
+
+    //texts in Setting screen
+    <string name="language">Ngôn ngữ</string>
+    <string name="languageSummary">Chọn ngôn ngữ của bạn</string>
+    <string name="language_key">language_pref</string>
+</resources>
