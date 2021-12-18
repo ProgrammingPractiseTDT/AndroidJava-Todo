@@ -61,7 +61,7 @@ public class AddResetPasswordDialog extends Dialog implements View.OnClickListen
     ProgressDialog loadingBar;
     private void beginRecovery(String email){
         loadingBar = new ProgressDialog(getContext());
-        loadingBar.setMessage("Sending Email....");
+        loadingBar.setMessage(c.getString(R.string.sendingMail));
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
         Log.w("Error",email);
@@ -70,17 +70,17 @@ public class AddResetPasswordDialog extends Dialog implements View.OnClickListen
             public void onComplete(@NonNull Task<Void> task) {
                 loadingBar.dismiss();
                 if(task.isSuccessful()){
-                    Toast.makeText(getContext(),"Done sent", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),c.getString(R.string.doneSent), Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Toast.makeText(getContext(), "Error Occur", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), c.getString(R.string.errorOccur), Toast.LENGTH_LONG).show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 loadingBar.dismiss();
-                Toast.makeText(getContext(),"Error Failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),c.getString(R.string.cantSent), Toast.LENGTH_LONG).show();
             }
         });
     }

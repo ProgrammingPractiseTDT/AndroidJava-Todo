@@ -81,37 +81,37 @@ public class Signup extends AppCompatActivity {
         String confirmPassword = txtCFPassword.getText().toString().trim();
 
         if (fullName.isEmpty()){
-            txtFullName.setError("Fullname is required");
+            txtFullName.setError(getString(R.string.requiredFullName));
             txtFullName.requestFocus();
             return;
         }
 
         if (password.isEmpty()){
-            txtPassword.setError("Password is required");
+            txtPassword.setError(getString(R.string.requiredPassword));
             txtPassword.requestFocus();
             return;
         }
 
         if (password.length() < 6){
-            txtPassword.setError("Password need at least 6 characters");
+            txtPassword.setError(getString(R.string.leastCharactersPassword));
             txtPassword.requestFocus();
             return;
         }
 
         if (email.isEmpty()){
-            txtEmail.setError("Email is required");
+            txtEmail.setError(getString(R.string.requiredEmail));
             txtEmail.requestFocus();
             return;
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            txtEmail.setError("Please provide valid email");
+            txtEmail.setError(getString(R.string.emailFormatError));
             txtEmail.requestFocus();
             return;
         }
 
         if (!confirmPassword.equals(password)){
-            txtCFPassword.setError("Password does not match");
+            txtCFPassword.setError(getString(R.string.notMatchPassword));
             txtCFPassword.requestFocus();
             return;
         }
@@ -131,11 +131,11 @@ public class Signup extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
-                                            Toast.makeText(Signup.this, "User has been sign up successfully", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(Signup.this, getString(R.string.signUpSuccessful), Toast.LENGTH_LONG).show();
                                             getBacktoSignIn();
                                         }else{
                                             Log.e("signup", "createUserWithEmail:failure", task.getException());
-                                            Toast.makeText(Signup.this, "Failed to sign up, please try again later!!!", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(Signup.this, getString(R.string.signUpFailed), Toast.LENGTH_LONG).show();
                                         }
                                         prgProgress.setVisibility(View.GONE);
                                     }
@@ -146,7 +146,7 @@ public class Signup extends AppCompatActivity {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     prgProgress.setVisibility(View.GONE);
-                    txtEmail.setError("Email Existed");
+                    txtEmail.setError(getString(R.string.emailExisted));
                     txtEmail.requestFocus();
                     Log.e("Signup","login fail");
                 }

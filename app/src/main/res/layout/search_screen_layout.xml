@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="24dp"
-        android:queryHint="What are you looking for?"
+        android:queryHint="@string/searchHint"
         android:iconifiedByDefault="false"
         android:layout_marginBottom="24dp"
         android:background="@drawable/search_view_shape"
