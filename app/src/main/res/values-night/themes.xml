@@ -21,23 +21,7 @@
     </style>
     <style name="appPopupMenu" parent="Widget.AppCompat.PopupMenu">
 <!--        <item name="popupMenuBackground">@color/popupMenuBackground</item>-->
-        <item name="android:itemBackground">#B476EA</item>
+        <item name="android:itemBackground">#AB5EEF</item>
         <item name="android:textColor">#ffffff</item>
     </style>
-<!--    <style name="Theme.FinalProject" parent="Theme.MaterialComponents.DayNight.DarkActionBar">-->
-<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
-<!--        <item name="colorPrimary">@color/purple_200</item>-->
-<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
-<!--        <item name="colorOnPrimary">@color/black</item>-->
-<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
-<!--        <item name="colorSecondary">@color/teal_200</item>-->
-<!--        <item name="colorSecondaryVariant">@color/teal_200</item>-->
-<!--        <item name="colorOnSecondary">@color/black</item>-->
-<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
-<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
-<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
-<!--        <item name="windowActionBar">false</item>-->
-<!--        <item name="windowNoTitle">true</item>-->
-<!--        <item name="android:windowFullscreen">true</item>-->
-<!--    </style>-->
 </resources>
