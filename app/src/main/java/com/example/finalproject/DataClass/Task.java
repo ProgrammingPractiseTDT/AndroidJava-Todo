@@ -8,6 +8,7 @@ public class Task {
     private String onTime;
     private String folder;
     private int priority;
+    private int notifyID;
     private boolean checkingStatus;
 
 //    public Task(String title){
@@ -101,5 +102,13 @@ public class Task {
 
     public void setOnTime(String onTime) {
         this.onTime = onTime;
+    }
+
+    public int getNotifyID() {
+        return notifyID;
+    }
+
+    public void setNotifyID(int notifyID) {
+        this.notifyID = notifyID;
     }
 }

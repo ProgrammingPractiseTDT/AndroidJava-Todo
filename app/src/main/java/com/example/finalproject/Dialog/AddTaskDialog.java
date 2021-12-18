@@ -15,11 +15,14 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.finalproject.DataClass.Task;
+import com.example.finalproject.NotificationUtils;
 import com.example.finalproject.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Calendar;
 
 
 public class AddTaskDialog extends Dialog implements View.OnClickListener {
@@ -40,7 +43,7 @@ public class AddTaskDialog extends Dialog implements View.OnClickListener {
     public AddTaskDialog(Activity a) {
         super(a);
         this.c = a;
-        ProjectKey = "quick";
+        ProjectKey = "QuickTasks";
         isCategory = false;
 
     }
@@ -128,5 +131,19 @@ public class AddTaskDialog extends Dialog implements View.OnClickListener {
             DatabaseReference ref = rootRef.child("User").child(uid).child("QuickTasks");
             ref.push().setValue(task);
         }
+
+        //make notification on time
+        NotificationUtils nu = new NotificationUtils(c);
+        Calendar onDate = Calendar.getInstance();
+        onDate.set(Calendar.DAY_OF_MONTH, datePick.getDayOfMonth());
+        onDate.set(Calendar.MONTH, datePick.getMonth());
+        onDate.set(Calendar.YEAR, datePick.getYear());
+        onDate.set(Calendar.HOUR_OF_DAY, timePicker.getHour());
+        onDate.set(Calendar.MINUTE, timePicker.getMinute());
+
+        //Toast.makeText(c,onDate.getTimeInMillis() +" vs"+Calendar.getInstance().getTimeInMillis(), Toast.LENGTH_SHORT).show();
+        nu.setReminder(onDate.getTimeInMillis()-60000*10,
+                title, description, ProjectKey);
+
     }
 }

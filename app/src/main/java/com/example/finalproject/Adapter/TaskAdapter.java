@@ -1,6 +1,10 @@
 package com.example.finalproject.Adapter;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,10 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finalproject.FirebaseOperator;
 import com.example.finalproject.Dialog.LongClickTaskDialog;
+import com.example.finalproject.NotificationUtils;
 import com.example.finalproject.R;
 import com.example.finalproject.DataClass.Task;
+import com.example.finalproject.ReminderBroadcast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     static ArrayList<Task> tasks;
@@ -54,6 +61,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                     else{
                         layoutExpand.setVisibility(View.GONE);
                     }
+
                 }
             });
             view.setOnLongClickListener(new View.OnLongClickListener() {
@@ -123,17 +131,17 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     }
 
     public void sortingDatasetByPriority(){
-        for (int i = 0; i < tasks.size(); i++){
-            for (int j = 0; j < tasks.size() - i - 1; j++){
-                int a = tasks.get(j).getPriority();
-                int b = tasks.get(j+1).getPriority();
-                if(a < b){
-                    Task temp = tasks.get(j);
-                    tasks.set(j, tasks.get(j+1));
-                    tasks.set(j+1, temp);
-                }
-            }
-        }
+//        for (int i = 0; i < tasks.size(); i++){
+//            for (int j = 0; j < tasks.size() - i - 1; j++){
+//                int a = tasks.get(j).getPriority();
+//                int b = tasks.get(j+1).getPriority();
+//                if(a < b){
+//                    Task temp = tasks.get(j);
+//                    tasks.set(j, tasks.get(j+1));
+//                    tasks.set(j+1, temp);
+//                }
+//            }
+//        }
 //        for (int i = 0; i < tasks.size(); i++){
 //            for (int j = 0; j < tasks.size() - i - 1; j++){
 //                boolean a = tasks.get(j).isCheckingStatus();
