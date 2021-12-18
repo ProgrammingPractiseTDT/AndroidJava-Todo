@@ -62,6 +62,20 @@ public class ProjectView extends AppCompatActivity {
         atd.show();
     }
 
+    public ArrayList<Task> sortingTask (ArrayList<Task> taskList){
+        ArrayList<Task> tasks = new ArrayList<Task>();
+        for (int i = 0; i < taskList.size(); i++){
+            if (taskList.get(i).isCheckingStatus() == false){
+                tasks.add(taskList.get(i));
+            }
+        }for (int i = 0; i < taskList.size(); i++){
+            if (taskList.get(i).isCheckingStatus() == true){
+                tasks.add(taskList.get(i));
+            }
+        }
+        return tasks;
+    }
+
     public void fetchTaskFromProject(String ProjectKey){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(ProjectKey).child("tasks");
         ValueEventListener postListener = new ValueEventListener() {
@@ -72,7 +86,10 @@ public class ProjectView extends AppCompatActivity {
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                     Task task = dsp.getValue(Task.class);
                     TasksKey.add(dsp.getKey());
-                    taskList.add(task); //add result into array list
+                    taskList.add(task);
+                }
+                for (int i = 0; i <taskList.size(); i++){
+                    Log.i(taskList.get(i).getTitle(), String.valueOf(taskList.get(i).isCheckingStatus()));
                 }
                 taskAdapter.notifyDataSetChanged();
             }

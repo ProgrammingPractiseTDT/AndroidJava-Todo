@@ -2,6 +2,7 @@ package com.example.finalproject.Adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -117,13 +118,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         return new ViewHolder(view);
     }
 
+    public void sortingDatasetByCheckingStatus(){
 
+    }
 
-    @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
+    public void sortingDatasetByPriority(){
         for (int i = 0; i < tasks.size(); i++){
             for (int j = 0; j < tasks.size() - i - 1; j++){
                 int a = tasks.get(j).getPriority();
@@ -135,6 +134,24 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                 }
             }
         }
+//        for (int i = 0; i < tasks.size(); i++){
+//            for (int j = 0; j < tasks.size() - i - 1; j++){
+//                boolean a = tasks.get(j).isCheckingStatus();
+//                boolean b = tasks.get(j+1).isCheckingStatus();
+//                if (a == true && b == false){
+//                    Task temp = tasks.get(j);
+//                    tasks.set(j,tasks.get(j+1));
+//                    tasks.set(j+1, temp);
+//                }
+//            }
+//        }
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+
+        // Get element from your dataset at this position and replace the
+        // contents of the view with that element
         viewHolder.getTaskName().setText(tasks.get(position).getTitle());
         viewHolder.getDateTime().setText(tasks.get(position).getEndTime());
         viewHolder.getDescription().setText(tasks.get(position).getDescription());
@@ -166,8 +183,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                 taskUpdate.updateTasks(ProjectKey, key, checking);
             }
         });
-    }
 
+
+    }
 
     @Override
     public int getItemCount() {

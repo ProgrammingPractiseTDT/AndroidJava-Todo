@@ -236,6 +236,13 @@ public class FirebaseOperator {
         projectRef.child("colorID").setValue(newColorID);
         return true;
     }
+
+    public boolean updateUserName(String newUserName){
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid());
+        userRef.child("fullName").setValue(newUserName);
+        return true;
+    }
+
     public boolean deleteTasks(String projectKey, String tasksKey){
         if(projectKey.equals("QuickTasks")){
             DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").

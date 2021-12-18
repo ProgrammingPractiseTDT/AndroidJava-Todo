@@ -201,6 +201,9 @@ public class HomeScreen extends AppCompatActivity{
                  switch (menuItem.getItemId()){
                      case R.id.userProfile:
                          Toast.makeText(HomeScreen.this, "UserProfile", Toast.LENGTH_SHORT).show();
+                         Intent intent = new Intent(HomeScreen.this, UserProfile.class);
+                         startActivity(intent);
+                         intent.putExtra("User id", user);
                          return true;
                      case R.id.settings:
                          Toast.makeText(HomeScreen.this, "Settings", Toast.LENGTH_SHORT).show();

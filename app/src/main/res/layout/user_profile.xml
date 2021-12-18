@@ -9,7 +9,30 @@
         android:id="@+id/imageView6"
         android:layout_width="147dp"
         android:layout_height="148dp"
-        app:srcCompat="@drawable/user"
-        tools:layout_editor_absoluteX="132dp"
-        tools:layout_editor_absoluteY="49dp" />
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user" />
+
+    <Button
+        android:id="@+id/btn_changeUserName"
+        android:layout_width="372dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="68dp"
+        android:text="Change User Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+    <Button
+        android:id="@+id/btn_changePassword"
+        android:layout_width="372dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="40dp"
+        android:text="Change Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_changeUserName" />
 </androidx.constraintlayout.widget.ConstraintLayout>
