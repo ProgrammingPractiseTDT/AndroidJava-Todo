@@ -92,5 +92,11 @@
         <item name="english">"en"</item>
         <item name="vietnamese">"vi"</item>
     </string-array>
+    
+    //text in changeUserNameDialog
+    <string name="enterNewUserName">Enter your username here</string>
 
+    //text in changePassword
+    <string name="oldPassword">Old Password</string>
+    <string name="newPassword">New Password</string>
 </resources>

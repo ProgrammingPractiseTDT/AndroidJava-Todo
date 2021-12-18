@@ -82,4 +82,11 @@
     <string name="language">Ngôn ngữ</string>
     <string name="languageSummary">Chọn ngôn ngữ của bạn</string>
     <string name="language_key">language_pref</string>
+
+    //texts in change username dialog
+    <string name="enterNewUserName">Nhập tên mới của bạn vào đây</string>
+
+    //text in changePassword
+    <string name="oldPassword">Mật khẩu cũ</string>
+    <string name="newPassword">Mật khẩu mới</string>
 </resources>

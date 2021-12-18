@@ -27,6 +27,7 @@
             android:exported="true" />
         <activity android:name=".Login" />
         <activity android:name=".HomeScreen" />
+        <activity android:name=".UserProfile"/>
         <activity android:name=".DataClass.TodayTask"/>
         <activity android:name=".DataClass.ImportantTask"/>
         <activity android:name=".DataClass.QuickTask"/>
