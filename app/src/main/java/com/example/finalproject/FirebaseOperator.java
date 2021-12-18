@@ -34,6 +34,29 @@ public class FirebaseOperator {
     }
 
 
+
+    public void updateTask(String projectKey, String taskKey, String title, String endTime, String onTime, String description, boolean isChecked){
+        if(projectKey.equals("QuickTasks")){
+            DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
+                    child(user.getUid()).child("QuickTasks").child(taskKey);
+            taskRef.child("checkingStatus").setValue(isChecked);
+            taskRef.child("title").setValue(title);
+            taskRef.child("endTime").setValue(endTime);
+            taskRef.child("onTime").setValue(onTime);
+            taskRef.child("description").setValue(description);
+        }
+        else {
+            DatabaseReference taskRef = FirebaseDatabase.getInstance().getReference().child("User").
+                    child(user.getUid()).child("projects").child(projectKey).child("tasks").child(taskKey);
+            taskRef.child("checkingStatus").setValue(isChecked);
+            taskRef.child("title").setValue(title);
+            taskRef.child("endTime").setValue(endTime);
+            taskRef.child("onTime").setValue(onTime);
+            taskRef.child("description").setValue(description);
+        }
+    }
+
+
     public void searchAutoFiller(String keyword, MultiProjectTaskAdapter multiProjectTaskAdapter, ArrayList<Task> tasks, ArrayList<String> taskKeys, ArrayList<String> projectKeys,
                                  TaskAdapter taskAdapter, ArrayList<Task> quickTasks, ArrayList<String> quickTaskKeys){
 
