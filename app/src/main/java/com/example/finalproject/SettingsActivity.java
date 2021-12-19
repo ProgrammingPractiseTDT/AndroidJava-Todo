@@ -24,7 +24,7 @@ public class SettingsActivity extends PreferenceActivity {
             @Override
             public boolean onPreferenceChange(Preference preference, Object newValue) {
                 setLocale(SettingsActivity.this,newValue.toString());
-                Intent intent = new Intent(SettingsActivity.this, StartingScreen.class);
+                Intent intent = new Intent(SettingsActivity.this, HomeScreen.class);
                 startActivity(intent);
                 return true;
             }

@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="cursive"
+            android:fontFamily="serif"
             android:text="@string/project"
             android:textColor="@color/white"
             android:textSize="24sp"

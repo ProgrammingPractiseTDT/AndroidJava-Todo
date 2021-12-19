@@ -87,10 +87,12 @@
     <string-array name="language_list">
         <item name="english">English</item>
         <item name="vietnamese">Tiếng Việt</item>
+        <item name="korean">한국인</item>
     </string-array>
     <string-array name="language_list_alias">
         <item name="english">"en"</item>
         <item name="vietnamese">"vi"</item>
+        <item name="korean">"ko"</item>
     </string-array>
     
     //text in changeUserNameDialog

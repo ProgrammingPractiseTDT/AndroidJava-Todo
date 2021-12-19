@@ -150,7 +150,7 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/aguafina_script_vi"
+        android:fontFamily="serif"
         android:gravity="center"
         android:text="@string/welcomeNewUser"
         android:textColor="#38E308"
