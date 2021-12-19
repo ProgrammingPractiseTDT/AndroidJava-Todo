@@ -14,11 +14,9 @@
         <entry key="..\:/AndroidProject/app/src/main/res/layout/activity_project_view.xml" value="0.20260416666666667" />
         <entry key="..\:/AndroidProject/app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="..\:/AndroidProject/app/src/main/res/layout/add_project_dialog.xml" value="0.20260416666666667" />
-        <entry key="..\:/AndroidProject/app/src/main/res/layout/add_task_dialog.xml" value="0.2957427536231884" />
-        <entry key="..\:/AndroidProject/app/src/main/res/layout/change_password_dialog.xml" value="0.2957427536231884" />
         <entry key="..\:/AndroidProject/app/src/main/res/layout/change_username_dialog.xml" value="0.2957427536231884" />
         <entry key="..\:/AndroidProject/app/src/main/res/layout/edit_project_dialog.xml" value="0.20260416666666667" />
-        <entry key="..\:/AndroidProject/app/src/main/res/layout/home_screen_layout.xml" value="0.5" />
+        <entry key="..\:/AndroidProject/app/src/main/res/layout/home_screen_layout.xml" value="0.20260416666666667" />
         <entry key="..\:/AndroidProject/app/src/main/res/layout/important_task_layout.xml" value="0.20260416666666667" />
         <entry key="..\:/AndroidProject/app/src/main/res/layout/project_item_layout.xml" value="0.20260416666666667" />
         <entry key="..\:/AndroidProject/app/src/main/res/layout/quick_task_layout.xml" value="0.20260416666666667" />
@@ -68,7 +66,10 @@
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/add_project_dialog.xml" value="0.17747747747747747" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/add_task_dialog.xml" value="0.33" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/change_password_dialog.xml" value="0.24414414414414415" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/change_username_dialog.xml" value="0.24414414414414415" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/edit_project_dialog.xml" value="0.3171171171171171" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/edit_task_layout.xml" value="0.24414414414414415" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml" value="0.33" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/important_task_layout.xml" value="0.3171171171171171" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/layout_popup_menu.xml" value="0.36666666666666664" />
@@ -84,6 +85,7 @@
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/signup_layout.xml" value="0.20520833333333333" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml" value="0.27943840579710144" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/task_item_layout.xml" value="0.3171171171171171" />
+        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/tdt_logo_layout.xml" value="0.24414414414414415" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/today_task_layout.xml" value="0.3171171171171171" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/menu/popup_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2581081081081081" />

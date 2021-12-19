@@ -83,7 +83,20 @@
     <string name="language">Language</string>
     <string name="languageSummary">Choose your language.</string>
     <string name="language_key" translatable="false">language_pref</string>
-
+    <string name="systemSettings">System Settings</string>
+    <string name="aboutAppTitle">About ToDoThings</string>
+    <string name="aboutUs">About Us</string>
+    <string name="aboutDev">Developers</string>
+    <string name="devSummary">Below the ToDoThings logo, we have 3 characters stand for our developers.
+        \n\t<font color='#FFF32929'>N: Doan Van Nghia - 519H0323</font>
+        \n\t<font color='#FF2EC42B'>D: Mai Le Tien Dat - 519H0279</font>
+        \n\t<font color='#074DDA'>H: Nguyen Le Ngoc Huy - 519H0295</font>
+    </string>
+    <string name="tdtSummary">
+        ToDoThings first official version was released on December 20, 2021.
+        \nToDoThings was created with the purpose of helping people manage the time of their day.
+        \nWe would be happy to be a part of your success.
+    </string>
     <string-array name="language_list">
         <item name="english">English</item>
         <item name="vietnamese">Tiếng Việt</item>

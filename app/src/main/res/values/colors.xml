@@ -13,4 +13,7 @@
     <color name="light_green">#8BC34A</color>
     <color name="popupMenuBackground">#7916D1</color>
     <color name="addButtonInCyanBackground">#e8bd46</color>
+    <color name="n">#FFF32929</color>
+    <color name="d">#FF2EC42B</color>
+    <color name="h">#074DDA</color>
 </resources>
