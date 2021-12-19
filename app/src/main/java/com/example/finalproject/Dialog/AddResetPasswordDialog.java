@@ -50,9 +50,16 @@ public class AddResetPasswordDialog extends Dialog implements View.OnClickListen
         switch(view.getId()){
             case R.id.btn_submit_reset:
                 email = (EditText) findViewById(R.id.txt_resetEmail);
-                beginRecovery(email.getText().toString());
-                dismiss();
-                break;
+                if(email.getText().toString().isEmpty()){
+                    email.setError("This field cannot be empty");
+                    email.requestFocus();
+                }
+                else{
+                    beginRecovery(email.getText().toString());
+                    dismiss();
+                    break;
+                }
+
             case R.id.btn_cancel_reset:
                 dismiss();
                 break;

@@ -43,13 +43,19 @@ public class ChangeUsernameDialog extends Dialog implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_confirmChangedUsername:
                 txt_userName = (EditText) findViewById(R.id.txt_changedUserName);
-                FirebaseOperator changeUserName = new FirebaseOperator();
-                changeUserName.updateUserName(txt_userName.getText().toString());
-                Toast.makeText(getContext(),c.getString(R.string.changeUsernameSuccess),Toast.LENGTH_LONG).show();
-                dismiss();
+                if (txt_userName.getText().toString().isEmpty()){
+                    txt_userName.setError("This field cannot be empty");
+                    txt_userName.requestFocus();
+                }
+                else{
+                    FirebaseOperator changeUserName = new FirebaseOperator();
+                    changeUserName.updateUserName(txt_userName.getText().toString());
+                    Toast.makeText(getContext(), c.getString(R.string.changeUsernameSuccess), Toast.LENGTH_LONG).show();
+                    dismiss();
+                }
             case R.id.btn_cancelChangedUsername:
                 dismiss();
                 break;

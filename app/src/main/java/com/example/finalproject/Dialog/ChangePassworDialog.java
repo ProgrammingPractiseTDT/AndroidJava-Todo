@@ -49,11 +49,21 @@ public class ChangePassworDialog extends Dialog implements View.OnClickListener 
         txt_newPassword = (EditText) findViewById(R.id.txt_newPassword);
         switch (view.getId()){
             case R.id.btn_confirmChangePassword:
-                FirebaseOperator Fo = new FirebaseOperator();
-                Fo.changePasssword(txt_oldPassword.getText().toString(), txt_newPassword.getText().toString());
-                Paper.book().destroy();
-                Toast.makeText(getContext(),c.getString(R.string.changePasswordSuccess),Toast.LENGTH_LONG).show();
-                dismiss();
+                if (txt_oldPassword.getText().toString().isEmpty()){
+                    txt_oldPassword.setError("This field cannot be empty");
+                    txt_oldPassword.requestFocus();
+                }
+                else if (txt_newPassword.getText().toString().isEmpty()){
+                    txt_newPassword.setError("This field cannot be empty");
+                    txt_newPassword.requestFocus();
+                }
+                else{
+                    FirebaseOperator Fo = new FirebaseOperator();
+                    Fo.changePasssword(txt_oldPassword.getText().toString(), txt_newPassword.getText().toString());
+                    Paper.book().destroy();
+                    Toast.makeText(getContext(),c.getString(R.string.changePasswordSuccess),Toast.LENGTH_LONG).show();
+                    dismiss();
+                }
                 break;
             case R.id.btn_cancelChangePassword:
                 dismiss();
