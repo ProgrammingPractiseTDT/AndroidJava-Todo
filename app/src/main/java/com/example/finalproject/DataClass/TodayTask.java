@@ -48,8 +48,6 @@ public class TodayTask extends AppCompatActivity {
         rv.setAdapter(taskAdapter);
         rv2.setAdapter(multiProjectTaskAdapter);
 
-
-
     }
 
 }

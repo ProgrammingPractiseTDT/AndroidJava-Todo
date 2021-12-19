@@ -101,12 +101,13 @@ public class FirebaseOperator {
 
         if(keyword.length()>0) {
 
-            DatabaseReference projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects");
+            Query projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects");
             String finalKeyword = keyword.toLowerCase();
             projectsRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     tasks.clear();
+                    taskKeys.clear();
                     for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                         for (DataSnapshot dsp2 : dsp.child("tasks").getChildren()) {
                             Task task = dsp2.getValue(Task.class);
@@ -129,7 +130,7 @@ public class FirebaseOperator {
 
 
             //get from quick tasks
-            DatabaseReference projectsRef2 = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
+            Query projectsRef2 = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
             projectsRef2.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -154,11 +155,12 @@ public class FirebaseOperator {
     }
 
     public void QuickTasksFiller(TaskAdapter taskAdapter, ArrayList<Task> tasks, ArrayList<String> taskKeys) {
-        DatabaseReference projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
+        Query projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
         projectsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 tasks.clear();
+                taskKeys.clear();
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
 
                     Task task = dsp.getValue(Task.class);
@@ -175,11 +177,12 @@ public class FirebaseOperator {
     }
 
     public void ImportantTasksFiller(MultiProjectTaskAdapter multiProjectTaskAdapter, ArrayList<Task> tasks, ArrayList<String> taskKeys, ArrayList<String> projectKeys) {
-        DatabaseReference projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects");
+        Query projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects");
         projectsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 tasks.clear();
+                taskKeys.clear();
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
 
                     for (DataSnapshot dsp2 : dsp.child("tasks").getChildren()) {
@@ -205,11 +208,13 @@ public class FirebaseOperator {
         Calendar nowDate = Calendar.getInstance();
         String toDayString = Integer.toString(nowDate.get(5))+"-"+Integer.toString(nowDate.get(2)+1)+"-"+Integer.toString(nowDate.get(1));
         Log.d("now", toDayString);
-        DatabaseReference projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects");
+        Query projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects");
         projectsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 tasks.clear();
+                taskKeys.clear();
+                projectKeys.clear();
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                     for (DataSnapshot dsp2 : dsp.child("tasks").getChildren()) {
                         Task task = dsp2.getValue(Task.class);
@@ -229,12 +234,13 @@ public class FirebaseOperator {
         });
 
 
-        //get from quick tasks
-        DatabaseReference projectsRef2 = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
+
+        Query projectsRef2 = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
         projectsRef2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 quickTasks.clear();
+                quickTaskKeys.clear();
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                     Task task = dsp.getValue(Task.class);
                     if(task.getEndTime().equals(toDayString)) {

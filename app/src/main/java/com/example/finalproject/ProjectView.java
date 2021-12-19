@@ -1,5 +1,7 @@
 package com.example.finalproject;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,11 +16,14 @@ import com.example.finalproject.Dialog.AddTaskDialog;
 import com.example.finalproject.DataClass.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.core.OrderBy;
 
 import java.util.ArrayList;
 
@@ -62,35 +67,50 @@ public class ProjectView extends AppCompatActivity {
         atd.show();
     }
 
-    public ArrayList<Task> sortingTask (ArrayList<Task> taskList){
-        ArrayList<Task> tasks = new ArrayList<Task>();
-        for (int i = 0; i < taskList.size(); i++){
-            if (taskList.get(i).isCheckingStatus() == false){
-                tasks.add(taskList.get(i));
-            }
-        }for (int i = 0; i < taskList.size(); i++){
-            if (taskList.get(i).isCheckingStatus() == true){
-                tasks.add(taskList.get(i));
-            }
-        }
-        return tasks;
-    }
+//    public ArrayList<Task> sortingTask (ArrayList<Task> taskList){
+//        ArrayList<Task> tasks = new ArrayList<Task>();
+//        for (int i = 0; i < taskList.size(); i++){
+//            if (taskList.get(i).isCheckingStatus() == false){
+//                tasks.add(taskList.get(i));
+//            }
+//        }for (int i = 0; i < taskList.size(); i++){
+//            if (taskList.get(i).isCheckingStatus() == true){
+//                tasks.add(taskList.get(i));
+//            }
+//        }
+//        return tasks;
+//    }
 
     public void fetchTaskFromProject(String ProjectKey){
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(ProjectKey).child("tasks");
+        Query reference =  FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(ProjectKey).child("tasks");
+        //Query query = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(ProjectKey).child("tasks");
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 taskList.clear();
+                TasksKey.clear();
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                     Task task = dsp.getValue(Task.class);
                     TasksKey.add(dsp.getKey());
                     taskList.add(task);
                 }
-                for (int i = 0; i <taskList.size(); i++){
-                    Log.i(taskList.get(i).getTitle(), String.valueOf(taskList.get(i).isCheckingStatus()));
-                }
+//               for (int i = 0; i < taskList.size(); i++) {
+//                   for (int j = 0; j < taskList.size() - i - 1; j++) {
+//                       boolean a = taskList.get(j).getCheckingStatus();
+//                       boolean b = taskList.get(j + 1).getCheckingStatus();
+//                       if (a == true && b == false) {
+//                           Task temp = taskList.get(j);
+//                           taskList.set(j, taskList.get(j + 1));
+//                           taskList.set(j + 1, temp);
+//
+//                           String tempkey = TasksKey.get(j);
+//                           TasksKey.set(j, TasksKey.get(j + 1));
+//                           TasksKey.set(j + 1, tempkey);
+//                       }
+//                   }
+//               }
+////        }
                 taskAdapter.notifyDataSetChanged();
             }
 

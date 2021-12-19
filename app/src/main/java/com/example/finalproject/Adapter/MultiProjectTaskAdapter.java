@@ -140,13 +140,13 @@ public class MultiProjectTaskAdapter extends RecyclerView.Adapter<MultiProjectTa
         viewHolder.getDescription().setText(tasks.get(position).getDescription());
         viewHolder.getFullTitle().setText(tasks.get(position).getTitle());
         viewHolder.getClockText().setText(tasks.get(position).getOnTime());
-        viewHolder.getCheckingStatus().setChecked(tasks.get(position).isCheckingStatus());
+        viewHolder.getCheckingStatus().setChecked(tasks.get(position).getCheckingStatus());
         String taskKey = taskKeys.get(position);
         viewHolder.getTaskName().setTag(taskKey);
         String projectKey = projectKeys.get(position);
         viewHolder.getDescription().setTag(projectKey);
-        if(tasks.get(position).isCheckingStatus() == true){
-            viewHolder.getFulllayout().setAlpha((float)0.5);
+        if(tasks.get(position).getCheckingStatus() == true){
+            viewHolder.getFulllayout().setAlpha((float)0.25);
         }
         else{
             viewHolder.getFulllayout().setAlpha((float)1);
@@ -165,7 +165,7 @@ public class MultiProjectTaskAdapter extends RecyclerView.Adapter<MultiProjectTa
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 boolean checking = viewHolder.getCheckingStatus().isChecked();
                 FirebaseOperator taskUpdate = new FirebaseOperator();
-                taskUpdate.updateTasks(projectKeys.get(position), taskKey, checking);
+                taskUpdate.updateTasks(projectKey, taskKey, checking);
             }
         });
     }

@@ -40,7 +40,7 @@ public class Task {
 
     }
 
-    public boolean isCheckingStatus() {
+    public boolean getCheckingStatus() {
         return checkingStatus;
     }
 
