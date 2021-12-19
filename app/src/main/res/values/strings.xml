@@ -109,9 +109,15 @@
     </string-array>
     
     //text in changeUserNameDialog
+    <string name="changeUserName">Change User Name</string>
     <string name="enterNewUserName">Enter your username here</string>
+    <string name="changeUsernameSuccess">Username has changed.</string>
 
     //text in changePassword
+    <string name="changePassword">Change Password</string>
     <string name="oldPassword">Old Password</string>
     <string name="newPassword">New Password</string>
+    <string name="changePasswordSuccess">Password has changed.
+    \nNext time, you have to sign in again.
+    </string>
 </resources>

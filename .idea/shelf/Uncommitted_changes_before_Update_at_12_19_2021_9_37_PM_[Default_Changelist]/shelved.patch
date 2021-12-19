@@ -1,0 +1,413 @@
+Index: app/src/main/res/values-ko-rKR/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <string name=\"app_name\">To Do Things</string>\r\n    <string name=\"joinNow\">지금 가입하세요</string>\r\n    <string name=\"alreadySignUp\">이미 계정이 있습니까? 로그인!</string>\r\n    <string name=\"forgotPassword\">비밀번호를 잊으 셨나요?</string>\r\n    <string name=\"signIn\">로그인</string>\r\n    <string name=\"email\">Email</string>\r\n    <string name=\"password\">비밀번호</string>\r\n    <string name=\"rememberMe\">계정 기억</string>\r\n    <string name=\"signInSuccessful\">로그인 성공!</string>\r\n    <string name=\"requiredEmail\">Email 요청</string>\r\n    <string name=\"requiredPassword\">비밀번호가 필요합니다</string>\r\n    <string name=\"wrongAccount\">이메일 또는 비밀번호가 잘못되었습니다.</string>\r\n    <string name=\"requestForgotEmail\">로그인 email 을 입력하세요</string>\r\n    <string name=\"cancelBtn\">취소</string>\r\n    <string name=\"submitBtn\">보내다</string>\r\n    <string name=\"sendingMail\">복구 email 을 보내는 중....</string>\r\n    <string name=\"doneSent\">전송 된.</string>\r\n    <string name=\"errorOccur\">오류가 발생하였습니다</string>\r\n    <string name=\"cantSent\">복구 email 을 보낼 수 없습니다</string>\r\n    <string name=\"signUp\">가입하기</string>\r\n    <string name=\"fullName\">이름과 성</string>\r\n    <string name=\"confirmPassword\">비밀번호를 입력하세요</string>\r\n    <string name=\"backToSignIn\">로그인으로 돌아가기</string>\r\n    <string name=\"welcomeNewUser\">어서 오십시오! 여기서 만나서 반갑습니다!</string>\r\n    <string name=\"confirm_email\">가입을 클릭하면 email 을 사용할 수 있습니다.</string>\r\n    <string name=\"requiredFullName\">이름과 성은 비워둘 수 없습니다</string>\r\n    <string name=\"leastCharactersPassword\">비밀번호는 6자 이상이어야 합니다</string>\r\n    <string name=\"emailFormatError\">Email 을 올바른 형식으로 입력하세요</string>\r\n    <string name=\"notMatchPassword\">비밀번호 오류</string>\r\n    <string name=\"signUpSuccessful\">가입 성공!</string>\r\n    <string name=\"signUpFailed\">등록에 실패했습니다. 나중에 다시 시도해 주세요!!!</string>\r\n    <string name=\"emailExisted\">이 email 이 이미 존재합니다</string>\r\n    <string name=\"today\">오늘</string>\r\n    <string name=\"hello\">안녕,</string>\r\n    <string name=\"important\">중요한</string>\r\n    <string name=\"project\">프로젝트</string>\r\n    <string name=\"quick\">빠른 작업</string>\r\n    <string name=\"addBtn\">추가하다</string>\r\n    <string name=\"title\">제목</string>\r\n    <string name=\"todayTask\">오늘 작업</string>\r\n    <string name=\"importantTask\">중요한 작업</string>\r\n    <string name=\"quickTask\">빠른 작업</string>\r\n    <string name=\"deleteBtn\">삭제</string>\r\n    <string name=\"editBtn\">편집하다</string>\r\n    <string name=\"editProject\">프로젝트 편집</string>\r\n    <string name=\"confirmBtn\">확인하다</string>\r\n    <string name=\"myProfile\">내 프로필</string>\r\n    <string name=\"settings\">설정</string>\r\n    <string name=\"logoutBtn\"><font color=\"#ff0000\">로그 아웃</font></string>\r\n    <string name=\"onDate\">날짜:</string>\r\n    <string name=\"onTime\">에:</string>\r\n    <string name=\"priority\">우선 사항:</string>\r\n    <string name=\"lowPriority\">low</string>\r\n    <string name=\"mediumPriority\">medium</string>\r\n    <string name=\"highPriority\">high</string>\r\n    <string name=\"description\">설명</string>\r\n    <string name=\"searchHint\">무엇을 찾고 계신가요?</string>\r\n    <string name=\"language\">언어</string>\r\n    <string name=\"languageSummary\">당신의 언어를 선택하세요.</string>\r\n    <string name=\"enterNewUserName\">여기에 사용자 이름을 입력</string>\r\n    <string name=\"oldPassword\">기존 비밀번호</string>\r\n    <string name=\"newPassword\">새 비밀번호</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-ko-rKR/strings.xml b/app/src/main/res/values-ko-rKR/strings.xml
+--- a/app/src/main/res/values-ko-rKR/strings.xml	(revision 25393236e9f54b91563f8c5d5c47b1d57bee87c3)
++++ b/app/src/main/res/values-ko-rKR/strings.xml	(date 1639916355569)
+@@ -62,4 +62,18 @@
+     <string name="enterNewUserName">여기에 사용자 이름을 입력</string>
+     <string name="oldPassword">기존 비밀번호</string>
+     <string name="newPassword">새 비밀번호</string>
++    <string name="systemSettings">환경 설정</string>
++    <string name="aboutAppTitle">ToDoThings 에 대해</string>
++    <string name="aboutUs">우리에 대해</string>
++    <string name="aboutDev">개발자</string>
++    <string name="devSummary">ToDoThings 로고 아래에는 개발자를 나타내는 3개의 문자가 있습니다.
++        \n\t<font color='#FFF32929'>N: Doan Van Nghia - 519H0323</font>
++        \n\t<font color='#FF2EC42B'>D: Mai Le Tien Dat - 519H0279</font>
++        \n\t<font color='#074DDA'>H: Nguyen Le Ngoc Huy - 519H0295</font>
++    </string>
++    <string name="tdtSummary">
++        ToDoThings의 첫 번째 공식 버전은 2021년 12월 20일에 출시되었습니다.
++        \nToDoThings는 사람들이 하루 중 시간을 관리할 수 있도록 돕기 위해 만들어졌습니다.
++        \n귀하의 성공에 동참하게 되어 기쁩니다.
++    </string>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/values-vi-rVN/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <string name=\"app_name\">To Do Things</string>\r\n\r\n    //Texts in StartingScreen\r\n    <string name=\"joinNow\">THAM GIA NGAY</string>\r\n    <string name=\"alreadySignUp\">Đã có tài khoản? Đăng nhập ngay!</string>\r\n\r\n    //Texts in SignIn\r\n    <string name=\"forgotPassword\">Quên mật khẩu?</string>\r\n    <string name=\"signIn\">ĐĂNG NHẬP</string>\r\n    <string name=\"email\">Email</string>\r\n    <string name=\"password\">Mật khẩu</string>\r\n    <string name=\"rememberMe\">Ghi nhớ tài khoản</string>\r\n    <string name=\"signInSuccessful\">Đăng nhập thành công!</string>\r\n    <string name=\"requiredEmail\">Email không được để trống</string>\r\n    <string name=\"requiredPassword\">Mật khẩu không được để trống</string>\r\n    <string name=\"wrongAccount\">Email hoặc mật khẩu không đúng</string>\r\n\r\n    //Texts in Forgot Password\r\n    <string name=\"requestForgotEmail\">Nhập email của bạn</string>\r\n    <string name=\"cancelBtn\">THOÁT</string>\r\n    <string name=\"submitBtn\">GỬI</string>\r\n    <string name=\"sendingMail\">\"Đang gửi email khôi phục....\"</string>\r\n    <string name=\"doneSent\">Đã gửi.</string>\r\n    <string name=\"errorOccur\">Có lỗi xảy ra</string>\r\n    <string name=\"cantSent\">Không thể gửi email khôi phục</string>\r\n\r\n    //Texts in SignUp\r\n    <string name=\"signUp\">ĐĂNG KÝ</string>\r\n    <string name=\"fullName\"> Họ và tên</string>\r\n    <string name=\"confirmPassword\">Nhập lại mật khẩu</string>\r\n    <string name=\"backToSignIn\">TRỞ VỀ ĐĂNG NHẬP</string>\r\n    <string name=\"welcomeNewUser\">Chào mừng! Rất vui khi bạn ở đây!</string>\r\n    <string name=\"confirm_email\">Bằng cách nhấn vào \"Đăng Ký\", bạn chắc chắn rằng <font color='#ff0000'> email của mình hợp lệ.</font>.</string>\r\n    <string name=\"requiredFullName\">Họ và tên không được để trống</string>\r\n    <string name=\"leastCharactersPassword\">Mật khẩu phải có ít nhất 6 ký tự</string>\r\n    <string name=\"emailFormatError\">Vui lòng nhập email đúng định dạng</string>\r\n    <string name=\"notMatchPassword\">Mật khẩu không khớp</string>\r\n    <string name=\"signUpSuccessful\">Đăng ký thành công!</string>\r\n    <string name=\"signUpFailed\">Đăng ký thất bại, vui lòng thử lại sau!!!</string>\r\n    <string name=\"emailExisted\">Email này đã tồn tại</string>\r\n\r\n    //texts in Home Screen\r\n    <string name=\"hello\">Xin chào, </string>\r\n    <string name=\"today\">HÔM NAY</string>\r\n    <string name=\"important\">QUAN TRỌNG</string>\r\n    <string name=\"quick\">TÁC VỤ NHANH</string>\r\n    <string name=\"project\">Dự án</string>\r\n    <string name=\"addBtn\">THÊM</string>\r\n    <string name=\"title\">Tiêu đề</string>\r\n    <string name=\"todayTask\">Tác vụ hôm nay</string>\r\n    <string name=\"importantTask\">Tác vụ quan trọng</string>\r\n    <string name=\"quickTask\">Tác vụ nhanh</string>\r\n\r\n    //texts in Long Touch Option Dialog\r\n    <string name=\"deleteBtn\">XÓA</string>\r\n    <string name=\"editBtn\">CHỈNH SỬA</string>\r\n\r\n    //texts in Edit Project Dialog\r\n    <string name=\"editProject\">CHỈNH SỬA DỰ ÁN</string>\r\n    <string name=\"confirmBtn\">XÁC NHẬN</string>\r\n\r\n    //texts in Popup Menu\r\n    <string name=\"myProfile\">Tài khoản của tôi</string>\r\n    <string name=\"settings\">Thiết lập</string>\r\n    <string name=\"logoutBtn\"><font color=\"#ff0000\">Đăng xuất</font></string>\r\n\r\n    //texts in Add Task Dialog\r\n    <string name=\"onDate\">Vào ngày:</string>\r\n    <string name=\"onTime\">Vào lúc:</string>\r\n    <string name=\"priority\">Độ ưu tiên:</string>\r\n    <string name=\"lowPriority\">thấp</string>\r\n    <string name=\"mediumPriority\">vừa</string>\r\n    <string name=\"highPriority\">cao</string>\r\n    <string name=\"description\">Mô tả</string>\r\n\r\n    //texts in Search screen\r\n    <string name=\"searchHint\">Bạn đang tìm gì vậy?</string>\r\n\r\n    //texts in Setting screen\r\n    <string name=\"language\">Ngôn ngữ</string>\r\n    <string name=\"languageSummary\">Chọn ngôn ngữ của bạn</string>\r\n    <string name=\"language_key\">language_pref</string>\r\n\r\n    //texts in change username dialog\r\n    <string name=\"enterNewUserName\">Nhập tên mới của bạn vào đây</string>\r\n\r\n    //text in changePassword\r\n    <string name=\"oldPassword\">Mật khẩu cũ</string>\r\n    <string name=\"newPassword\">Mật khẩu mới</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-vi-rVN/strings.xml b/app/src/main/res/values-vi-rVN/strings.xml
+--- a/app/src/main/res/values-vi-rVN/strings.xml	(revision 25393236e9f54b91563f8c5d5c47b1d57bee87c3)
++++ b/app/src/main/res/values-vi-rVN/strings.xml	(date 1639916355575)
+@@ -89,4 +89,18 @@
+     //text in changePassword
+     <string name="oldPassword">Mật khẩu cũ</string>
+     <string name="newPassword">Mật khẩu mới</string>
++    <string name="systemSettings">Thiết lập hệ thống</string>
++    <string name="aboutAppTitle">Về ToDoThings</string>
++    <string name="aboutUs">Về chúng tôi</string>
++    <string name="aboutDev">Nhà phát triển</string>
++    <string name="devSummary">Bên dưới biểu tượng ToDoThings có 3 ký tự tượng trưng cho các nhà phát triển của chúng tôi.
++        \n\t<font color='#FFF32929'>N: Đoàn Văn Nghĩa - 519H0323</font>
++        \n\t<font color='#FF2EC42B'>D: Mai Lê Tiến Đạt - 519H0279</font>
++        \n\t<font color='#074DDA'>H: Nguyễn Lê Ngọc Huy - 519H0295</font>
++    </string>
++    <string name="tdtSummary">
++        ToDoThings phiên bản chính thức đầu tiên được phát hành vào 20/12/2021.
++        \nToDoThings được tạo ra với mục đích giúp đỡ mọi người quản lý thời gian trong ngày của mình.
++        \nChúng tôi rất vui lòng được hỗ trợ một phần trong thành công của bạn.
++    </string>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <color name=\"purple_200\">#FFBB86FC</color>\r\n    <color name=\"purple_500\">#FF6200EE</color>\r\n    <color name=\"purple_700\">#FF3700B3</color>\r\n    <color name=\"teal_200\">#FF03DAC5</color>\r\n    <color name=\"teal_700\">#FF018786</color>\r\n    <color name=\"black\">#FF000000</color>\r\n    <color name=\"white\">#FFFFFFFF</color>\r\n    <color name=\"light_red\">#EF5959</color>\r\n    <color name=\"light_blue\">#29ACF3</color>\r\n    <color name=\"light_yellow\">#FFEB3B</color>\r\n    <color name=\"light_green\">#8BC34A</color>\r\n    <color name=\"popupMenuBackground\">#7916D1</color>\r\n    <color name=\"addButtonInCyanBackground\">#e8bd46</color>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+--- a/app/src/main/res/values/colors.xml	(revision 25393236e9f54b91563f8c5d5c47b1d57bee87c3)
++++ b/app/src/main/res/values/colors.xml	(date 1639916355566)
+@@ -13,4 +13,7 @@
+     <color name="light_green">#8BC34A</color>
+     <color name="popupMenuBackground">#7916D1</color>
+     <color name="addButtonInCyanBackground">#e8bd46</color>
++    <color name="n">#FFF32929</color>
++    <color name="d">#FF2EC42B</color>
++    <color name="h">#074DDA</color>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    //some texts do not depend on Language setting.\r\n    <string name=\"app_name\">To Do Things</string>\r\n\r\n    //Texts in StartingScreen\r\n    <string name=\"joinNow\">JOIN NOW</string>\r\n    <string name=\"alreadySignUp\">Already have an account? Sign In!</string>\r\n\r\n    //Texts in SignIn\r\n    <string name=\"forgotPassword\">Forgot Password?</string>\r\n    <string name=\"signIn\">SIGN IN</string>\r\n    <string name=\"email\">Email</string>\r\n    <string name=\"password\">Password</string>\r\n    <string name=\"rememberMe\">Remember Me</string>\r\n    <string name=\"signInSuccessful\">Sign In successfully!</string>\r\n    <string name=\"requiredEmail\">Email is required</string>\r\n    <string name=\"requiredPassword\">Password is required</string>\r\n    <string name=\"wrongAccount\">Invalid email or password.</string>\r\n\r\n    //Texts in Forgot Password\r\n    <string name=\"requestForgotEmail\">Enter your sign in email</string>\r\n    <string name=\"cancelBtn\">Cancel</string>\r\n    <string name=\"submitBtn\">Submit</string>\r\n    <string name=\"sendingMail\">\"Sending recovery email....\"</string>\r\n    <string name=\"doneSent\">Finished sending.</string>\r\n    <string name=\"errorOccur\">Error Occur</string>\r\n    <string name=\"cantSent\">Can not send recovery email.</string>\r\n\r\n    //Texts in SignUp\r\n    <string name=\"signUp\">SIGN UP</string>\r\n    <string name=\"fullName\"> Full name</string>\r\n    <string name=\"confirmPassword\">Confirm Password</string>\r\n    <string name=\"backToSignIn\">BACK TO SIGN IN</string>\r\n    <string name=\"welcomeNewUser\">Welcome! Glad to see you here!</string>\r\n    <string name=\"confirm_email\">By clicking \"Sign Up\", you are sure that <font color='#ff0000'> your email is available</font>.</string>\r\n    <string name=\"requiredFullName\">Fullname is required</string>\r\n    <string name=\"leastCharactersPassword\">Password need at least 6 characters</string>\r\n    <string name=\"emailFormatError\">Please provide valid email</string>\r\n    <string name=\"notMatchPassword\">Password does not match</string>\r\n    <string name=\"signUpSuccessful\">Sign up successfully!</string>\r\n    <string name=\"signUpFailed\">Failed to sign up, please try again later!!!</string>\r\n    <string name=\"emailExisted\">This email is already existed</string>\r\n\r\n    //texts in Home Screen\r\n    <string name=\"hello\">Hello, </string>\r\n    <string name=\"today\">TODAY</string>\r\n    <string name=\"important\">IMPORTANT</string>\r\n    <string name=\"quick\">QUICKTASK</string>\r\n    <string name=\"project\">Project</string>\r\n    <string name=\"addBtn\">ADD</string>\r\n    <string name=\"title\">Title</string>\r\n    <string name=\"todayTask\">Today Tasks</string>\r\n    <string name=\"importantTask\">Important Tasks</string>\r\n    <string name=\"quickTask\">Quick Tasks</string>\r\n\r\n    //texts in Long Touch Option Dialog\r\n    <string name=\"deleteBtn\">DELETE</string>\r\n    <string name=\"editBtn\">EDIT</string>\r\n\r\n    //texts in Edit Project Dialog\r\n    <string name=\"editProject\">EDIT PROJECT</string>\r\n    <string name=\"confirmBtn\">CONFIRM</string>\r\n\r\n    //texts in Popup Menu\r\n    <string name=\"myProfile\">My Profile</string>\r\n    <string name=\"settings\">Settings</string>\r\n    <string name=\"logoutBtn\"><font color=\"#ff0000\">Log Out</font></string>\r\n\r\n    //texts in Add Task Dialog\r\n    <string name=\"onDate\">On date:</string>\r\n    <string name=\"onTime\">At:</string>\r\n    <string name=\"priority\">Priority:</string>\r\n    <string name=\"lowPriority\">low</string>\r\n    <string name=\"mediumPriority\">medium</string>\r\n    <string name=\"highPriority\">high</string>\r\n    <string name=\"description\">Description</string>\r\n\r\n    //texts in Search screen\r\n    <string name=\"searchHint\">What are you looking for?</string>\r\n\r\n    //texts in Setting screen\r\n    <string name=\"language\">Language</string>\r\n    <string name=\"languageSummary\">Choose your language.</string>\r\n    <string name=\"language_key\" translatable=\"false\">language_pref</string>\r\n\r\n    <string-array name=\"language_list\">\r\n        <item name=\"english\">English</item>\r\n        <item name=\"vietnamese\">Tiếng Việt</item>\r\n        <item name=\"korean\">한국인</item>\r\n    </string-array>\r\n    <string-array name=\"language_list_alias\">\r\n        <item name=\"english\">\"en\"</item>\r\n        <item name=\"vietnamese\">\"vi\"</item>\r\n        <item name=\"korean\">\"ko\"</item>\r\n    </string-array>\r\n    \r\n    //text in changeUserNameDialog\r\n    <string name=\"enterNewUserName\">Enter your username here</string>\r\n\r\n    //text in changePassword\r\n    <string name=\"oldPassword\">Old Password</string>\r\n    <string name=\"newPassword\">New Password</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision 25393236e9f54b91563f8c5d5c47b1d57bee87c3)
++++ b/app/src/main/res/values/strings.xml	(date 1639916355573)
+@@ -83,7 +83,20 @@
+     <string name="language">Language</string>
+     <string name="languageSummary">Choose your language.</string>
+     <string name="language_key" translatable="false">language_pref</string>
+-
++    <string name="systemSettings">System Settings</string>
++    <string name="aboutAppTitle">About ToDoThings</string>
++    <string name="aboutUs">About Us</string>
++    <string name="aboutDev">Developers</string>
++    <string name="devSummary">Below the ToDoThings logo, we have 3 characters stand for our developers.
++        \n\t<font color='#FFF32929'>N: Doan Van Nghia - 519H0323</font>
++        \n\t<font color='#FF2EC42B'>D: Mai Le Tien Dat - 519H0279</font>
++        \n\t<font color='#074DDA'>H: Nguyen Le Ngoc Huy - 519H0295</font>
++    </string>
++    <string name="tdtSummary">
++        ToDoThings first official version was released on December 20, 2021.
++        \nToDoThings was created with the purpose of helping people manage the time of their day.
++        \nWe would be happy to be a part of your success.
++    </string>
+     <string-array name="language_list">
+         <item name="english">English</item>
+         <item name="vietnamese">Tiếng Việt</item>
+Index: app/src/main/java/com/example/finalproject/StartingScreen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\r\n\r\nimport android.app.Activity;\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.text.TextUtils;\r\nimport android.util.Log;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.NonNull;\r\n\r\nimport com.google.android.gms.tasks.OnCompleteListener;\r\nimport com.google.firebase.auth.AuthResult;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.auth.FirebaseUser;\r\n\r\nimport io.paperdb.Paper;\r\n\r\npublic class StartingScreen extends Activity {\r\n\r\n    private Button joinNowBtn;\r\n    private Button alreadySignedBtn;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState){\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.starting_screen);\r\n\r\n        Paper.init(this);\r\n        \r\n        joinNowBtn = (Button) findViewById(R.id.btn_newbieUser);\r\n        alreadySignedBtn = (Button) findViewById(R.id.btn_signedUser);\r\n\r\n        joinNowBtn.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(new Intent(StartingScreen.this, Signup.class));\r\n            }\r\n        });\r\n\r\n        alreadySignedBtn.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(new Intent(StartingScreen.this, Login.class));\r\n            }\r\n        });\r\n\r\n        String syncUserEmail = Paper.book().read(SyncingUser.userEmail);\r\n        String syncUserPassword = Paper.book().read(SyncingUser.userPassword);\r\n\r\n        if(syncUserEmail != \"\" && syncUserPassword != \"\"){\r\n            if(!TextUtils.isEmpty(syncUserEmail) && !TextUtils.isEmpty(syncUserPassword)){\r\n                AllowAccess(syncUserEmail, syncUserPassword);\r\n            }\r\n        }\r\n    }\r\n\r\n    private void AllowAccess(final String syncUserEmail, final String syncUserPassword) {\r\n        FirebaseAuth mAuth = FirebaseAuth.getInstance();\r\n        mAuth.signInWithEmailAndPassword(syncUserEmail, syncUserPassword)\r\n                .addOnCompleteListener(StartingScreen.this, new OnCompleteListener<AuthResult>() {\r\n\r\n                    @Override\r\n                    public void onComplete(@NonNull com.google.android.gms.tasks.Task<AuthResult> task) {\r\n                        if (task.isSuccessful()) {\r\n                            // Sign in success, update UI with the signed-in user's information\r\n                            FirebaseUser user = mAuth.getCurrentUser();\r\n                            updateUI(user);\r\n                        } else {\r\n                            // If sign in fails, display a message to the user.\r\n                            Toast.makeText(StartingScreen.this, \"Authentication failed.\\n\" + syncUserEmail + \"\\n\"+ syncUserPassword + task.getException().getMessage(),\r\n                                    Toast.LENGTH_SHORT).show();\r\n                            updateUI(null);\r\n                        }\r\n                    }\r\n                });\r\n    }\r\n    public void updateUI(FirebaseUser account){\r\n        Intent intent = new Intent(this, HomeScreen.class);\r\n        if(account != null){\r\n            Toast.makeText(this,\"Successfully!\",Toast.LENGTH_LONG).show();\r\n            startActivity(intent);\r\n        }else {\r\n            Toast.makeText(this,\"Invalid email or password.\",Toast.LENGTH_LONG).show();\r\n        }\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/StartingScreen.java b/app/src/main/java/com/example/finalproject/StartingScreen.java
+--- a/app/src/main/java/com/example/finalproject/StartingScreen.java	(revision 25393236e9f54b91563f8c5d5c47b1d57bee87c3)
++++ b/app/src/main/java/com/example/finalproject/StartingScreen.java	(date 1639903231056)
+@@ -2,6 +2,9 @@
+ 
+ import android.app.Activity;
+ import android.content.Intent;
++import android.content.SharedPreferences;
++import android.content.res.Configuration;
++import android.content.res.Resources;
+ import android.os.Bundle;
+ import android.text.TextUtils;
+ import android.util.Log;
+@@ -10,15 +13,19 @@
+ import android.widget.Toast;
+ 
+ import androidx.annotation.NonNull;
++import androidx.appcompat.app.AppCompatActivity;
+ 
+ import com.google.android.gms.tasks.OnCompleteListener;
+ import com.google.firebase.auth.AuthResult;
+ import com.google.firebase.auth.FirebaseAuth;
+ import com.google.firebase.auth.FirebaseUser;
+ 
++import java.util.Locale;
++import java.util.Set;
++
+ import io.paperdb.Paper;
+ 
+-public class StartingScreen extends Activity {
++public class StartingScreen extends AppCompatActivity {
+ 
+     private Button joinNowBtn;
+     private Button alreadySignedBtn;
+@@ -26,6 +33,8 @@
+     @Override
+     protected void onCreate(Bundle savedInstanceState){
+         super.onCreate(savedInstanceState);
++
++        setStartLocale(StartingScreen.this);
+         setContentView(R.layout.starting_screen);
+ 
+         Paper.init(this);
+@@ -77,14 +86,26 @@
+                     }
+                 });
+     }
++
+     public void updateUI(FirebaseUser account){
+         Intent intent = new Intent(this, HomeScreen.class);
+         if(account != null){
+-            Toast.makeText(this,"Successfully!",Toast.LENGTH_LONG).show();
++            Toast.makeText(this,getString(R.string.signInSuccessful),Toast.LENGTH_LONG).show();
+             startActivity(intent);
+         }else {
+             Toast.makeText(this,"Invalid email or password.",Toast.LENGTH_LONG).show();
+         }
+ 
+     }
++    public void setStartLocale(Activity activity){
++        SharedPreferences preferences = getSharedPreferences("Settings", MODE_PRIVATE);
++        String language = preferences.getString("Language","");
++        Locale locale = new Locale(language);
++        locale.setDefault(locale);
++        Resources resources = activity.getResources();
++        Configuration configuration = resources.getConfiguration();
++        configuration.setLocale(locale);
++        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
++    }
++
+ }
+Index: app/src/main/res/xml/preferences.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<PreferenceScreen xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\">\r\n\r\n    <ListPreference\r\n        android:key=\"@string/language_key\"\r\n        android:title=\"@string/language\"\r\n        android:summary=\"@string/languageSummary\"\r\n        android:entries=\"@array/language_list\"\r\n        android:entryValues=\"@array/language_list_alias\"\r\n        />\r\n\r\n</PreferenceScreen>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/xml/preferences.xml b/app/src/main/res/xml/preferences.xml
+--- a/app/src/main/res/xml/preferences.xml	(revision 25393236e9f54b91563f8c5d5c47b1d57bee87c3)
++++ b/app/src/main/res/xml/preferences.xml	(date 1639916656486)
+@@ -2,12 +2,31 @@
+ <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto">
+ 
+-    <ListPreference
+-        android:key="@string/language_key"
+-        android:title="@string/language"
+-        android:summary="@string/languageSummary"
+-        android:entries="@array/language_list"
+-        android:entryValues="@array/language_list_alias"
+-        />
++    <PreferenceCategory
++        android:title="@string/systemSettings">
++        <ListPreference
++            android:key="@string/language_key"
++            android:title="@string/language"
++            android:summary="@string/languageSummary"
++            android:entries="@array/language_list"
++            android:entryValues="@array/language_list_alias"
++            />
++    </PreferenceCategory>
++
++    <PreferenceCategory
++        android:title="@string/aboutUs">
++        <Preference
++            android:title="@string/aboutAppTitle"
++            android:summary="@string/tdtSummary"/>
++        <Preference
++            android:title="@string/aboutDev"
++            android:summary="@string/devSummary"
++            />
++
++    </PreferenceCategory>
++    <PreferenceCategory
++        android:layout="@layout/tdt_logo_layout"
++        ></PreferenceCategory>
++
+ 
+ </PreferenceScreen>
+\ No newline at end of file
+Index: app/src/main/java/com/example/finalproject/SettingsActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\r\n\r\nimport android.app.Activity;\r\nimport android.content.Intent;\r\nimport android.content.res.Configuration;\r\nimport android.content.res.Resources;\r\nimport android.os.Bundle;\r\nimport android.preference.Preference;\r\nimport android.preference.PreferenceActivity;\r\n\r\nimport java.util.Locale;\r\nimport java.util.Set;\r\n\r\npublic class SettingsActivity extends PreferenceActivity {\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n\r\n        super.onCreate(savedInstanceState);\r\n        this.addPreferencesFromResource(R.xml.preferences);\r\n\r\n        Preference preference = (Preference) findPreference(\"language_pref\");\r\n        preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {\r\n            @Override\r\n            public boolean onPreferenceChange(Preference preference, Object newValue) {\r\n                setLocale(SettingsActivity.this,newValue.toString());\r\n                Intent intent = new Intent(SettingsActivity.this, HomeScreen.class);\r\n                startActivity(intent);\r\n                return true;\r\n            }\r\n        });\r\n    }\r\n\r\n    private void setLocale(Activity activity, String lang) {\r\n        Locale locale = new Locale(lang);\r\n        locale.setDefault(locale);\r\n        Resources resources = activity.getResources();\r\n        Configuration configuration = resources.getConfiguration();\r\n        configuration.setLocale(locale);\r\n        resources.updateConfiguration(configuration, resources.getDisplayMetrics());\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/SettingsActivity.java b/app/src/main/java/com/example/finalproject/SettingsActivity.java
+--- a/app/src/main/java/com/example/finalproject/SettingsActivity.java	(revision 25393236e9f54b91563f8c5d5c47b1d57bee87c3)
++++ b/app/src/main/java/com/example/finalproject/SettingsActivity.java	(date 1639902912817)
+@@ -2,6 +2,7 @@
+ 
+ import android.app.Activity;
+ import android.content.Intent;
++import android.content.SharedPreferences;
+ import android.content.res.Configuration;
+ import android.content.res.Resources;
+ import android.os.Bundle;
+@@ -17,6 +18,7 @@
+     protected void onCreate(Bundle savedInstanceState) {
+ 
+         super.onCreate(savedInstanceState);
++        setStartLocale(SettingsActivity.this);
+         this.addPreferencesFromResource(R.xml.preferences);
+ 
+         Preference preference = (Preference) findPreference("language_pref");
+@@ -31,12 +33,26 @@
+         });
+     }
+ 
+-    private void setLocale(Activity activity, String lang) {
++    public void setLocale(Activity activity, String lang) {
+         Locale locale = new Locale(lang);
+         locale.setDefault(locale);
+         Resources resources = activity.getResources();
+         Configuration configuration = resources.getConfiguration();
+         configuration.setLocale(locale);
+         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
++
++        SharedPreferences.Editor editor = getSharedPreferences("Settings",MODE_PRIVATE).edit();
++        editor.putString("Language", lang);
++        editor.apply();
++    }
++    public void setStartLocale(Activity activity){
++        SharedPreferences preferences = getSharedPreferences("Settings", MODE_PRIVATE);
++        String language = preferences.getString("Language","");
++        Locale locale = new Locale(language);
++        locale.setDefault(locale);
++        Resources resources = activity.getResources();
++        Configuration configuration = resources.getConfiguration();
++        configuration.setLocale(locale);
++        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+     }
+ }
+Index: app/src/main/res/layout/home_screen_layout.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#290E5A\"\r\n    android:orientation=\"vertical\"\r\n    tools:context=\".HomeScreen\">\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"75dp\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/img_menu\"\r\n            android:layout_width=\"30sp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:paddingLeft=\"16sp\"\r\n            android:paddingTop=\"16sp\"\r\n            android:paddingRight=\"16sp\"\r\n            android:paddingBottom=\"16sp\"\r\n            app:srcCompat=\"@drawable/menu_icon\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/txt_userGreeting\"\r\n            android:layout_width=\"100sp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:fontFamily=\"cursive\"\r\n            android:gravity=\"center\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"24sp\" />\r\n\r\n        <ImageView\r\n            android:id=\"@+id/img_searchBtn\"\r\n            android:layout_width=\"30sp\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:paddingLeft=\"16sp\"\r\n            android:paddingTop=\"16sp\"\r\n            android:paddingRight=\"16sp\"\r\n            android:paddingBottom=\"16sp\"\r\n            app:srcCompat=\"@drawable/search_btn\" />\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <androidx.appcompat.widget.AppCompatButton\r\n            android:id=\"@+id/btn_today\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_margin=\"8dp\"\r\n            android:layout_marginRight=\"4dp\"\r\n            android:layout_weight=\"1\"\r\n            android:background=\"@drawable/today_task_shape\"\r\n            android:drawableTop=\"@drawable/today_task\"\r\n            android:fontFamily=\"serif\"\r\n            android:padding=\"4dp\"\r\n            android:text=\"@string/today\"\r\n            android:textColor=\"#000000\"\r\n            android:textSize=\"16sp\"\r\n            android:textStyle=\"bold\" />\r\n\r\n        <androidx.appcompat.widget.AppCompatButton\r\n            android:id=\"@+id/btn_important\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_margin=\"8dp\"\r\n            android:layout_marginLeft=\"4dp\"\r\n            android:layout_marginRight=\"4dp\"\r\n            android:layout_weight=\"1\"\r\n            android:background=\"@drawable/important_task_shape\"\r\n            android:drawableTop=\"@drawable/important_task\"\r\n            android:fontFamily=\"serif\"\r\n            android:padding=\"4dp\"\r\n            android:text=\"@string/important\"\r\n            android:textColor=\"#000000\"\r\n            android:textSize=\"16sp\"\r\n            android:textStyle=\"bold\" />\r\n\r\n        <androidx.appcompat.widget.AppCompatButton\r\n            android:id=\"@+id/btn_quickTask\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_margin=\"8dp\"\r\n            android:layout_marginLeft=\"4dp\"\r\n            android:layout_weight=\"1\"\r\n            android:background=\"@drawable/quick_task_shape\"\r\n            android:drawableTop=\"@drawable/quick_task\"\r\n            android:fontFamily=\"serif\"\r\n            android:padding=\"4dp\"\r\n            android:text=\"@string/quick\"\r\n            android:textColor=\"#000000\"\r\n            android:textSize=\"16sp\"\r\n            android:textStyle=\"bold\" />\r\n    </LinearLayout>\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\">\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView8\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:fontFamily=\"serif\"\r\n            android:text=\"@string/project\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"24sp\"\r\n            app:layout_constraintEnd_toEndOf=\"@+id/recyclerView\"\r\n            app:layout_constraintHorizontal_bias=\"0.0\"\r\n            app:layout_constraintStart_toStartOf=\"@+id/recyclerView\"\r\n            tools:layout_editor_absoluteY=\"288dp\" />\r\n\r\n        <TextView\r\n            android:id=\"@+id/textView\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginStart=\"16dp\"\r\n            android:layout_marginTop=\"12dp\"\r\n            android:fontFamily=\"serif\"\r\n            android:text=\"@string/project\"\r\n            android:textColor=\"@color/white\"\r\n            android:textSize=\"24sp\"\r\n            app:layout_constraintEnd_toStartOf=\"@+id/imageView\"\r\n            app:layout_constraintHorizontal_bias=\"0.095\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n        <androidx.recyclerview.widget.RecyclerView\r\n            android:id=\"@+id/project_recycler_view\"\r\n            android:layout_width=\"322dp\"\r\n            android:layout_height=\"217dp\"\r\n            android:layout_marginTop=\"8dp\"\r\n            app:layoutManager=\"LinearLayoutManager\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintHorizontal_bias=\"0.449\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/textView\" />\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageView\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_marginTop=\"8dp\"\r\n            android:layout_marginEnd=\"32dp\"\r\n            android:onClick=\"showAddProjectDialog\"\r\n            app:layout_constraintBottom_toBottomOf=\"@+id/textView\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintTop_toTopOf=\"parent\"\r\n            app:srcCompat=\"@drawable/add_btn\" />\r\n\r\n        <androidx.recyclerview.widget.RecyclerView\r\n            android:id=\"@+id/recyclerView\"\r\n            android:layout_width=\"326dp\"\r\n            android:layout_height=\"196dp\"\r\n            android:layout_marginTop=\"8dp\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintHorizontal_bias=\"0.47\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            app:layout_constraintTop_toBottomOf=\"@+id/textView8\" />\r\n\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/home_screen_layout.xml b/app/src/main/res/layout/home_screen_layout.xml
+--- a/app/src/main/res/layout/home_screen_layout.xml	(revision 25393236e9f54b91563f8c5d5c47b1d57bee87c3)
++++ b/app/src/main/res/layout/home_screen_layout.xml	(date 1639903420564)
+@@ -105,42 +105,30 @@
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+ 
+-        <TextView
+-            android:id="@+id/textView8"
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:fontFamily="serif"
+-            android:text="@string/project"
+-            android:textColor="@color/white"
+-            android:textSize="24sp"
+-            app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+-            app:layout_constraintHorizontal_bias="0.0"
+-            app:layout_constraintStart_toStartOf="@+id/recyclerView"
+-            tools:layout_editor_absoluteY="288dp" />
+-
+         <TextView
+             android:id="@+id/textView"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginStart="16dp"
+-            android:layout_marginTop="12dp"
++            android:layout_marginTop="16dp"
+             android:fontFamily="serif"
+             android:text="@string/project"
+             android:textColor="@color/white"
+             android:textSize="24sp"
+             app:layout_constraintEnd_toStartOf="@+id/imageView"
+-            app:layout_constraintHorizontal_bias="0.095"
++            app:layout_constraintHorizontal_bias="0.105"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent" />
+ 
+         <androidx.recyclerview.widget.RecyclerView
+             android:id="@+id/project_recycler_view"
+-            android:layout_width="322dp"
+-            android:layout_height="217dp"
+-            android:layout_marginTop="8dp"
++            android:layout_width="333dp"
++            android:layout_height="0dp"
++            android:layout_marginStart="8dp"
++            android:layout_marginEnd="8dp"
+             app:layoutManager="LinearLayoutManager"
++            app:layout_constraintBottom_toBottomOf="parent"
+             app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintHorizontal_bias="0.449"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toBottomOf="@+id/textView" />
+ 
+@@ -155,16 +143,5 @@
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintTop_toTopOf="parent"
+             app:srcCompat="@drawable/add_btn" />
+-
+-        <androidx.recyclerview.widget.RecyclerView
+-            android:id="@+id/recyclerView"
+-            android:layout_width="326dp"
+-            android:layout_height="196dp"
+-            android:layout_marginTop="8dp"
+-            app:layout_constraintEnd_toEndOf="parent"
+-            app:layout_constraintHorizontal_bias="0.47"
+-            app:layout_constraintStart_toStartOf="parent"
+-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+-
+     </androidx.constraintlayout.widget.ConstraintLayout>
+ </LinearLayout>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"DesignSurface\">\r\n    <option name=\"filePathToZoomLevelMap\">\r\n      <map>\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/font/aguafina_script.xml\" value=\"0.2328125\" />\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/activity_project_view.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/activity_signup.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/login_layout.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/project_item_layout.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/Final-Todo/app/src/main/res/layout/starting_screen.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/font/aguafina_script.xml\" value=\"0.2328125\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/font/aguafina_script_vi.xml\" value=\"0.2328125\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/activity_project_view.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/activity_signup.xml\" value=\"0.25\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/add_project_dialog.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/add_task_dialog.xml\" value=\"0.2957427536231884\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/change_password_dialog.xml\" value=\"0.2957427536231884\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/change_username_dialog.xml\" value=\"0.2957427536231884\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/edit_project_dialog.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/home_screen_layout.xml\" value=\"0.5\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/important_task_layout.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/project_item_layout.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/quick_task_layout.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/recover_password_dialog.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/search_screen_layout.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/starting_screen.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/task_item_layout.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/today_task_layout.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/AndroidProject/app/src/main/res/layout/user_profile.xml\" value=\"0.20260416666666667\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/add_btn.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/cancel.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/circle_color_choice.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/circle_color_choice2.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/circle_color_choice3.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/circle_color_choice4.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/custom_border.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/ellipse.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/ic_launcher_background.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/ic_menu.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/ic_tdt.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/important_task_shape.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/input_field_rectangle.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/item_border_radius.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/logout.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/main.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/project_item_shape.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/quick_task_shape.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_1.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_2.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_3.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_4.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/rectangle_dialog.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/search_btn.xml\" value=\"0.3828125\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/search_view_shape.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/settings.xml\" value=\"0.19144144144144143\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/sk_line_divider.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/today_task_shape.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/drawable/white_rectangle.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_main.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_project_view.xml\" value=\"0.3171171171171171\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/add_project_dialog.xml\" value=\"0.17747747747747747\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/add_task_dialog.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/edit_project_dialog.xml\" value=\"0.3171171171171171\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/important_task_layout.xml\" value=\"0.3171171171171171\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/layout_popup_menu.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/login_layout.xml\" value=\"0.33\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/long_touch_option_dialog.xml\" value=\"0.3171171171171171\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/main_screen.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/project_item_layout.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/quick_task_layout.xml\" value=\"0.3171171171171171\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/recover_password_dialog.xml\" value=\"0.24414414414414415\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/search_screen_layout.xml\" value=\"0.3171171171171171\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/settings_layout.xml\" value=\"0.24414414414414415\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/signup_layout.xml\" value=\"0.20520833333333333\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml\" value=\"0.27943840579710144\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/task_item_layout.xml\" value=\"0.3171171171171171\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/today_task_layout.xml\" value=\"0.3171171171171171\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/menu/popup_menu.xml\" value=\"0.36666666666666664\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml\" value=\"0.2581081081081081\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml\" value=\"0.3310810810810811\" />\r\n        <entry key=\"..\\:/S - Android Application Development/Final-Todo/app/src/main/res/xml/preferences.xml\" value=\"0.3171171171171171\" />\r\n        <entry key=\"app/src/main/res/drawable-v24/ic_launcher_foreground.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/add.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/add_btn.xml\" value=\"0.13288288288288289\" />\r\n        <entry key=\"app/src/main/res/drawable/add_task_btn_background.xml\" value=\"0.1009009009009009\" />\r\n        <entry key=\"app/src/main/res/drawable/add_task_dialog.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/background.xml\" value=\"0.16666666666666666\" />\r\n        <entry key=\"app/src/main/res/drawable/cancel.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/circle_color_choice.xml\" value=\"0.13288288288288289\" />\r\n        <entry key=\"app/src/main/res/drawable/circle_color_choice2.xml\" value=\"0.13288288288288289\" />\r\n        <entry key=\"app/src/main/res/drawable/circle_color_choice3.xml\" value=\"0.13288288288288289\" />\r\n        <entry key=\"app/src/main/res/drawable/circle_color_choice4.xml\" value=\"0.13288288288288289\" />\r\n        <entry key=\"app/src/main/res/drawable/ic_launcher_background.xml\" value=\"0.16666666666666666\" />\r\n        <entry key=\"app/src/main/res/drawable/input_field_rectangle.xml\" value=\"0.21666666666666667\" />\r\n        <entry key=\"app/src/main/res/drawable/item_border_radius.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/rectangle_1.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/rectangle_2.xml\" value=\"0.23148148148148148\" />\r\n        <entry key=\"app/src/main/res/drawable/rectangle_dialog.xml\" value=\"0.15729166666666666\" />\r\n        <entry key=\"app/src/main/res/layout/activity_main.xml\" value=\"0.17708333333333334\" />\r\n        <entry key=\"app/src/main/res/layout/activity_signup.xml\" value=\"0.25\" />\r\n        <entry key=\"app/src/main/res/layout/add_project_dialog.xml\" value=\"0.25\" />\r\n        <entry key=\"app/src/main/res/layout/add_task_dialog.xml\" value=\"0.13145896656534956\" />\r\n        <entry key=\"app/src/main/res/layout/important_task_layout.xml\" value=\"0.1\" />\r\n        <entry key=\"app/src/main/res/layout/login_layout.xml\" value=\"0.25\" />\r\n        <entry key=\"app/src/main/res/layout/main_menu_item_layout.xml\" value=\"0.13145896656534956\" />\r\n        <entry key=\"app/src/main/res/layout/project_item_layout.xml\" value=\"0.24003623188405798\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_11\" default=\"true\" project-jdk-name=\"Android Studio default JDK\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 25393236e9f54b91563f8c5d5c47b1d57bee87c3)
++++ b/.idea/misc.xml	(date 1639905995137)
+@@ -14,11 +14,9 @@
+         <entry key="..\:/AndroidProject/app/src/main/res/layout/activity_project_view.xml" value="0.20260416666666667" />
+         <entry key="..\:/AndroidProject/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+         <entry key="..\:/AndroidProject/app/src/main/res/layout/add_project_dialog.xml" value="0.20260416666666667" />
+-        <entry key="..\:/AndroidProject/app/src/main/res/layout/add_task_dialog.xml" value="0.2957427536231884" />
+-        <entry key="..\:/AndroidProject/app/src/main/res/layout/change_password_dialog.xml" value="0.2957427536231884" />
+         <entry key="..\:/AndroidProject/app/src/main/res/layout/change_username_dialog.xml" value="0.2957427536231884" />
+         <entry key="..\:/AndroidProject/app/src/main/res/layout/edit_project_dialog.xml" value="0.20260416666666667" />
+-        <entry key="..\:/AndroidProject/app/src/main/res/layout/home_screen_layout.xml" value="0.5" />
++        <entry key="..\:/AndroidProject/app/src/main/res/layout/home_screen_layout.xml" value="0.20260416666666667" />
+         <entry key="..\:/AndroidProject/app/src/main/res/layout/important_task_layout.xml" value="0.20260416666666667" />
+         <entry key="..\:/AndroidProject/app/src/main/res/layout/project_item_layout.xml" value="0.20260416666666667" />
+         <entry key="..\:/AndroidProject/app/src/main/res/layout/quick_task_layout.xml" value="0.20260416666666667" />
+@@ -63,7 +61,10 @@
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/activity_signup.xml" value="0.36666666666666664" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/add_project_dialog.xml" value="0.17747747747747747" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/add_task_dialog.xml" value="0.33" />
++        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/change_password_dialog.xml" value="0.24414414414414415" />
++        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/change_username_dialog.xml" value="0.24414414414414415" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/edit_project_dialog.xml" value="0.3171171171171171" />
++        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/edit_task_layout.xml" value="0.24414414414414415" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/home_screen_layout.xml" value="0.33" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/important_task_layout.xml" value="0.3171171171171171" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/layout_popup_menu.xml" value="0.36666666666666664" />
+@@ -79,6 +80,7 @@
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/signup_layout.xml" value="0.20520833333333333" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/starting_screen.xml" value="0.27943840579710144" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/task_item_layout.xml" value="0.3171171171171171" />
++        <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/tdt_logo_layout.xml" value="0.24414414414414415" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/layout/today_task_layout.xml" value="0.3171171171171171" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/menu/popup_menu.xml" value="0.36666666666666664" />
+         <entry key="..\:/S - Android Application Development/Final-Todo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2581081081081081" />

@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="300dp"
         android:layout_height="20dp"
-        android:text="Enter your new name"
+        android:text="@string/enterNewUserName"
         android:textSize="15dp"
         app:layout_constraintBottom_toTopOf="@+id/txt_changedUserName"
         app:layout_constraintStart_toStartOf="@+id/txt_changedUserName"
@@ -20,6 +20,7 @@
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginTop="72dp"
+        android:inputType="textCapWords"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

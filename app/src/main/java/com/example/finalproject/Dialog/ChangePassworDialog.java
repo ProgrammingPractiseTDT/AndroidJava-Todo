@@ -2,14 +2,23 @@ package com.example.finalproject.Dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.finalproject.FirebaseOperator;
+import com.example.finalproject.HomeScreen;
+import com.example.finalproject.Login;
 import com.example.finalproject.R;
+import com.example.finalproject.StartingScreen;
+import com.example.finalproject.UserProfile;
+
+import io.paperdb.Paper;
 
 public class ChangePassworDialog extends Dialog implements View.OnClickListener {
 
@@ -42,6 +51,8 @@ public class ChangePassworDialog extends Dialog implements View.OnClickListener 
             case R.id.btn_confirmChangePassword:
                 FirebaseOperator Fo = new FirebaseOperator();
                 Fo.changePasssword(txt_oldPassword.getText().toString(), txt_newPassword.getText().toString());
+                Paper.book().destroy();
+                Toast.makeText(getContext(),c.getString(R.string.changePasswordSuccess),Toast.LENGTH_LONG).show();
                 dismiss();
                 break;
             case R.id.btn_cancelChangePassword:

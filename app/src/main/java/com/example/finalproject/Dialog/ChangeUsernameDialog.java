@@ -48,6 +48,7 @@ public class ChangeUsernameDialog extends Dialog implements View.OnClickListener
                 txt_userName = (EditText) findViewById(R.id.txt_changedUserName);
                 FirebaseOperator changeUserName = new FirebaseOperator();
                 changeUserName.updateUserName(txt_userName.getText().toString());
+                Toast.makeText(getContext(),c.getString(R.string.changeUsernameSuccess),Toast.LENGTH_LONG).show();
                 dismiss();
             case R.id.btn_cancelChangedUsername:
                 dismiss();
