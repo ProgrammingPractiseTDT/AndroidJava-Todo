@@ -57,6 +57,12 @@ public class ProjectView extends AppCompatActivity {
         atd = new AddTaskDialog(ProjectView.this, ProjectKey);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        fetchTaskFromProject(ProjectKey);
+    }
+
     public void addTask(View view) {
         //execute when click add task button
         atd.show();
