@@ -88,7 +88,7 @@ public class ProjectView extends AppCompatActivity {
 //    }
 
     public void fetchTaskFromProject(String ProjectKey){
-        Query reference =  FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(ProjectKey).child("tasks");
+        Query reference =  FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(ProjectKey).child("tasks").orderByChild("checkingStatus");
         //Query query = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("projects").child(ProjectKey).child("tasks");
         ValueEventListener postListener = new ValueEventListener() {
             @Override

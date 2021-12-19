@@ -40,6 +40,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         private final TextView clockText;
         public ViewHolder(View view) {
             super(view);
+            this.setIsRecyclable(false);
             // Define click listener for the ViewHolder's View
             taskName = (TextView) view.findViewById(R.id.txt_taskTitle);
             dateTime = (TextView) view.findViewById((R.id.txt_deadline));

@@ -26,7 +26,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
-
+            this.setIsRecyclable(false);
             textView = (TextView) view.findViewById(R.id.txt_projectName);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

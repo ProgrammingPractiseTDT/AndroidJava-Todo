@@ -183,7 +183,7 @@ public class FirebaseOperator {
     }
 
     public void QuickTasksFiller(TaskAdapter taskAdapter, ArrayList<Task> tasks, ArrayList<String> taskKeys) {
-        Query projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
+        Query projectsRef = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks").orderByChild("checkingStatus");
         projectsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -215,7 +215,7 @@ public class FirebaseOperator {
 
                     for (DataSnapshot dsp2 : dsp.child("tasks").getChildren()) {
                         Task task = dsp2.getValue(Task.class);
-                        if(task.getPriority() == 3) {
+                        if(task.getPriority() == 3 && task.getCheckingStatus()== false) {
                             tasks.add(task);
                             taskKeys.add(dsp2.getKey());
                             projectKeys.add(dsp.getKey());
@@ -263,7 +263,7 @@ public class FirebaseOperator {
 
 
 
-        Query projectsRef2 = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks");
+        Query projectsRef2 = FirebaseDatabase.getInstance().getReference().child("User").child(user.getUid()).child("QuickTasks").orderByChild("checkingStatus");
         projectsRef2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
