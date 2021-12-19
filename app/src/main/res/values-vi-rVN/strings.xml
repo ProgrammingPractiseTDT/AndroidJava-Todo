@@ -89,4 +89,18 @@
     //text in changePassword
     <string name="oldPassword">Mật khẩu cũ</string>
     <string name="newPassword">Mật khẩu mới</string>
+    <string name="systemSettings">Thiết lập hệ thống</string>
+    <string name="aboutAppTitle">Về ToDoThings</string>
+    <string name="aboutUs">Về chúng tôi</string>
+    <string name="aboutDev">Nhà phát triển</string>
+    <string name="devSummary">Bên dưới biểu tượng ToDoThings có 3 ký tự tượng trưng cho các nhà phát triển của chúng tôi.
+        \n\t<font color='#FFF32929'>N: Đoàn Văn Nghĩa - 519H0323</font>
+        \n\t<font color='#FF2EC42B'>D: Mai Lê Tiến Đạt - 519H0279</font>
+        \n\t<font color='#074DDA'>H: Nguyễn Lê Ngọc Huy - 519H0295</font>
+    </string>
+    <string name="tdtSummary">
+        ToDoThings phiên bản chính thức đầu tiên được phát hành vào 20/12/2021.
+        \nToDoThings được tạo ra với mục đích giúp đỡ mọi người quản lý thời gian trong ngày của mình.
+        \nChúng tôi rất vui lòng được hỗ trợ một phần trong thành công của bạn.
+    </string>
 </resources>

@@ -62,4 +62,18 @@
     <string name="enterNewUserName">여기에 사용자 이름을 입력</string>
     <string name="oldPassword">기존 비밀번호</string>
     <string name="newPassword">새 비밀번호</string>
+    <string name="systemSettings">환경 설정</string>
+    <string name="aboutAppTitle">ToDoThings 에 대해</string>
+    <string name="aboutUs">우리에 대해</string>
+    <string name="aboutDev">개발자</string>
+    <string name="devSummary">ToDoThings 로고 아래에는 개발자를 나타내는 3개의 문자가 있습니다.
+        \n\t<font color='#FFF32929'>N: Doan Van Nghia - 519H0323</font>
+        \n\t<font color='#FF2EC42B'>D: Mai Le Tien Dat - 519H0279</font>
+        \n\t<font color='#074DDA'>H: Nguyen Le Ngoc Huy - 519H0295</font>
+    </string>
+    <string name="tdtSummary">
+        ToDoThings의 첫 번째 공식 버전은 2021년 12월 20일에 출시되었습니다.
+        \nToDoThings는 사람들이 하루 중 시간을 관리할 수 있도록 돕기 위해 만들어졌습니다.
+        \n귀하의 성공에 동참하게 되어 기쁩니다.
+    </string>
 </resources>

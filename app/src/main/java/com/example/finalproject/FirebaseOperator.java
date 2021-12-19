@@ -1,5 +1,6 @@
 package com.example.finalproject;
 
+import android.nfc.Tag;
 import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -15,6 +16,9 @@ import com.example.finalproject.Adapter.TaskAdapter;
 import com.example.finalproject.DataClass.QuickTask;
 import com.example.finalproject.DataClass.Task;
 import com.example.finalproject.DataClass.Project;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -64,6 +68,30 @@ public class FirebaseOperator {
     }
 
 
+    public void changePasssword(String oldPass, String newPass){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), oldPass);
+        user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull com.google.android.gms.tasks.Task<Void> task) {
+                if (task.isSuccessful()){
+                    user.updatePassword(newPass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull com.google.android.gms.tasks.Task<Void> task) {
+                            if (task.isSuccessful()){
+                                Log.d("Status", "Password updated");
+                            }
+                            else{
+                                Log.d("Status", "Error password not updated");
+                            }
+                        }
+                    });
+                } else {
+                    Log.d("Status", "Error auth failed");
+                }
+            }
+        });
+    }
 
     public void editTask(String projectKey, String taskKey, String title, String endTime, String onTime, String description, int priority){
         if(projectKey.equals("QuickTasks")){
