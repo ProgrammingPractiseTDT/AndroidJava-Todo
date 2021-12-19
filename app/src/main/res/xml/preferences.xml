@@ -8,7 +8,7 @@
         android:summary="@string/languageSummary"
         android:entries="@array/language_list"
         android:entryValues="@array/language_list_alias"
-        android:defaultValue="en"
+        android:defaultValue="vi"
         />
 
 </PreferenceScreen>

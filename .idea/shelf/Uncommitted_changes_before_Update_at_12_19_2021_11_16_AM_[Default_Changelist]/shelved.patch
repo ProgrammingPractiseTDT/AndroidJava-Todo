@@ -1,0 +1,162 @@
+Index: app/src/main/java/com/example/finalproject/HomeScreen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.finalproject;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport android.content.Context;\r\nimport android.content.DialogInterface;\r\nimport android.content.Intent;\r\nimport android.media.Image;\r\nimport android.os.Bundle;\r\nimport android.util.Log;\r\nimport android.view.ContextThemeWrapper;\r\nimport android.view.Gravity;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.view.Window;\r\nimport android.widget.Button;\r\nimport android.widget.ImageView;\r\nimport android.widget.ListView;\r\nimport android.widget.PopupMenu;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.example.finalproject.Adapter.ProjectAdapter;\r\nimport com.example.finalproject.Dialog.AddProjectDialog;\r\nimport com.example.finalproject.DataClass.ImportantTask;\r\nimport com.example.finalproject.DataClass.Project;\r\nimport com.example.finalproject.DataClass.QuickTask;\r\nimport com.example.finalproject.DataClass.TodayTask;\r\nimport com.example.finalproject.DataClass.User;\r\nimport com.google.firebase.auth.FirebaseAuth;\r\nimport com.google.firebase.auth.FirebaseUser;\r\nimport com.google.firebase.database.DataSnapshot;\r\nimport com.google.firebase.database.DatabaseError;\r\nimport com.google.firebase.database.DatabaseReference;\r\nimport com.google.firebase.database.FirebaseDatabase;\r\nimport com.google.firebase.database.ValueEventListener;\r\n\r\nimport java.lang.reflect.Field;\r\nimport java.lang.reflect.Method;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n\r\nimport io.paperdb.Paper;\r\n\r\n\r\n//test\r\npublic class HomeScreen extends AppCompatActivity{\r\n    private TextView userGreeting;\r\n    private FirebaseUser user;\r\n    private RecyclerView rv;\r\n    private Button todayBtn;\r\n    private Button importantBtn;\r\n    private Button quickTaskBtn;\r\n    private ImageView searchBtn;\r\n    private ImageView popupMenuBtn;\r\n    ProjectAdapter projectAdapter;\r\n    ArrayList<Project> ProjectNames;\r\n    ArrayList<String> ProjectKeys;\r\n    AddProjectDialog cdd;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        requestWindowFeature(Window.FEATURE_NO_TITLE);\r\n        setContentView(R.layout.home_screen_layout);\r\n\r\n        //Move to TodayTask, ImportantTask, QuickTask\r\n        todayBtn = findViewById(R.id.btn_today);\r\n        importantBtn = findViewById(R.id.btn_important);\r\n        quickTaskBtn = findViewById(R.id.btn_quickTask);\r\n        todayBtn.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(new Intent(HomeScreen.this, TodayTask.class));\r\n            }\r\n        });\r\n        importantBtn.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(new Intent(HomeScreen.this, ImportantTask.class));\r\n            }\r\n        });\r\n        quickTaskBtn.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(new Intent(HomeScreen.this, QuickTask.class));\r\n            }\r\n        });\r\n\r\n        //search Activity\r\n        searchBtn = findViewById(R.id.img_searchBtn);\r\n        searchBtn.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                startActivity(new Intent(HomeScreen.this, SearchActivity.class));\r\n            }\r\n        });\r\n\r\n        //Popup Menu\r\n        popupMenuBtn = findViewById(R.id.img_menu);\r\n        popupMenuBtn.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View view) {\r\n                showPopup(view);\r\n            }\r\n        });\r\n\r\n        //User Greeting\r\n        userGreeting = findViewById(R.id.txt_userGreeting);\r\n        user = FirebaseAuth.getInstance().getCurrentUser();\r\n        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(\"User\");\r\n        if(user!=null){\r\n            String uid = user.getUid();\r\n\r\n            reference.child(uid).addValueEventListener(new ValueEventListener() {\r\n                @Override\r\n                public void onDataChange(@NonNull DataSnapshot snapshot) {\r\n                    User user = snapshot.getValue(User.class);\r\n                    userGreeting.setText(getString(R.string.hello)+user.getFullName()+\"!\");\r\n                }\r\n\r\n                @Override\r\n                public void onCancelled(@NonNull DatabaseError error) {\r\n\r\n                }\r\n            });\r\n        }\r\n\r\n        ProjectNames = new ArrayList<Project>();\r\n        ProjectKeys = new ArrayList<String>();\r\n        getProjectFromUser();\r\n\r\n\r\n        rv = findViewById(R.id.project_recycler_view);\r\n        projectAdapter = new ProjectAdapter(HomeScreen.this, ProjectNames, ProjectKeys);\r\n        rv.setAdapter(projectAdapter);\r\n\r\n        //add project dialog\r\n        cdd=new AddProjectDialog(HomeScreen.this);\r\n        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {\r\n            @Override\r\n            public void onDismiss(DialogInterface dialog) {\r\n                getProjectFromUser();\r\n                projectAdapter.notifyDataSetChanged();\r\n            }\r\n        });\r\n    }\r\n\r\n    public void showAddProjectDialog(View view) {\r\n        AddProjectDialog cdd=new AddProjectDialog(HomeScreen.this);\r\n//        cdd.setOnDismissListener(new DialogInterface.OnDismissListener() {\r\n//            @Override\r\n//            public void onDismiss(DialogInterface dialog) {\r\n//                getProjectFromUser();\r\n//                projectAdapter.notifyDataSetChanged();\r\n//            }\r\n//        });\r\n        cdd.show();\r\n    }\r\n\r\n    void getProjectFromUser(){\r\n        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child(\"User\").child(user.getUid()).child(\"projects\");\r\n        ValueEventListener postListener = new ValueEventListener() {\r\n            @Override\r\n            public void onDataChange(DataSnapshot dataSnapshot) {\r\n                // Get Post object and use the values to update the UI\r\n                ProjectNames.clear();\r\n                ProjectKeys.clear();\r\n                for (DataSnapshot dsp : dataSnapshot.getChildren()) {\r\n                    Project project = dsp.getValue(Project.class);\r\n                    ProjectKeys.add(dsp.getKey());\r\n                    ProjectNames.add(project); //add result into array list\r\n                }\r\n                projectAdapter.notifyDataSetChanged();\r\n            }\r\n\r\n            @Override\r\n            public void onCancelled(DatabaseError databaseError) {\r\n                // Getting Post failed, log a message\r\n                Log.w(\"FetchError\", \"loadPost:onCancelled\", databaseError.toException());\r\n            }\r\n        };\r\n        reference.addValueEventListener(postListener);\r\n    }\r\n\r\n\r\n\r\n    void setProjectNames(ArrayList<Project> ProjectNames){\r\n        this.ProjectNames = ProjectNames;\r\n    }\r\n\r\n    public void showPopup(View view){\r\n        Context theme = new ContextThemeWrapper(this, R.style.appPopupMenu);\r\n        PopupMenu popupMenu = new PopupMenu(theme, popupMenuBtn);\r\n        popupMenu.getMenuInflater().inflate(R.menu.popup_menu, popupMenu.getMenu());\r\n        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {\r\n             @Override\r\n             public boolean onMenuItemClick(MenuItem menuItem) {\r\n                 switch (menuItem.getItemId()){\r\n                     case R.id.userProfile:\r\n                         Toast.makeText(HomeScreen.this, \"UserProfile\", Toast.LENGTH_SHORT).show();\r\n                         Intent intent = new Intent(HomeScreen.this, UserProfile.class);\r\n                         startActivity(intent);\r\n                         intent.putExtra(\"User id\", user);\r\n                         return true;\r\n                     case R.id.settings:\r\n                         startActivity(new Intent(HomeScreen.this, SettingsActivity.class));\r\n                         return true;\r\n                     case R.id.logoutBtn:\r\n                         Paper.book().destroy();\r\n                         startActivity(new Intent(HomeScreen.this, StartingScreen.class));\r\n                         return true;\r\n                     default:\r\n                         return false;\r\n             }\r\n         }\r\n        });\r\n        try{\r\n            Field[] fields = popupMenu.getClass().getDeclaredFields();\r\n            for(Field field : fields){\r\n                if(\"mPopup\".equals(field.getName())){\r\n                    field.setAccessible(true);\r\n                    Object menuPopupHelper = field.get(popupMenu);\r\n                    Class<?> classPopupHelper = Class.forName(menuPopupHelper.getClass().getName());\r\n                    Method setForceIcons = classPopupHelper.getMethod(\"setForceShowIcon\", boolean.class);\r\n                    setForceIcons.invoke(menuPopupHelper, true);\r\n                    break;\r\n                }\r\n            }\r\n\r\n        } catch (Exception e) {\r\n\r\n        }finally {\r\n            popupMenu.show();\r\n        }\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/HomeScreen.java b/app/src/main/java/com/example/finalproject/HomeScreen.java
+--- a/app/src/main/java/com/example/finalproject/HomeScreen.java	(revision 4345335e7712d01850f51db170d62433771adb7b)
++++ b/app/src/main/java/com/example/finalproject/HomeScreen.java	(date 1639885135024)
+@@ -56,6 +56,7 @@
+     private Button quickTaskBtn;
+     private ImageView searchBtn;
+     private ImageView popupMenuBtn;
++    private String initialLocale;
+     ProjectAdapter projectAdapter;
+     ArrayList<Project> ProjectNames;
+     ArrayList<String> ProjectKeys;
+@@ -65,6 +66,7 @@
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         requestWindowFeature(Window.FEATURE_NO_TITLE);
++        initialLocale = LocaleHelper.getPersistedLocale(this);
+         setContentView(R.layout.home_screen_layout);
+ 
+         //Move to TodayTask, ImportantTask, QuickTask
+@@ -207,7 +209,7 @@
+                          intent.putExtra("User id", user);
+                          return true;
+                      case R.id.settings:
+-                         startActivity(new Intent(HomeScreen.this, SettingsActivity.class));
++                         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                          return true;
+                      case R.id.logoutBtn:
+                          Paper.book().destroy();
+@@ -238,4 +240,17 @@
+         }
+     }
+ 
++
++    @Override
++    protected void attachBaseContext(Context base) {
++        super.attachBaseContext(LocaleHelper.onAttach(base));
++    }
++
++    @Override
++    protected void onResume() {
++        super.onResume();
++        if (initialLocale != null && !initialLocale.equals(LocaleHelper.getPersistedLocale(this))) {
++            recreate();
++        }
++    }
+ }
+\ No newline at end of file
+Index: app/src/main/res/xml/preferences.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<PreferenceScreen xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\">\r\n\r\n    <ListPreference\r\n        android:key=\"@string/language_key\"\r\n        android:title=\"@string/language\"\r\n        android:summary=\"@string/languageSummary\"\r\n        android:entries=\"@array/language_list\"\r\n        android:entryValues=\"@array/language_list_alias\"\r\n        android:defaultValue=\"en\"\r\n        />\r\n\r\n</PreferenceScreen>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/xml/preferences.xml b/app/src/main/res/xml/preferences.xml
+--- a/app/src/main/res/xml/preferences.xml	(revision 4345335e7712d01850f51db170d62433771adb7b)
++++ b/app/src/main/res/xml/preferences.xml	(date 1639855034720)
+@@ -8,7 +8,6 @@
+         android:summary="@string/languageSummary"
+         android:entries="@array/language_list"
+         android:entryValues="@array/language_list_alias"
+-        android:defaultValue="en"
+         />
+ 
+ </PreferenceScreen>
+\ No newline at end of file
+Index: app/src/main/java/com/example/finalproject/SettingsActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/finalproject/SettingsActivity.java b/app/src/main/java/com/example/finalproject/SettingsActivity.java
+deleted file mode 100644
+--- a/app/src/main/java/com/example/finalproject/SettingsActivity.java	(revision 4345335e7712d01850f51db170d62433771adb7b)
++++ /dev/null	(revision 4345335e7712d01850f51db170d62433771adb7b)
+@@ -1,79 +0,0 @@
+-package com.example.finalproject;
+-
+-import android.app.Activity;
+-import android.content.Intent;
+-import android.content.SharedPreferences;
+-import android.content.res.Configuration;
+-import android.content.res.Resources;
+-import android.os.Bundle;
+-import android.preference.PreferenceActivity;
+-import android.preference.PreferenceManager;
+-import android.util.DisplayMetrics;
+-import android.util.Log;
+-
+-import androidx.annotation.Nullable;
+-import androidx.preference.ListPreference;
+-import android.preference.Preference;
+-
+-import com.jakewharton.processphoenix.ProcessPhoenix;
+-
+-import java.util.Locale;
+-
+-public class SettingsActivity extends PreferenceActivity {
+-    private SharedPreferences.OnSharedPreferenceChangeListener preferenceChangeListener;
+-
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-
+-        super.onCreate(savedInstanceState);
+-        loadLocale();
+-        this.addPreferencesFromResource(R.xml.preferences);
+-
+-        Preference preference = (Preference) findPreference("language_pref");
+-        preference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+-            @Override
+-            public boolean onPreferenceChange(Preference preference, Object newValue) {
+-                setLocale(newValue.toString());
+-                recreate();
+-                restartActivity();
+-                return true;
+-            }
+-        });
+-    }
+-
+-
+-    public void setLocale(String lang){
+-        Locale locale = new Locale(lang);
+-        Locale.setDefault(locale);
+-        Configuration config = new Configuration();
+-        config.locale = locale;
+-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+-
+-        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+-        editor.putString("My language", lang);
+-        editor.apply();
+-    }
+-
+-    private void restartActivity() {
+-        Intent intent = getIntent();
+-        startActivity(intent);
+-        finish();
+-    }
+-
+-    public void loadLocale(){
+-        SharedPreferences preferences = getSharedPreferences("Settings", MODE_PRIVATE);
+-        String language = preferences.getString("My language","");
+-        setLocale(language);
+-    }
+-
+-//    private void setLanguage(String lg) {
+-//        Locale locale = new Locale(lg);
+-//        Resources res = getResources();
+-//        DisplayMetrics dm = res.getDisplayMetrics();
+-//        Configuration config = res.getConfiguration();
+-//        config.locale = locale;
+-//        res.updateConfiguration(config, dm);
+-//        startActivity(new Intent(this, SettingsActivity.class));
+-//    }
+-}

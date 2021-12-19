@@ -56,6 +56,7 @@ public class HomeScreen extends AppCompatActivity{
     private Button quickTaskBtn;
     private ImageView searchBtn;
     private ImageView popupMenuBtn;
+    private String initialLocale;
     ProjectAdapter projectAdapter;
     ArrayList<Project> ProjectNames;
     ArrayList<String> ProjectKeys;
@@ -207,7 +208,7 @@ public class HomeScreen extends AppCompatActivity{
                          intent.putExtra("User id", user);
                          return true;
                      case R.id.settings:
-                         startActivity(new Intent(HomeScreen.this, SettingsActivity.class));
+                         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                          return true;
                      case R.id.logoutBtn:
                          Paper.book().destroy();
