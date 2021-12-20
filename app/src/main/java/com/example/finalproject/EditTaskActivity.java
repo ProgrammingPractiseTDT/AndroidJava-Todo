@@ -22,7 +22,7 @@ public class EditTaskActivity extends AppCompatActivity {
     public TimePicker timePicker;
     public RadioGroup radioGroup;
     public TextView description;
-    public AppCompatButton apply_btn;
+    public AppCompatButton apply_btn, cancel_btn;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_task_layout);
@@ -51,6 +51,15 @@ public class EditTaskActivity extends AppCompatActivity {
                 int priority_id = radioGroup.getCheckedRadioButtonId();
                 int priority_number = checkPriority(priority_id);
                 firebaseOperator.editTask(projectKey, taskKey, title.getText().toString(), dateFormat, timeString, description.getText().toString(), priority_number);
+                finish();
+            }
+        });
+
+        cancel_btn = findViewById(R.id.cancel_dialog_btn);
+        cancel_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
                 finish();
             }
         });

@@ -54,8 +54,8 @@ public class ProjectView extends AppCompatActivity {
         rv = findViewById(R.id.task_recycler_view);
         taskList = new ArrayList<Task>();
         fetchTaskFromProject(ProjectKey);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), DividerItemDecoration.VERTICAL);
-        rv.addItemDecoration(dividerItemDecoration);
+//        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(), DividerItemDecoration.VERTICAL);
+//        rv.addItemDecoration(dividerItemDecoration);
 
         taskAdapter = new TaskAdapter(this,taskList, TasksKey, ProjectKey);
         rv.setAdapter(taskAdapter);

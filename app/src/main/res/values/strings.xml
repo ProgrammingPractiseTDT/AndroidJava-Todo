@@ -2,7 +2,8 @@
 <resources>
     //some texts do not depend on Language setting.
     <string name="app_name">To Do Things</string>
-
+    <string name="high_priority" translatable="false"><font color='#DF5252'>!</font></string>
+    <string name="high" translatable="false">!</string>
     //Texts in StartingScreen
     <string name="joinNow">JOIN NOW</string>
     <string name="alreadySignUp">Already have an account? Sign In!</string>

@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FAF8F8">
 
 
+    <EditText
+        android:id="@+id/txt_taskTitleInput"
+        android:layout_width="335dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/item_box"
+        android:ems="10"
+        android:hint="@string/title"
+        android:inputType="textCapSentences"
+        android:paddingLeft="3dp"
+        android:textColor="@color/black"
+        android:textColorHint="#706C6C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.439"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/txt_taskTitleInput"
-                android:layout_width="250dp"
-                android:layout_height="57dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/input_field_rectangle"
-                android:ems="10"
-                android:hint="@string/title"
-                android:inputType="textCapSentences"
-                android:paddingLeft="3dp"
-                android:textColor="@color/black"
-                android:textColorHint="#706C6C"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.439"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <DatePicker
-                android:id="@+id/datePicker"
-                android:layout_width="246dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/input_field_rectangle"
-                android:calendarTextColor="@color/black"
-                android:calendarViewShown="false"
-                android:datePickerMode="spinner"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.478"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="334dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/item_box"
+        android:calendarTextColor="@color/black"
+        android:datePickerMode="calendar"
+        android:scaleY="0.7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <RadioGroup
                 android:id="@+id/rad_priority"
@@ -130,49 +134,50 @@
         app:layout_constraintVertical_bias="0.951" />
 
     <TimePicker
-                android:id="@+id/timePicker"
-                android:layout_width="233dp"
-                android:layout_height="91dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/input_field_rectangle"
-                android:timePickerMode="spinner"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_onTime" />
+        android:id="@+id/timePicker"
+        android:layout_width="334dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/item_box"
+        android:timePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_onTime" />
 
-            <EditText
-                android:id="@+id/txt_descriptionEdit"
-                android:layout_width="271dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/input_field_rectangle"
-                android:ems="10"
-                android:gravity="center|left"
-                android:hint="@string/description"
-                android:inputType="textCapSentences"
-                android:paddingLeft="3dp"
-                android:paddingTop="2dp"
-                android:paddingRight="3dp"
-                android:paddingBottom="2dp"
-                android:textColorHint="#837E7E"
-                app:layout_constraintEnd_toEndOf="@+id/txt_taskTitleInput"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="@+id/txt_taskTitleInput"
-                app:layout_constraintTop_toBottomOf="@+id/rad_priority" />
+    <EditText
+        android:id="@+id/txt_descriptionEdit"
+        android:layout_width="342dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/item_box"
+        android:ems="10"
+        android:gravity="center|left"
+        android:hint="@string/description"
+        android:inputType="textCapSentences"
+        android:paddingLeft="3dp"
+        android:paddingTop="2dp"
+        android:paddingRight="3dp"
+        android:paddingBottom="2dp"
+        android:textColorHint="#837E7E"
+        app:layout_constraintEnd_toEndOf="@+id/txt_taskTitleInput"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/txt_taskTitleInput"
+        app:layout_constraintTop_toBottomOf="@+id/rad_priority" />
 
-            <TextView
-                android:id="@+id/txt_onTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/onTime"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+    <TextView
+        android:id="@+id/txt_onTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="-30dp"
+        android:text="@string/onTime"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePicker" />
 
 
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

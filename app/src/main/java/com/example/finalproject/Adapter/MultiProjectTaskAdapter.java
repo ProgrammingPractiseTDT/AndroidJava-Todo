@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 public class MultiProjectTaskAdapter extends RecyclerView.Adapter<MultiProjectTaskAdapter.ViewHolder>{
     static ArrayList<Task> tasks;
+    private final Context context;
     private ArrayList<String> projectKeys;
     private ArrayList<String> taskKeys;
 
@@ -103,6 +104,7 @@ public class MultiProjectTaskAdapter extends RecyclerView.Adapter<MultiProjectTa
         tasks = dataSet;
         this.taskKeys = taskKeys;
         this.projectKeys = projectKeys;
+        this.context = context;
     }
 
 
@@ -146,20 +148,25 @@ public class MultiProjectTaskAdapter extends RecyclerView.Adapter<MultiProjectTa
         viewHolder.getTaskName().setTag(taskKey);
         String projectKey = projectKeys.get(position);
         viewHolder.getDescription().setTag(projectKey);
-        if(tasks.get(position).getCheckingStatus() == true){
-            viewHolder.getFulllayout().setAlpha((float)0.25);
+        if(tasks.get(position).getCheckingStatus()){
+                viewHolder.getFulllayout().setAlpha((float)0.2);
         }
         else{
             viewHolder.getFulllayout().setAlpha((float)1);
         }
         if (tasks.get(position).getPriority() == 1){
-            viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#68ED8C"));
+            viewHolder.getCheckingStatus().setButtonDrawable(R.drawable.low_priority_cb);
         }
         else if (tasks.get(position).getPriority() == 2){
-            viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#fcfc21"));
+//            viewHolder.getPriorityText().setText( "!!");
+//            viewHolder.getPriorityText().setTextColor(context.getResources().getColor(R.color.light_red));
+            viewHolder.getCheckingStatus().setButtonDrawable(R.drawable.medium_priority_cb);
         }
         else{
-            viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#f04646"));
+//            viewHolder.getChec
+//             viewHolder.getPriorityText().setText( "!!!");
+//            viewHolder.getPriorityText().setTextColor(context.getResources().getColor(R.color.light_red));
+            //viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#f04646"));
         }
         viewHolder.getCheckingStatus().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

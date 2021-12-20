@@ -31,8 +31,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     static ArrayList<Task> tasks;
     private ArrayList<String> keys;
     public static String ProjectKey;
+    private Context context;
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
         private final TextView taskName,dateTime, description, fullTitle;
         private final CheckBox checkingStatus;
         private final ConstraintLayout layoutExpand;
@@ -50,6 +53,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
             fullTitle = (TextView) view.findViewById(R.id.txt_fullTitle);
             Fulllayout = (ConstraintLayout) view.findViewById(R.id.ly_fullLayout);
             clockText = (TextView) view.findViewById(R.id.clockText);
+
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -62,6 +66,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                     else{
                         layoutExpand.setVisibility(View.GONE);
                     }
+//                    if(Fulllayout.getHeight("dp")==80)
 
                 }
             });
@@ -69,6 +74,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
                 @Override
                 public boolean onLongClick(View v) {
                     LongClickTaskDialog epd = new LongClickTaskDialog(view.getContext(), ProjectKey, taskName.getTag().toString());
+                    epd.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                     epd.show();
                     return true;
                 }
@@ -112,6 +118,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         tasks = dataSet;
         this.keys = keys;
         this.ProjectKey = ProjectKey;
+        this.context =context;
     }
 
 
@@ -176,13 +183,18 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         String key = keys.get(position);
         viewHolder.getTaskName().setTag(key);
         if (tasks.get(position).getPriority() == 1){
-            viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#68ED8C"));
+            viewHolder.getCheckingStatus().setButtonDrawable(R.drawable.low_priority_cb);
         }
         else if (tasks.get(position).getPriority() == 2){
-            viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#fcfc21"));
+//            viewHolder.getPriorityText().setText( "!!");
+//            viewHolder.getPriorityText().setTextColor(context.getResources().getColor(R.color.light_red));
+            viewHolder.getCheckingStatus().setButtonDrawable(R.drawable.medium_priority_cb);
         }
         else{
-            viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#f04646"));
+//            viewHolder.getChec
+//             viewHolder.getPriorityText().setText( "!!!");
+//            viewHolder.getPriorityText().setTextColor(context.getResources().getColor(R.color.light_red));
+            //viewHolder.getFulllayout().setBackgroundColor(Color.parseColor("#f04646"));
         }
         viewHolder.getCheckingStatus().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

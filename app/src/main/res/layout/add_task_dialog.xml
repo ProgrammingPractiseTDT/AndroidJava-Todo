@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
     android:layout_width="wrap_content"
-    android:layout_height="600dp"
-    android:orientation="vertical"
-    >
-
+    android:background="@drawable/add_task_background">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textAlignment="viewStart"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-96dp">
+        >
+
 
         <EditText
             android:id="@+id/txt_taskTitleInput"
-            android:layout_width="250dp"
-            android:layout_height="57dp"
+            android:layout_width="335dp"
+            android:layout_height="48dp"
             android:layout_marginTop="24dp"
-            android:background="@drawable/input_field_rectangle"
+            android:background="@drawable/item_box"
             android:ems="10"
             android:hint="@string/title"
             android:inputType="textCapSentences"
@@ -33,13 +31,13 @@
 
         <DatePicker
             android:id="@+id/datePicker"
-            android:layout_width="246dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/input_field_rectangle"
+            android:layout_width="334dp"
+            android:layout_height="400dp"
+            android:layout_marginTop="-30dp"
+            android:background="@drawable/item_box"
             android:calendarTextColor="@color/black"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner"
+            android:datePickerMode="calendar"
+            android:scaleY="0.7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +107,7 @@
             android:id="@+id/cancel_dialog_btn"
             android:layout_width="70dp"
             android:layout_height="29dp"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="40dp"
             android:background="?android:attr/selectableItemBackground"
@@ -117,7 +115,8 @@
             android:textColor="@android:color/holo_red_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_descriptionEdit" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_descriptionEdit"
+            app:layout_constraintVertical_bias="0.951" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/add_dialog_btn"
@@ -126,20 +125,21 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="40dp"
             android:background="?android:attr/selectableItemBackground"
-            android:text="@string/addBtn"
+            android:text="Apply"
             android:textColor="@color/design_default_color_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.761"
+            app:layout_constraintHorizontal_bias="0.774"
             app:layout_constraintStart_toEndOf="@+id/cancel_dialog_btn"
-            app:layout_constraintTop_toBottomOf="@+id/txt_descriptionEdit" />
+            app:layout_constraintTop_toBottomOf="@+id/txt_descriptionEdit"
+            app:layout_constraintVertical_bias="0.951" />
 
         <TimePicker
             android:id="@+id/timePicker"
-            android:layout_width="233dp"
-            android:layout_height="91dp"
+            android:layout_width="334dp"
+            android:layout_height="75dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/input_field_rectangle"
+            android:background="@drawable/item_box"
             android:timePickerMode="spinner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -147,10 +147,10 @@
 
         <EditText
             android:id="@+id/txt_descriptionEdit"
-            android:layout_width="271dp"
-            android:layout_height="50dp"
+            android:layout_width="342dp"
+            android:layout_height="56dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/input_field_rectangle"
+            android:background="@drawable/item_box"
             android:ems="10"
             android:gravity="center|left"
             android:hint="@string/description"
@@ -170,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="-30dp"
             android:text="@string/onTime"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -178,6 +178,7 @@
             app:layout_constraintTop_toBottomOf="@+id/datePicker" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
