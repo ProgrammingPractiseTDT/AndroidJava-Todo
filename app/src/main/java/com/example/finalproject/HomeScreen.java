@@ -47,9 +47,9 @@ public class HomeScreen extends AppCompatActivity{
     private TextView userGreeting;
     private FirebaseUser user;
     private RecyclerView rv;
-    private Button todayBtn;
-    private Button importantBtn;
-    private Button quickTaskBtn;
+    private ImageView todayBtn;
+    private ImageView importantBtn;
+    private ImageView quickTaskBtn;
     private ImageView searchBtn;
     private ImageView popupMenuBtn;
     private String initialLocale;

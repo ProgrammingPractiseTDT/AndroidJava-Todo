@@ -104,6 +104,7 @@
         <entry key="app/src/main/res/drawable/high_priority_cb.xml" value="0.23846153846153847" />
         <entry key="app/src/main/res/drawable/high_uncheck.xml" value="0.23846153846153847" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.16666666666666666" />
+        <entry key="app/src/main/res/drawable/ic_tdt.xml" value="0.335" />
         <entry key="app/src/main/res/drawable/input_field_rectangle.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/drawable/item_border_radius.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/drawable/item_box.xml" value="0.12760416666666666" />
@@ -116,6 +117,8 @@
         <entry key="app/src/main/res/drawable/rectangle_1.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/drawable/rectangle_2.xml" value="0.23148148148148148" />
         <entry key="app/src/main/res/drawable/rectangle_dialog.xml" value="0.15729166666666666" />
+        <entry key="app/src/main/res/drawable/today_homescree .xml" value="0.23846153846153847" />
+        <entry key="app/src/main/res/drawable/today_homescreen .xml" value="0.12760416666666666" />
         <entry key="app/src/main/res/drawable/today_img.xml" value="0.23846153846153847" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/activity_project_view.xml" value="0.1" />
@@ -124,7 +127,7 @@
         <entry key="app/src/main/res/layout/add_task_dialog.xml" value="0.165" />
         <entry key="app/src/main/res/layout/edit_project_dialog.xml" value="0.129981884057971" />
         <entry key="app/src/main/res/layout/edit_task_layout.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/home_screen_layout.xml" value="0.129981884057971" />
+        <entry key="app/src/main/res/layout/home_screen_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/important_task_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/login_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/long_touch_option_dialog.xml" value="0.129981884057971" />
