@@ -60,7 +60,7 @@ public class EditProjectDialog extends Dialog implements
         orange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialoglayout.setBackgroundColor(Color.parseColor("#FF5722"));
+                dialoglayout.setBackgroundColor(c.getResources().getColor(R.color.light_blue));
             }
         });
         green.setOnClickListener(new View.OnClickListener() {
