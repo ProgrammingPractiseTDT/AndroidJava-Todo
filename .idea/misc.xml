@@ -137,6 +137,8 @@
         <entry key="app/src/main/res/layout/search_screen_layout.xml" value="0.129981884057971" />
         <entry key="app/src/main/res/layout/task_item_layout.xml" value="0.375" />
         <entry key="app/src/main/res/layout/today_task_layout.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/user_profile.xml" value="0.129981884057971" />
+        <entry key="app/src/main/res/menu/popup_menu.xml" value="0.22604166666666667" />
       </map>
     </option>
   </component>
