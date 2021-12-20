@@ -121,7 +121,8 @@
         <entry key="app/src/main/res/layout/activity_project_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/add_project_dialog.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/add_task_dialog.xml" value="0.13145896656534956" />
+        <entry key="app/src/main/res/layout/add_task_dialog.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/edit_project_dialog.xml" value="0.129981884057971" />
         <entry key="app/src/main/res/layout/edit_task_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/home_screen_layout.xml" value="0.129981884057971" />
         <entry key="app/src/main/res/layout/important_task_layout.xml" value="0.1" />
