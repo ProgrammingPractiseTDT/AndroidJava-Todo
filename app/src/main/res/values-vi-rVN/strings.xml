@@ -112,4 +112,6 @@
     <string name="changePasswordSuccess">Mật khẩu đã thay đổi.
     \nLần tới bạn phải đăng nhập lại.
     </string>
+    <string name="touchStart">Chạm để bắt đầu...</string>
+    <string name="applyBtn">Cập nhật</string>
 </resources>

@@ -15,7 +15,7 @@
             android:name=".ProjectView"
             android:exported="false" />
         <activity
-            android:name=".StartingScreen"
+            android:name=".OnlyLogo"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,6 +35,7 @@
         <activity android:name=".SearchActivity"/>
         <activity android:name=".SettingsActivity"/>
         <activity android:name=".EditTaskActivity"></activity>
+        <activity android:name=".StartingScreen"/>
 
         <meta-data
             android:name="preloaded_fonts"

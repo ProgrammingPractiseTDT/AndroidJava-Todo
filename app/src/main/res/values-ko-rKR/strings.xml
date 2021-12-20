@@ -86,4 +86,6 @@
     <string name="changePasswordSuccess">비밀번호가 변경되었습니다.
     \n다음에는 다시 로그인해야 합니다.
     </string>
+    <string name="touchStart">시작하려면 아무 곳이나 터치하세요...</string>
+    <string name="applyBtn">적용하다</string>
 </resources>

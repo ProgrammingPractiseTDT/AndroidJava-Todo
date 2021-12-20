@@ -124,7 +124,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="40dp"
             android:background="?android:attr/selectableItemBackground"
-            android:text="Apply"
+            android:text="@string/addBtn"
             android:textColor="@color/design_default_color_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

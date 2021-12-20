@@ -121,4 +121,7 @@
     <string name="changePasswordSuccess">Password has changed.
     \nNext time, you have to sign in again.
     </string>
+
+    <string name="touchStart">Touch anywhere to start...</string>
+    <string name="applyBtn">Apply</string>
 </resources>
