@@ -21,13 +21,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recView_todayTask"
-        android:layout_width="354dp"
-        android:layout_height="wrap_content"
+        android:layout_width="356dp"
+        android:layout_height="190dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="1dp"
-        app:layoutManager="LinearLayoutManager"
         android:layoutAnimation="@anim/layout_animation"
+        app:layoutManager="LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
@@ -36,13 +36,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recView_todayTask2"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
+        android:layout_width="352dp"
+        android:layout_height="188dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="1dp"
-        app:layoutManager="LinearLayoutManager"
         android:layoutAnimation="@anim/layout_animation"
+        app:layoutManager="LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.476"
